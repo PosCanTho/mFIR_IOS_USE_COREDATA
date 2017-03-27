@@ -11,11 +11,11 @@ import Foundation
 class FacilityType {
     var facilityTypeId:String
     var facilityTypeName:String
-    var desctiption:String
+    var description:String
     
-    init(facilityTypeId:String, facilityTypeName:String, desctiption:String) {
+    init(facilityTypeId:String, facilityTypeName:String, description:String) {
         self.facilityTypeId = facilityTypeId
         self.facilityTypeName = facilityTypeName
-        self.desctiption = desctiption
+        self.description = description
     }
 }
