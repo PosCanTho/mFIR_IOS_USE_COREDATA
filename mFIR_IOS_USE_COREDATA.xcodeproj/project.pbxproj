@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA231E88E67800A2671C /* ComponentType.swift */; };
+		04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA241E88E67800A2671C /* Facility.swift */; };
+		04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA251E88E67800A2671C /* FacilityType.swift */; };
+		04C7FA311E88E67800A2671C /* Instructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA261E88E67800A2671C /* Instructor.swift */; };
+		04C7FA321E88E67800A2671C /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA271E88E67800A2671C /* Issue.swift */; };
+		04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA281E88E67800A2671C /* IssueStatus.swift */; };
+		04C7FA341E88E67800A2671C /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA291E88E67800A2671C /* Relationship.swift */; };
+		04C7FA351E88E67800A2671C /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2A1E88E67800A2671C /* Student.swift */; };
+		04C7FA361E88E67800A2671C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2B1E88E67800A2671C /* User.swift */; };
+		04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2C1E88E67800A2671C /* UserReferences.swift */; };
+		04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2D1E88E67800A2671C /* PostParameter.swift */; };
+		04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA391E88E68A00A2671C /* FirServices.swift */; };
+		04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA3B1E88E69200A2671C /* Constants.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
@@ -35,6 +48,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04C7FA231E88E67800A2671C /* ComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
+		04C7FA241E88E67800A2671C /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
+		04C7FA251E88E67800A2671C /* FacilityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityType.swift; sourceTree = "<group>"; };
+		04C7FA261E88E67800A2671C /* Instructor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instructor.swift; sourceTree = "<group>"; };
+		04C7FA271E88E67800A2671C /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		04C7FA281E88E67800A2671C /* IssueStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueStatus.swift; sourceTree = "<group>"; };
+		04C7FA291E88E67800A2671C /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
+		04C7FA2A1E88E67800A2671C /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		04C7FA2B1E88E67800A2671C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		04C7FA2C1E88E67800A2671C /* UserReferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReferences.swift; sourceTree = "<group>"; };
+		04C7FA2D1E88E67800A2671C /* PostParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
+		04C7FA391E88E68A00A2671C /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
+		04C7FA3B1E88E69200A2671C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +105,7 @@
 		04C7FA1C1E88E5CF00A2671C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F56634511E88C65E00C580C3 /* ViewController.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -86,6 +113,7 @@
 		04C7FA1F1E88E5E000A2671C /* connection */ = {
 			isa = PBXGroup;
 			children = (
+				04C7FA391E88E68A00A2671C /* FirServices.swift */,
 			);
 			name = connection;
 			sourceTree = "<group>";
@@ -93,6 +121,16 @@
 		04C7FA201E88E5EB00A2671C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				04C7FA231E88E67800A2671C /* ComponentType.swift */,
+				04C7FA241E88E67800A2671C /* Facility.swift */,
+				04C7FA251E88E67800A2671C /* FacilityType.swift */,
+				04C7FA261E88E67800A2671C /* Instructor.swift */,
+				04C7FA271E88E67800A2671C /* Issue.swift */,
+				04C7FA281E88E67800A2671C /* IssueStatus.swift */,
+				04C7FA291E88E67800A2671C /* Relationship.swift */,
+				04C7FA2A1E88E67800A2671C /* Student.swift */,
+				04C7FA2B1E88E67800A2671C /* User.swift */,
+				04C7FA2D1E88E67800A2671C /* PostParameter.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -100,6 +138,7 @@
 		04C7FA211E88E5F200A2671C /* constants */ = {
 			isa = PBXGroup;
 			children = (
+				04C7FA3B1E88E69200A2671C /* Constants.swift */,
 			);
 			name = constants;
 			sourceTree = "<group>";
@@ -107,6 +146,7 @@
 		04C7FA221E88E60900A2671C /* untils */ = {
 			isa = PBXGroup;
 			children = (
+				04C7FA2C1E88E67800A2671C /* UserReferences.swift */,
 			);
 			name = untils;
 			sourceTree = "<group>";
@@ -140,7 +180,6 @@
 				04C7FA1F1E88E5E000A2671C /* connection */,
 				04C7FA1C1E88E5CF00A2671C /* view */,
 				F566344F1E88C65E00C580C3 /* AppDelegate.swift */,
-				F56634511E88C65E00C580C3 /* ViewController.swift */,
 				F56634531E88C65E00C580C3 /* Main.storyboard */,
 				F56634591E88C65E00C580C3 /* Assets.xcassets */,
 				F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */,
@@ -307,7 +346,20 @@
 			files = (
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
+				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
+				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,
+				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
+				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
+				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
+				04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */,
+				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
+				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
+				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
 				F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */,
+				04C7FA361E88E67800A2671C /* User.swift in Sources */,
+				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
+				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
+				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
