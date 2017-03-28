@@ -11,11 +11,13 @@ import Foundation
 
 class FirServices{
     
+    
+    
     // ============================
     private static func dataTask(
         url: String,
         post: PostParameter,
-        callback: @escaping (_ json: Dictionary<String, Any>, _ error: URLError?) -> Void) {
+        callback: @escaping (_ json: Dictionary<String, Any>, _ completion: Bool, _ error: URLError?) -> Void) {
         
         let TAG = "func -> dataTask: "
         
@@ -34,7 +36,7 @@ class FirServices{
         let postString:String = post.getString()
         
         let urlRequest = URL(string: url)!
-        var request = URLRequest(url: urlRequest)
+        var request = URLRequest(url: urlRequest, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)
         
         request.httpMethod = "POST"
         request.httpBody = postString.data(using: .utf8)
@@ -43,8 +45,7 @@ class FirServices{
             
             guard let data = data, error == nil
                 else {
-                    
-                    callback(Dictionary<String, AnyObject>(), error as! URLError?)
+                    callback(Dictionary<String, AnyObject>(), false, error as! URLError?)
                     return
             }
             
@@ -59,21 +60,20 @@ class FirServices{
             do {
                 
                 if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] {
-                    callback(json, nil)
+                    callback(json, true, nil)
                 }
                 
-            } catch let err{
-                print(TAG + err.localizedDescription)
-                callback(Dictionary<String, AnyObject>(), nil)
+            } catch {
+                callback(Dictionary<String, AnyObject>(), false, nil)
             }
         }
         task.resume()
     }
+    // ============================
     
     
-    
-    
-    static func login(username: String, password: String, imei: String, callback: @escaping (_ data: Any) -> Void){
+    // ============================
+    static func login(username: String, password: String, imei: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> login: "
         
@@ -83,15 +83,15 @@ class FirServices{
         post.add(key: "imei", value: "")
         
         FirServices.dataTask(url: Constants.URL.API_LOGIN, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            
+            guard let table = json["Table"] as? [[String: Any]] else{
                 let userReference = UserDefaults.standard
                 userReference.removeObject(forKey: UserReferences.USERNAME)
                 userReference.removeObject(forKey: UserReferences.PASSWORD)
-                callback(false)
+                
+                callback(false, completion, error)
                 return
             }
             
@@ -118,15 +118,14 @@ class FirServices{
                 currentFirstName: currentFirstName,
                 roleType: roleType)
             
-            callback(user)
+            callback(user, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getFacility(facilityId: String, callback: @escaping (_ data: Any) -> Void){
-        
+    static func getFacility(facilityId: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         let TAG = "func -> facility: "
         
         let post = PostParameter()
@@ -135,12 +134,11 @@ class FirServices{
         var listFacility = [Facility]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_LIST_FACILITY, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
+            guard let table = json["Table"] as? [[String: Any]] else{
                 print(TAG)
-                print(error!)
-                callback(false)
+                callback(false, completion, error!)
                 return
             }
             for element in table{
@@ -158,14 +156,14 @@ class FirServices{
                 listFacility.append(facility)
             }
             
-            callback(listFacility)
+            callback(listFacility, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getIssue(facilityIssueId: String, fromDate: String, thruDate: String, callback: @escaping (_ data: Any) -> Void){
+    static func getIssue(facilityIssueId: String, fromDate: String, thruDate: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> facilityIssue: "
         
@@ -177,10 +175,9 @@ class FirServices{
         var listIssue = [Issue]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_LIST_FACILITY_ISSUE, post: post){
-            (json, error) in
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            (json, completion, error) in
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             
@@ -298,14 +295,14 @@ class FirServices{
                 listIssue.append(issue)
             }
             
-            callback(listIssue)
+            callback(listIssue, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getComponentType(facilityComponentTypeId: String, callback: @escaping (_ data: Any) -> Void){
+    static func getComponentType(facilityComponentTypeId: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> componentType: "
         
@@ -315,12 +312,10 @@ class FirServices{
         var listComponentType = [ComponentType]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_LIST_FACILITY_COMPONENT_TYPE, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
-                callback(false)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             for element in table{
@@ -336,14 +331,14 @@ class FirServices{
                 listComponentType.append(componentType)
             }
             
-            callback(listComponentType)
+            callback(listComponentType, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getRelationship(facilityTypeId: String, facilityComponentTypeId: String, callback: @escaping (_ data: Any) -> Void){
+    static func getRelationship(facilityTypeId: String, facilityComponentTypeId: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> relationship: "
         
@@ -354,11 +349,10 @@ class FirServices{
         var listRelationship = [Relationship]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_RELATIONSHIP, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             for element in table{
@@ -386,14 +380,14 @@ class FirServices{
                 listRelationship.append(relationship)
             }
             
-            callback(listRelationship)
+            callback(listRelationship, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getFacilityType(facilityTypeId: String, callback: @escaping (_ data: Any) -> Void){
+    static func getFacilityType(facilityTypeId: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> facilityType: "
         
@@ -403,11 +397,10 @@ class FirServices{
         var listFacilityType = [FacilityType]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_LIST_FACILITY_TYPE, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             for element in table{
@@ -424,14 +417,14 @@ class FirServices{
                 
             }
             
-            callback(listFacilityType)
+            callback(listFacilityType, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getInstructor(instructorIdNumber: String, callback: @escaping (_ data: Any) -> Void){
+    static func getInstructor(instructorIdNumber: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> instructor: "
         
@@ -441,11 +434,10 @@ class FirServices{
         var listInstructor = [Instructor]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_LIST_INSTRUCTOR, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             
@@ -554,14 +546,14 @@ class FirServices{
                 
             }
             
-            callback(listInstructor)
+            callback(listInstructor, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getStudent(studentIdNumber: String, callback: @escaping (_ data: Any) -> Void){
+    static func getStudent(studentIdNumber: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> student: "
         
@@ -571,11 +563,10 @@ class FirServices{
         var listStudent = [Student]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_LIST_STUDENT, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             
@@ -626,28 +617,26 @@ class FirServices{
                 
             }
             
-            callback(listStudent)
+            callback(listStudent, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getIssueStatus(callback: @escaping (_ data: Any) -> Void){
+    static func getIssueStatus(callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> issueStatus: "
         
-        //        let post = ""
         let post = PostParameter()
         
         var listIssueStatus = [IssueStatus]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_ISSUE_STATUS, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             
@@ -664,14 +653,14 @@ class FirServices{
                 
             }
             
-            callback(listIssueStatus)
+            callback(listIssueStatus, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func getIssueByFacility(facilityId: String, callback: @escaping (_ data: Any) -> Void){
+    static func getIssueByFacility(facilityId: String, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
         let TAG = "func -> issueByFacility: "
         
@@ -681,12 +670,10 @@ class FirServices{
         var listIssue = [Issue]()
         
         FirServices.dataTask(url: Constants.URL.API_GET_ISSUE_BY_FACILITY, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
-                callback(false)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             for element in table{
@@ -803,16 +790,16 @@ class FirServices{
                 listIssue.append(issue)
             }
             
-            callback(listIssue)
+            callback(listIssue, completion, nil)
         }
     }
     // ============================
     
     
     // ============================
-    static func updateIssue(issue: Issue, callback: @escaping (_ data: Any) -> Void){
+    static func updateIssue(issue: Issue, callback: @escaping (_ data: Any, _ completion: Bool, _ error: URLError?) -> Void){
         
-        let TAG = "func -> updateIssue: "
+        //        let TAG = "func -> updateIssue: "
         
         let post = PostParameter()
         post.add(key: "FACILITY_ISSUE_ID", value: issue.facilityIssueId!)
@@ -869,18 +856,16 @@ class FirServices{
         
         
         FirServices.dataTask(url: Constants.URL.API_UPDATE_FACILITY_ISSUE, post: post){
-            (json, error) in
+            (json, completion, error) in
             
-            guard let table = json["Table"] as? [[String: Any]], error == nil else{
-                print(TAG)
-                print(error!)
-                callback(false)
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false, completion, error!)
                 return
             }
             
             print(table)
             
-            callback("Chua hoan thien")
+            callback("Chua hoan thien", completion, nil)
         }
     }
     // ============================

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041F37711E896B280037940B /* FirDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F37701E896B280037940B /* FirDialog.swift */; };
 		04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA231E88E67800A2671C /* ComponentType.swift */; };
 		04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA241E88E67800A2671C /* Facility.swift */; };
 		04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA251E88E67800A2671C /* FacilityType.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		041F37701E896B280037940B /* FirDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirDialog.swift; sourceTree = "<group>"; };
 		04C7FA231E88E67800A2671C /* ComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
 		04C7FA241E88E67800A2671C /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		04C7FA251E88E67800A2671C /* FacilityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityType.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				04C7FA2C1E88E67800A2671C /* UserReferences.swift */,
+				041F37701E896B280037940B /* FirDialog.swift */,
 			);
 			name = untils;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
 				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
+				041F37711E896B280037940B /* FirDialog.swift in Sources */,
 				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
