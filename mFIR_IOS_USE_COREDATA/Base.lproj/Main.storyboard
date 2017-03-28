@@ -190,6 +190,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCheckbox" destination="VDC-Qh-BzO" id="F8X-qs-EK9"/>
                         <outlet property="lbErorrPassowrd" destination="vEv-54-MwD" id="N4z-Q8-e1F"/>
                         <outlet property="lbErrorUsername" destination="2r0-GJ-Nqg" id="01R-jv-iaf"/>
                         <outlet property="tfPassword" destination="duJ-qg-KFD" id="ggO-lh-Y1v"/>

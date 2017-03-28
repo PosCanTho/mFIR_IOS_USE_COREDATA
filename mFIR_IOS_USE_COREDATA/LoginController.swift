@@ -15,6 +15,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lbErrorUsername: UILabel!
     @IBOutlet weak var lbErorrPassowrd: UILabel!
     @IBOutlet weak var btnCheckbox: UIButton!
+ 
     
     var isRememberChecked:Bool = false
     var isLogin: Bool = false
@@ -49,28 +50,25 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }else{
             lbErrorUsername.isHidden = true
             lbErorrPassowrd.isHidden = true
-            let username = "huynhducviet"
-            let password = "UNpZzQxYXN5VWY4MHIrL0FNN3hIaEtOU0VvPQ=="
+            let usernameDe = "huynhducviet"
+            let passwordDe = "UUNpZzQxYXN5VWY4MHIrL0FNN3hIaEtOU0VvPQ=="
             
-            FirServices.login(username: username, password: password, imei: "") { (data, completion, error) in
+            FirServices.login(username: usernameDe, password: passwordDe, imei: "") { (data, completion, error) in
                 if(!completion){
                     guard error == nil else{
                         FirDialog.showErrorDownload(viewController: self, urlError: error!)
                         return
                     }
                     
-                    FirDialog.show(viewController: self, title: "Login", mes: "Username or password is wrong", buttonName: "Close")
+                    FirDialog.show(viewController: self, title: "Login", mes: "Username or password is incorrect.", buttonName: "Close")
                     
                 }else{
-                    
                     guard let data = data as? User else{
                         return
                     }
-                    // login success
-                    // code here
-                    // ...
-                    // example
-                    print(data.userName)
+                    //Login success.
+                    UserDefaults.standard.set(self.isRememberChecked, forKey: UserReferences.IS_REMEMBER)
+                    
                 }
                 
             }
