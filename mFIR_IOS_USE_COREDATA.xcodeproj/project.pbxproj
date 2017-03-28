@@ -29,6 +29,7 @@
 		F566345D1E88C65E00C580C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */; };
 		F56634681E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634671E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift */; };
 		F56634731E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634721E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift */; };
+		F5F00E841E89F78C0066B0C2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F00E831E89F78C0066B0C2 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		F566346E1E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mFIR_IOS_USE_COREDATAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F56634721E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mFIR_IOS_USE_COREDATAUITests.swift; sourceTree = "<group>"; };
 		F56634741E88C65F00C580C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5F00E831E89F78C0066B0C2 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		04C7FA1C1E88E5CF00A2671C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				F5F00E831E89F78C0066B0C2 /* LoginController.swift */,
 				F56634511E88C65E00C580C3 /* ViewController.swift */,
 			);
 			name = view;
@@ -360,6 +363,7 @@
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
 				F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */,
+				F5F00E841E89F78C0066B0C2 /* LoginController.swift in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,

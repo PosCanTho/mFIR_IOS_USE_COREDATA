@@ -17,4 +17,5 @@ struct UserReferences {
     static let USERNAME:String = "REFERENCE_USERNAME"
     static let PASSWORD:String = "REFERENCE_PASSWORD"
     static let FULL_NAME:String = "REFERENCE_USER_FULL_NAME"
+    static let IS_REMEMBER:String = "IS_REMEMBER"
 }
