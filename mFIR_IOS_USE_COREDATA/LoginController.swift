@@ -10,7 +10,6 @@ import UIKit
 
 class LoginController: UIViewController, UITextFieldDelegate {
     
-    
     @IBOutlet weak var tfUsername: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var lbErrorUsername: UILabel!
@@ -50,7 +49,31 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }else{
             lbErrorUsername.isHidden = true
             lbErorrPassowrd.isHidden = true
+            let username = "huynhducviet"
+            let password = "UNpZzQxYXN5VWY4MHIrL0FNN3hIaEtOU0VvPQ=="
             
+            FirServices.login(username: username, password: password, imei: "") { (data, completion, error) in
+                if(!completion){
+                    guard error == nil else{
+                        FirDialog.showErrorDownload(viewController: self, urlError: error!)
+                        return
+                    }
+                    
+                    FirDialog.show(viewController: self, title: "Login", mes: "Username or password is wrong", buttonName: "Close")
+                    
+                }else{
+                    
+                    guard let data = data as? User else{
+                        return
+                    }
+                    // login success
+                    // code here
+                    // ...
+                    // example
+                    print(data.userName)
+                }
+                
+            }
         }
         
     }
