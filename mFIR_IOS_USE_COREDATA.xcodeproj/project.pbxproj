@@ -21,6 +21,7 @@
 		04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2D1E88E67800A2671C /* PostParameter.swift */; };
 		04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA391E88E68A00A2671C /* FirServices.swift */; };
 		04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA3B1E88E69200A2671C /* Constants.swift */; };
+		F5362DF61E8A3BDA006E863B /* DesignableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5362DF51E8A3BDA006E863B /* DesignableTextField.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		04C7FA2D1E88E67800A2671C /* PostParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		04C7FA391E88E68A00A2671C /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
 		04C7FA3B1E88E69200A2671C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F5362DF51E8A3BDA006E863B /* DesignableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableTextField.swift; sourceTree = "<group>"; };
 		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,14 @@
 			name = untils;
 			sourceTree = "<group>";
 		};
+		F5362DF41E8A3B5A006E863B /* designables */ = {
+			isa = PBXGroup;
+			children = (
+				F5362DF51E8A3BDA006E863B /* DesignableTextField.swift */,
+			);
+			name = designables;
+			sourceTree = "<group>";
+		};
 		F56634431E88C65E00C580C3 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +190,7 @@
 		F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */ = {
 			isa = PBXGroup;
 			children = (
+				F5362DF41E8A3B5A006E863B /* designables */,
 				04C7FA221E88E60900A2671C /* untils */,
 				04C7FA211E88E5F200A2671C /* constants */,
 				04C7FA201E88E5EB00A2671C /* model */,
@@ -358,6 +369,7 @@
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
+				F5362DF61E8A3BDA006E863B /* DesignableTextField.swift in Sources */,
 				04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */,
 				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,

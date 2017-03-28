@@ -56,23 +56,43 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TlO-XB-mmB" userLabel="Card">
                                 <rect key="frame" x="19" y="208" width="338" height="252"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-9F-5BP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-9F-5BP" customClass="DesignableTextField" customModule="mFIR_IOS_USE_COREDATA" customModuleProvider="target">
                                         <rect key="frame" x="30" y="20" width="278" height="45"/>
+                                        <color key="tintColor" red="0.74111884832382202" green="0.74120897054672241" blue="0.74108821153640747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="0JL-5v-88i"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_user"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lefPadding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="xkp-FN-TEQ" id="2TG-dx-QI3"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-qg-KFD">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duJ-qg-KFD" customClass="DesignableTextField" customModule="mFIR_IOS_USE_COREDATA" customModuleProvider="target">
                                         <rect key="frame" x="30" y="85" width="278" height="45"/>
+                                        <color key="tintColor" red="0.74117647058823533" green="0.74117647058823533" blue="0.74117647058823533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="ic_lock"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="lefPadding">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="delegate" destination="xkp-FN-TEQ" id="2w3-GN-Grp"/>
                                         </connections>
@@ -203,8 +223,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_lock" width="24" height="24"/>
         <image name="ic_logo_mfir" width="1758" height="392"/>
         <image name="ic_uncheck" width="22" height="22"/>
+        <image name="ic_user" width="24" height="24"/>
         <image name="logo_dtu" width="1389" height="410"/>
     </resources>
 </document>
