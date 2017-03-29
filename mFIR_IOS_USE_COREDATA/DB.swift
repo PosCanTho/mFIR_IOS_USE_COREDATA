@@ -19,6 +19,82 @@ class DB {
         return con
     }()
     
+    static func downloadToDB(_ viewConctroller: UIViewController){
+        
+        if(DB.FacilityComponentDB.checkFacilityComponentIsExist()){
+            DB.FacilityComponentDB.deleteRecords()
+        }
+        
+        if(DB.FacilityDB.checkFacilityIsExist()){
+            DB.FacilityDB.deleteRecords()
+        }
+        
+        if(DB.FacilityTypeDB.checkFacilityTypeIsExist()){
+            DB.FacilityTypeDB.deleteRecords()
+        }
+        
+        if(DB.IssueDB.checkFacilityRelationshipIsExist()){
+            DB.IssueDB.deleteRecords()
+        }
+        
+        if(DB.RelationshipDB.checkFacilityRelationshipIsExist()){
+            DB.RelationshipDB.deleteRecords()
+        }
+        
+        let services = FirServices(viewConctroller)
+        
+        services.getFacility(facilityId: "0") { (data) in
+            guard data != nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                DB.FacilityDB.saveAllFacility(listFacilityData: data!)
+                print("Downloaded: FacilityDB -> \(DB.FacilityDB.getDataFacility().count)")
+            }
+        }
+        
+        services.getComponentType(facilityComponentTypeId: "0") { (data) in
+            guard data != nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                DB.FacilityComponentDB.saveAllComponent(listComponentData: data!)
+                print("Downloaded: FacilityComponentDB -> \(DB.FacilityComponentDB.getDataComponent().count)")
+            }
+        }
+        
+        services.getFacilityType(facilityTypeId: "0") { (data) in
+            guard data != nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                DB.FacilityTypeDB.saveAllFacilityType(listFacilityTypeData: data!)
+                print("Downloaded: FacilityTypeDB -> \(DB.FacilityTypeDB.getDataFacilityType().count)")
+            }
+        }
+        
+        services.getIssue(facilityIssueId: "0", fromDate: "", thruDate: "") { (data) in
+            guard data != nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                DB.IssueDB.saveAllIssue(listIssueData: data!)
+                print("Downloaded: IssueDB -> \(DB.IssueDB.getDataIssue().count)")
+            }
+        }
+        
+        services.getRelationship(facilityTypeId: "0", facilityComponentTypeId: "0") { (data) in
+            guard data != nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                DB.RelationshipDB.saveAllRelationship(listRelationshipData: data!)
+                print("Downloaded: RelationshipDB -> \(DB.RelationshipDB.getDataRelationship().count)")
+            }
+        }
+        
+    }
+    
     /// Facility database
     class FacilityDB {
         
@@ -47,8 +123,6 @@ class DB {
         static func saveAllFacility(listFacilityData: Array<Facility> = Array()){
             
             for facility in listFacilityData {
-                //  var facility:Facility
-                //   facility = listFacilityData[i]
                 saveFacility(facility: facility)
             }
         }
@@ -106,7 +180,7 @@ class DB {
             }
             do {
                 try facility.save()
-                print("saved!")
+                print("Deleted table: -> \(Databases.TABLE_FACILITY)")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
@@ -288,7 +362,7 @@ class DB {
             
             do {
                 try component.save()
-                print("saved!")
+                print("Deleted table: -> \(Databases.TABLE_FACILITY_COMPONENT_TYPE)")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
@@ -565,7 +639,7 @@ class DB {
             
             do {
                 try issue.save()
-                print("saved!")
+                print("Deleted table: -> \(Databases.TABLE_FACILITY_ISSUE)")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
@@ -683,7 +757,7 @@ class DB {
             
             do {
                 try relationship.save()
-                print("saved!")
+                print("Deleted table: -> \(Databases.TABLE_FACILITY_RELATIONSHIP)")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
@@ -799,7 +873,7 @@ class DB {
             
             do {
                 try facilityType.save()
-                print("saved!")
+                print("Deleted table: -> \(Databases.TABLE_FACILITY_TYPE)")
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
             }
