@@ -7,29 +7,51 @@
 //
 
 import UIKit
-
-class SettingViewController: UIViewController {
-
+class SettingCell: UITableViewCell {
+    
+    @IBOutlet weak var imgIcon: UIImageView!
+    @IBOutlet weak var lbSettingName: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+}
+class SettingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var tableSetting: UITableView!
+    var settingArray: Array = [String]()
+    var iconArray: Array = [UIImage]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.topItem?.title = "Setting"
+        
+        settingArray = ["Synch data", "Notifications", "English", "Bell","Sign out"]
+        iconArray = [UIImage(named: "setting")!, UIImage(named: "setting")!, UIImage(named: "setting")!, UIImage(named: "setting")!, UIImage(named: "setting")!]
+        
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settingArray.count
     }
-    */
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Setting", for: indexPath) as! SettingCell
+        
+        cell.lbSettingName.text = settingArray[indexPath.row]
+        cell.imgIcon.image = iconArray[indexPath.row]
+        return cell
+    }
 }
