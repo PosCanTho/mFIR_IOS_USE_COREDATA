@@ -37,7 +37,6 @@ class DB {
             facilityData.setValue(facility.facilityUsageStatus, forKey: Databases.FACILITY_USAGE_STATUS)
             do {
                 try context.save()
-                print("Inserted facility: \(facility.facilityName)")
             }
             catch {
                 print("Error!")
@@ -95,7 +94,7 @@ class DB {
         }
         
         //DELETE RECORDS
-        static func deleteRecords() -> Bool {
+        static func deleteRecords(){
             let facility = context
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY)
             
@@ -108,10 +107,8 @@ class DB {
             do {
                 try facility.save()
                 print("saved!")
-                return true
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
-                return false
             }
         }
         
@@ -226,7 +223,6 @@ class DB {
             //save the object
             do {
                 try context.save()
-                print("Inserted component: \(component.componentTypeName)")
             }
             catch {
                 print("Error!")
@@ -279,7 +275,7 @@ class DB {
         }
         
         //DELETE RECORDS
-        static func deleteRecords() -> Bool {
+        static func deleteRecords(){
             let component = context
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_COMPONENT_TYPE)
             
@@ -293,10 +289,8 @@ class DB {
             do {
                 try component.save()
                 print("saved!")
-                return true
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
-                return false
             }
             
         }
@@ -304,7 +298,7 @@ class DB {
         //EDIT 29/03/2017
         
         // check ComponentType Is Exist
-        static func checkFacilityRelationshipIsExist() -> Bool {
+        static func checkFacilityComponentIsExist() -> Bool {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_COMPONENT_TYPE)
             do{
                 let searchResults = try context.fetch(fetchRequest)
@@ -387,7 +381,6 @@ class DB {
             facilityIssue.setValue(facilityIssueData.facilityIssueResolversNote5, forKey: Databases.FACILITY_ISSUE_RESOLVERS_NOTE_5)
             do {
                 try context.save()
-                print("Inserted issue: \(facilityIssueData.facilityIssueId)")
             }
             catch {
                 print("Error!")
@@ -559,7 +552,7 @@ class DB {
         
         //DELETE RECORDS
         
-        static func deleteRecords() -> Bool {
+        static func deleteRecords() {
             let issue = context
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_ISSUE)
             
@@ -573,10 +566,8 @@ class DB {
             do {
                 try issue.save()
                 print("saved!")
-                return true
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
-                return false
             }
             
         }
@@ -620,7 +611,6 @@ class DB {
             
             do {
                 try context.save()
-                print("Inserted Relationship: \(facilityRelationshipData.facilityTypeName) - \(facilityRelationshipData.facilityComponentTypeName)")
             }
             catch {
                 print("Error!")
@@ -680,7 +670,7 @@ class DB {
         }
         
         //delete
-        static func deleteRecords() -> Bool {
+        static func deleteRecords() {
             let relationship = context
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_RELATIONSHIP)
             
@@ -694,10 +684,8 @@ class DB {
             do {
                 try relationship.save()
                 print("saved!")
-                return true
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
-                return false
             }
         }
         
@@ -736,7 +724,6 @@ class DB {
             facilityType.setValue(facilityTypeData.description, forKey: Databases.DESCRIPTION)
             do {
                 try context.save()
-                print("Inserted facility type: \(facilityTypeData.facilityTypeName)")
             }
             catch {
                 print("Error!")
@@ -799,7 +786,7 @@ class DB {
         }
         //DELETE RECORDS
         
-        static func deleteRecords() -> Bool {
+        static func deleteRecords() {
             let facilityType = context
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_TYPE)
             
@@ -813,10 +800,8 @@ class DB {
             do {
                 try facilityType.save()
                 print("saved!")
-                return true
             } catch let error as NSError  {
                 print("Could not save \(error), \(error.userInfo)")
-                return false
             }
             
         }

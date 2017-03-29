@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35231E8B5F1900BF2D39 /* CheckInternet.swift */; };
 		040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */; };
-		040F35361E8B9F3C00BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 040F35351E8B9F3C00BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel */; };
 		040F353A1E8BB38800BF2D39 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35391E8BB38800BF2D39 /* DB.swift */; };
 		041F37711E896B280037940B /* FirDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F37701E896B280037940B /* FirDialog.swift */; };
+		0443324D1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0443324C1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel */; };
 		04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA231E88E67800A2671C /* ComponentType.swift */; };
 		04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA241E88E67800A2671C /* Facility.swift */; };
 		04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA251E88E67800A2671C /* FacilityType.swift */; };
@@ -54,9 +54,9 @@
 /* Begin PBXFileReference section */
 		040F35231E8B5F1900BF2D39 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesInstance.swift; sourceTree = "<group>"; };
-		040F35351E8B9F3C00BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
 		040F35391E8BB38800BF2D39 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		041F37701E896B280037940B /* FirDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirDialog.swift; sourceTree = "<group>"; };
+		0443324C1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
 		04C7FA231E88E67800A2671C /* ComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
 		04C7FA241E88E67800A2671C /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
 		04C7FA251E88E67800A2671C /* FacilityType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityType.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 		040F35271E8B988800BF2D39 /* database */ = {
 			isa = PBXGroup;
 			children = (
-				040F35351E8B9F3C00BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel */,
+				0443324C1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel */,
 			);
 			name = database;
 			sourceTree = "<group>";
@@ -373,7 +373,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
-				040F35361E8B9F3C00BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */,
 				040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */,
 				040F353A1E8BB38800BF2D39 /* DB.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
@@ -390,6 +389,7 @@
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
 				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
+				0443324D1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
 			);
