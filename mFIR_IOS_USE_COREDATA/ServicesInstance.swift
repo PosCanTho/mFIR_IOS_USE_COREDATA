@@ -14,6 +14,7 @@ class ServicesInstance{
     
     private var progressId:Int = 0
     private var arrayProgress:[Int:Bool] = [:]
+    private var percentProgressDone:Float = 0.0
     private let activityViewController:ProgressingViewController = ProgressingViewController(message: "Downloading...")
     
     private static let instance:ServicesInstance = ServicesInstance() // singleton pattern
@@ -63,10 +64,10 @@ class ServicesInstance{
                     }
                 }
                 
-                let percentProgressDone:Float = (Float(countProgressDone)/Float(self.arrayProgress.count))*100
+                self.percentProgressDone = (Float(countProgressDone)/Float(self.arrayProgress.count))*100
                 
-                if(!percentProgressDone.isNaN){
-                    self.activityViewController.setMessage(mes: "\(String(format: "%.0f",percentProgressDone))%")
+                if(!self.percentProgressDone.isNaN){
+                    self.activityViewController.setMessage(mes: "\(String(format: "%.0f",self.percentProgressDone))%")
                 }
                 
                 if(isAllProgressComplete || self.arrayProgress.count == 0){
@@ -125,6 +126,11 @@ class ServicesInstance{
         
         let inprogressId = self.progressId
         
+        if(Int(percentProgressDone) == 100){
+            self.activityViewController.setMessage(mes: "Downloading...")
+            self.percentProgressDone = 0.0
+        }
+        
         self.arrayProgress[inprogressId] = false
         
         showProgressing(viewController, progressId: inprogressId, completion: false)
@@ -133,7 +139,6 @@ class ServicesInstance{
             
             guard let data = data, error == nil
                 else {
-                    print("eroorrrrrrr")
                     self.arrayProgress.removeAll()
                     self.progressId = 0
                     self.showProgressing(viewController, progressId: inprogressId, completion: true)
