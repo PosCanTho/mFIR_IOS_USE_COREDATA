@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FacilityComponentTypeCoreData" representedClassName="FacilityComponentTypeCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="descriptionFacility" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="FacilityCoreData" representedClassName="FacilityCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="facilityId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityTypeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityUsageStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rootFacilityId" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="FacilityIssueCoreData" representedClassName="FacilityIssueCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="facilityComponentIssueReport1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueReport2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueReport3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueReport4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueReport5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueStatus1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueStatus2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueStatus3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueStatus4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentIssueStatus5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeId1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeId2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeId3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeId4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeId5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueCaseNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueReportDatetime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolvedDatetime1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolvedDatetime2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolvedDatetime3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolvedDatetime4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolvedDatetime5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolverIdNumber1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolverIdNumber2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolverIdNumber3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolverIdNumber4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolverIdNumber5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolversNote1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolversNote2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolversNote3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolversNote4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueResolversNote5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityIssueStatus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityTypeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instructorIdNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sameFacilityIssueCaseNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sameFacilityIssueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="studentIdNumber" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="FacilityTypeCoreData" representedClassName="FacilityTypeCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="descriptionFacility" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityTypeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityTypeName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="RelationshipCoreData" representedClassName="RelationshipCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="facilityComponentTypeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityComponentTypeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityTypeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="facilityTypeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fromDate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thruDate" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="FacilityComponentTypeCoreData" positionX="-612" positionY="144" width="128" height="90"/>
+        <element name="FacilityCoreData" positionX="-603" positionY="207" width="128" height="120"/>
+        <element name="FacilityIssueCoreData" positionX="-828" positionY="180" width="128" height="810"/>
+        <element name="FacilityTypeCoreData" positionX="-594" positionY="297" width="128" height="90"/>
+        <element name="RelationshipCoreData" positionX="-198" positionY="189" width="128" height="150"/>
+    </elements>
+</model>

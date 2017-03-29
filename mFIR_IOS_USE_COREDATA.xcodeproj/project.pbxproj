@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35231E8B5F1900BF2D39 /* CheckInternet.swift */; };
 		040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */; };
+		040F35291E8B98A900BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 040F35281E8B98A900BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel */; };
+		040F35301E8B991300BF2D39 /* FacilityComponentTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F352B1E8B991300BF2D39 /* FacilityComponentTypeData.swift */; };
+		040F35311E8B991300BF2D39 /* FacilityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F352C1E8B991300BF2D39 /* FacilityData.swift */; };
+		040F35321E8B991300BF2D39 /* FacilityIssueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F352D1E8B991300BF2D39 /* FacilityIssueData.swift */; };
+		040F35331E8B991300BF2D39 /* FacilityRelationshipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F352E1E8B991300BF2D39 /* FacilityRelationshipData.swift */; };
+		040F35341E8B991300BF2D39 /* FacilityTypeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F352F1E8B991300BF2D39 /* FacilityTypeData.swift */; };
 		041F37711E896B280037940B /* FirDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F37701E896B280037940B /* FirDialog.swift */; };
 		04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA231E88E67800A2671C /* ComponentType.swift */; };
 		04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA241E88E67800A2671C /* Facility.swift */; };
@@ -53,6 +59,12 @@
 /* Begin PBXFileReference section */
 		040F35231E8B5F1900BF2D39 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesInstance.swift; sourceTree = "<group>"; };
+		040F35281E8B98A900BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
+		040F352B1E8B991300BF2D39 /* FacilityComponentTypeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityComponentTypeData.swift; sourceTree = "<group>"; };
+		040F352C1E8B991300BF2D39 /* FacilityData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityData.swift; sourceTree = "<group>"; };
+		040F352D1E8B991300BF2D39 /* FacilityIssueData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityIssueData.swift; sourceTree = "<group>"; };
+		040F352E1E8B991300BF2D39 /* FacilityRelationshipData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityRelationshipData.swift; sourceTree = "<group>"; };
+		040F352F1E8B991300BF2D39 /* FacilityTypeData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityTypeData.swift; sourceTree = "<group>"; };
 		041F37701E896B280037940B /* FirDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirDialog.swift; sourceTree = "<group>"; };
 		04C7FA231E88E67800A2671C /* ComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
 		04C7FA241E88E67800A2671C /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
@@ -108,6 +120,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		040F35271E8B988800BF2D39 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				040F35281E8B98A900BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel */,
+			);
+			name = database;
+			sourceTree = "<group>";
+		};
+		040F352A1E8B98BB00BF2D39 /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+				040F352B1E8B991300BF2D39 /* FacilityComponentTypeData.swift */,
+				040F352C1E8B991300BF2D39 /* FacilityData.swift */,
+				040F352D1E8B991300BF2D39 /* FacilityIssueData.swift */,
+				040F352E1E8B991300BF2D39 /* FacilityRelationshipData.swift */,
+				040F352F1E8B991300BF2D39 /* FacilityTypeData.swift */,
+			);
+			name = coredata;
+			sourceTree = "<group>";
+		};
 		04C7FA1C1E88E5CF00A2671C /* view */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +215,8 @@
 		F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */ = {
 			isa = PBXGroup;
 			children = (
+				040F352A1E8B98BB00BF2D39 /* coredata */,
+				040F35271E8B988800BF2D39 /* database */,
 				04C7FA221E88E60900A2671C /* untils */,
 				04C7FA211E88E5F200A2671C /* constants */,
 				04C7FA201E88E5EB00A2671C /* model */,
@@ -355,21 +389,27 @@
 			files = (
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
 				040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */,
+				040F35331E8B991300BF2D39 /* FacilityRelationshipData.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
 				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
 				041F37711E896B280037940B /* FirDialog.swift in Sources */,
+				040F35341E8B991300BF2D39 /* FacilityTypeData.swift in Sources */,
 				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,
+				040F35301E8B991300BF2D39 /* FacilityComponentTypeData.swift in Sources */,
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
 				04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */,
 				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
+				040F35321E8B991300BF2D39 /* FacilityIssueData.swift in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
 				F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
+				040F35311E8B991300BF2D39 /* FacilityData.swift in Sources */,
 				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
+				040F35291E8B98A900BF2D39 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
 			);
