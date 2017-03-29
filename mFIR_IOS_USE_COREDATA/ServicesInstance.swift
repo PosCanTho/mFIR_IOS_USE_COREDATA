@@ -92,8 +92,10 @@ class ServicesInstance{
                 
                 if(isAllProgressComplete || self.arrayProgress.count == 0){
                     let tempViewController:ProgressingViewController? = self.activityViewController
-                    self.activityViewController.dismiss(animated: false, completion: {
-                        tempViewController!.dismiss(animated: true, completion: nil)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        self.activityViewController.dismiss(animated: false, completion: {
+                            tempViewController!.dismiss(animated: true, completion: nil)
+                        })
                     })
                     self.progressId = 0
                     self.arrayProgress.removeAll()
