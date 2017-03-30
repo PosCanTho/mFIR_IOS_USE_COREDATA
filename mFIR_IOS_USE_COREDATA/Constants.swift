@@ -181,6 +181,5 @@ struct POST {
     static let FACILITY_ISSUE_RESOLVERS_NOTE_5:String = "FACILITY_ISSUE_RESOLVERS_NOTE_5"
     
     
-    
 }
 
