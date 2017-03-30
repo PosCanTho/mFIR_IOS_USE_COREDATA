@@ -49,6 +49,7 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
         btnFirstchar.setTitle(firstChar[0],for: .normal)
     }
     
+    
     func didTap(_ checkBox: BEMCheckBox) {
         if(checkBox.on){
             lbDescription.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

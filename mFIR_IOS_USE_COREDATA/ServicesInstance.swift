@@ -14,6 +14,7 @@ class ServicesInstance{
     
     private var progressId:Int = 0
     private var arrayProgress:[Int:Bool] = [:]
+    private var percentProgressDone:Float = 0.0
     private let activityViewController:ProgressingViewController = ProgressingViewController(message: "Downloading...")
     
     private static let instance:ServicesInstance = ServicesInstance() // singleton pattern
@@ -22,6 +23,13 @@ class ServicesInstance{
         return instance
     }
     
+    /// Hiển thị dialog
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - title: title
+    ///   - mes: message
+    ///   - buttonName: button name
     private func show(_ viewController: UIViewController, title: String, mes: String, buttonName: String){
         DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: mes, preferredStyle: UIAlertControllerStyle.alert)
@@ -33,6 +41,12 @@ class ServicesInstance{
         }
     }
     
+    
+    /// Hiển thị lỗi nếu dataTask bị lỗi
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - urlError: URLError
     private func showErrorDownload(_ viewController: UIViewController, urlError: URLError){
         DispatchQueue.main.async {
             if(urlError.code == URLError.timedOut){
@@ -48,6 +62,13 @@ class ServicesInstance{
         }
     }
     
+    
+    /// Hiển thị phần trăm download
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - progressId: progress id
+    ///   - completion: completion
     private func showProgressing(_ viewController: UIViewController, progressId: Int, completion: Bool){
         DispatchQueue.main.async {
             
@@ -63,16 +84,18 @@ class ServicesInstance{
                     }
                 }
                 
-                let percentProgressDone:Float = (Float(countProgressDone)/Float(self.arrayProgress.count))*100
+                self.percentProgressDone = (Float(countProgressDone)/Float(self.arrayProgress.count))*100
                 
-                if(!percentProgressDone.isNaN){
-                    self.activityViewController.setMessage(mes: "\(String(format: "%.0f",percentProgressDone))%")
+                if(!self.percentProgressDone.isNaN){
+                    self.activityViewController.setMessage(mes: "\(String(format: "%.0f",self.percentProgressDone))%")
                 }
                 
                 if(isAllProgressComplete || self.arrayProgress.count == 0){
                     let tempViewController:ProgressingViewController? = self.activityViewController
-                    self.activityViewController.dismiss(animated: false, completion: {
-                        tempViewController!.dismiss(animated: true, completion: nil)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                        self.activityViewController.dismiss(animated: false, completion: {
+                            tempViewController!.dismiss(animated: true, completion: nil)
+                        })
                     })
                     self.progressId = 0
                     self.arrayProgress.removeAll()
@@ -87,12 +110,19 @@ class ServicesInstance{
         }
     }
     
-    // ============================
+    
+    /// Tải dữ liệu từ webservices -> sử dụng async
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - url: url
+    ///   - post: post with parameter
+    ///   - callback: callback
     private func dataTask(
         _ viewController: UIViewController,
         url: String,
         post: PostParameter,
-        callback: @escaping (_ json: Dictionary<String, Any>, _ completion: Bool) -> Void) {
+        callback: @escaping (_ json: Dictionary<String, Any>) -> Void) {
         
         self.progressId += 1
         
@@ -125,6 +155,11 @@ class ServicesInstance{
         
         let inprogressId = self.progressId
         
+        if(Int(percentProgressDone) == 100){
+            self.activityViewController.setMessage(mes: "Downloading...")
+            self.percentProgressDone = 0.0
+        }
+        
         self.arrayProgress[inprogressId] = false
         
         showProgressing(viewController, progressId: inprogressId, completion: false)
@@ -133,12 +168,11 @@ class ServicesInstance{
             
             guard let data = data, error == nil
                 else {
-                    print("eroorrrrrrr")
                     self.arrayProgress.removeAll()
                     self.progressId = 0
                     self.showProgressing(viewController, progressId: inprogressId, completion: true)
                     self.showErrorDownload(viewController, urlError: (error as! URLError?)!)
-                    callback(Dictionary<String, AnyObject>(), false)
+                    callback(Dictionary<String, AnyObject>())
                     return
             }
             
@@ -147,7 +181,7 @@ class ServicesInstance{
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200
             {
                 print(TAG + "statusCode should be 200, but is \(httpStatus.statusCode)")
-                print(TAG + "response = \(response)")
+                print(TAG + "response = \(String(describing: response))")
                 
             }
             
@@ -155,29 +189,26 @@ class ServicesInstance{
                 
                 if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] {
                     self.showProgressing(viewController, progressId: inprogressId, completion: true)
-                    callback(json, true)
+                    callback(json)
                 }
                 
             } catch {
                 self.showProgressing(viewController, progressId: inprogressId, completion: true)
-                callback(Dictionary<String, AnyObject>(), false)
+                callback(Dictionary<String, AnyObject>())
             }
         }
         task.resume()
     }
-    // ============================
     
     
-    
-    
-    /// Đăng nhập
+    /// Kiểm tra đăng nhập
     ///
     /// - Parameters:
     ///   - username: tên đăng nhập
     ///   - password: mật khẩu
     ///   - imei: imei có thể để trống ("")
-    ///   - callback: closure trả kết quả về (data, completion, error) -> (dữ liệu, feedback, lỗi)
-    func login(viewController: UIViewController, username: String, password: String, imei: String, callback: @escaping (_ data: Any, _ completion: Bool) -> Void){
+    ///   - callback: User hoặc nil
+    func login(viewController: UIViewController, username: String, password: String, imei: String, callback: @escaping (_ data: User?) -> Void){
         
         let TAG = "func -> login: "
         
@@ -187,7 +218,7 @@ class ServicesInstance{
         post.add(key: "imei", value: "")
         
         dataTask(viewController, url: Constants.URL.API_LOGIN, post: post){
-            (json, completion) in
+            (json) in
             
             
             guard let table = json["Table"] as? [[String: Any]] else{
@@ -195,7 +226,7 @@ class ServicesInstance{
                 userReference.removeObject(forKey: UserReferences.USERNAME)
                 userReference.removeObject(forKey: UserReferences.PASSWORD)
                 
-                callback(false, completion)
+                callback(nil)
                 return
             }
             
@@ -222,19 +253,17 @@ class ServicesInstance{
                 currentFirstName: currentFirstName,
                 roleType: roleType)
             
-            callback(user, completion)
+            callback(user)
         }
     }
     
     
-    
-    /// lấy danh sách cơ sở (facility="0" -> lấy tất cả)
+    /// Lấy danh sách Cơ sở/Phòng (facility_id=0: lấy tất cả)
     ///
     /// - Parameters:
     ///   - facilityId: facilityId
-    ///   - callback: closure trả kết quả về (data, completion, error) -> (dữ liệu, feedback, lỗi)
-    
-    func getFacility(viewController: UIViewController, facilityId: String, callback: @escaping (_ data: Any) -> Void){
+    ///   - callback: Array[Facility] hoặc nil
+    func getFacility(viewController: UIViewController, facilityId: String, callback: @escaping (_ data: [Facility]?) -> Void){
         let TAG = "func -> facility: "
         
         let post = PostParameter()
@@ -243,11 +272,11 @@ class ServicesInstance{
         var listFacility = [Facility]()
         
         dataTask(viewController, url: Constants.URL.API_GET_LIST_FACILITY, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
                 print(TAG)
-                callback(false)
+                callback(nil)
                 return
             }
             for element in table{
@@ -268,18 +297,17 @@ class ServicesInstance{
             callback(listFacility)
         }
     }
-    // ============================
     
     
     
-    /// Lấy danh sách Issue
+    /// Lấy danh sách Issue (facility_issue_id=0: lấy tất cả - theo from_date/thru_date)
     ///
     /// - Parameters:
     ///   - facilityIssueId: facilityIssueId
     ///   - fromDate: fromDate
     ///   - thruDate: thruDate
-    ///   - callback: callback
-    func getIssue(viewController: UIViewController, facilityIssueId: String, fromDate: String, thruDate: String, callback: @escaping (_ data: Any) -> Void){
+    ///   - callback: [Issue] hoặc nil
+    func getIssue(viewController: UIViewController, facilityIssueId: String, fromDate: String, thruDate: String, callback: @escaping (_ data: [Issue]?) -> Void){
         
         let TAG = "func -> facilityIssue: "
         
@@ -291,9 +319,9 @@ class ServicesInstance{
         var listIssue = [Issue]()
         
         dataTask(viewController, url: Constants.URL.API_GET_LIST_FACILITY_ISSUE, post: post){
-            (json, completion) in
+            (json) in
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             
@@ -414,11 +442,16 @@ class ServicesInstance{
             callback(listIssue)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getComponentType(viewController: UIViewController, facilityComponentTypeId: String, callback: @escaping (_ data: Any) -> Void){
+    
+    /// Lấy danh sách Loại thiết bị (facility_component_type_id=0: lấy tất cả)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - facilityComponentTypeId: facilityComponentTypeId
+    ///   - callback: [ComponentType] hoặc nil
+    func getComponentType(viewController: UIViewController, facilityComponentTypeId: String, callback: @escaping (_ data: [ComponentType]?) -> Void){
         
         let TAG = "func -> componentType: "
         
@@ -428,10 +461,10 @@ class ServicesInstance{
         var listComponentType = [ComponentType]()
         
         dataTask(viewController, url: Constants.URL.API_GET_LIST_FACILITY_COMPONENT_TYPE, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             for element in table{
@@ -450,11 +483,18 @@ class ServicesInstance{
             callback(listComponentType)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getRelationship(viewController: UIViewController, facilityTypeId: String, facilityComponentTypeId: String, callback: @escaping (_ data: Any) -> Void){
+    
+    
+    /// Lấy danh sách Quan hệ Loại Phòng-Loại thiết bị (facility_type_id=0: lấy tất cả, facility_component_type_id=0: lấy tất cả)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - facilityTypeId: facilityTypeId
+    ///   - facilityComponentTypeId: facilityComponentTypeId
+    ///   - callback: [Relationship] hoặc nil
+    func getRelationship(viewController: UIViewController, facilityTypeId: String, facilityComponentTypeId: String, callback: @escaping (_ data: [Relationship]?) -> Void){
         
         let TAG = "func -> relationship: "
         
@@ -465,10 +505,10 @@ class ServicesInstance{
         var listRelationship = [Relationship]()
         
         dataTask(viewController, url: Constants.URL.API_GET_RELATIONSHIP, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             for element in table{
@@ -499,11 +539,16 @@ class ServicesInstance{
             callback(listRelationship)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getFacilityType(viewController: UIViewController, facilityTypeId: String, callback: @escaping (_ data: Any) -> Void){
+    
+    /// Lấy danh sách Loại Phòng (facility_type_id=0: lấy tất cả)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - facilityTypeId: facilityTypeId
+    ///   - callback: [FacilityType] hoặc nil
+    func getFacilityType(viewController: UIViewController, facilityTypeId: String, callback: @escaping (_ data: [FacilityType]?) -> Void){
         
         let TAG = "func -> facilityType: "
         
@@ -513,10 +558,10 @@ class ServicesInstance{
         var listFacilityType = [FacilityType]()
         
         dataTask(viewController, url: Constants.URL.API_GET_LIST_FACILITY_TYPE, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             for element in table{
@@ -536,11 +581,16 @@ class ServicesInstance{
             callback(listFacilityType)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getInstructor(viewController: UIViewController, instructorIdNumber: String, callback: @escaping (_ data: Any) -> Void){
+    
+    /// Lấy danh sách Giảng viên (instructor_id_number='': lấy tất cả)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - instructorIdNumber: instructorIdNumber
+    ///   - callback: [Instructor] hoặc nil
+    func getInstructor(viewController: UIViewController, instructorIdNumber: String, callback: @escaping (_ data: [Instructor]?) -> Void){
         
         let TAG = "func -> instructor: "
         
@@ -550,10 +600,10 @@ class ServicesInstance{
         var listInstructor = [Instructor]()
         
         dataTask(viewController, url: Constants.URL.API_GET_LIST_INSTRUCTOR, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             
@@ -665,11 +715,16 @@ class ServicesInstance{
             callback(listInstructor)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getStudent(viewController: UIViewController, studentIdNumber: String, callback: @escaping (_ data: Any) -> Void){
+    
+    /// Lấy danh sách Sinh viên (student_id_number='': lấy tất cả)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - studentIdNumber: studentIdNumber
+    ///   - callback: [Student] hoặc nil
+    func getStudent(viewController: UIViewController, studentIdNumber: String, callback: @escaping (_ data: [Student]?) -> Void){
         
         let TAG = "func -> student: "
         
@@ -679,10 +734,10 @@ class ServicesInstance{
         var listStudent = [Student]()
         
         dataTask(viewController, url: Constants.URL.API_GET_LIST_STUDENT, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             
@@ -736,11 +791,14 @@ class ServicesInstance{
             callback(listStudent)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getIssueStatus(viewController: UIViewController, callback: @escaping (_ data: Any) -> Void){
+    /// Lấy danh sách trạng thái Facility Issue
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - callback: [IssueStatus] hoặc nil
+    func getIssueStatus(viewController: UIViewController, callback: @escaping (_ data: [IssueStatus]?) -> Void){
         
         let TAG = "func -> issueStatus: "
         
@@ -749,10 +807,10 @@ class ServicesInstance{
         var listIssueStatus = [IssueStatus]()
         
         dataTask(viewController, url: Constants.URL.API_GET_ISSUE_STATUS, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             
@@ -772,11 +830,15 @@ class ServicesInstance{
             callback(listIssueStatus)
         }
     }
-    // ============================
     
     
-    // ============================
-    func getIssueByFacility(viewController: UIViewController, facilityId: String, callback: @escaping (_ data: Any) -> Void){
+    /// Lấy danh sách Issue theo Facility (facility_id=0: lấy tất cả)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - facilityId: facilityId
+    ///   - callback: [Issue] hoặc nil
+    func getIssueByFacility(viewController: UIViewController, facilityId: String, callback: @escaping (_ data: [Issue]?) -> Void){
         
         let TAG = "func -> issueByFacility: "
         
@@ -786,10 +848,10 @@ class ServicesInstance{
         var listIssue = [Issue]()
         
         dataTask(viewController, url: Constants.URL.API_GET_ISSUE_BY_FACILITY, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false)
+                callback(nil)
                 return
             }
             for element in table{
@@ -909,13 +971,15 @@ class ServicesInstance{
             callback(listIssue)
         }
     }
-    // ============================
     
     
-    // ============================
-    func updateIssue(viewController: UIViewController, issue: Issue, callback: @escaping (_ data: Any, _ completion: Bool) -> Void){
-        
-        //        let TAG = "func -> updateIssue: "
+    /// Cập nhật Issue (FACILITY_ISSUE_ID=0: insert)
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - issue: Issue
+    ///   - callback: true hoặc false
+    func updateIssue(viewController: UIViewController, issue: Issue, callback: @escaping (_ completion: Bool) -> Void){
         
         let post = PostParameter()
         post.add(key: "FACILITY_ISSUE_ID", value: issue.facilityIssueId!)
@@ -972,16 +1036,16 @@ class ServicesInstance{
         
         
         dataTask(viewController, url: Constants.URL.API_UPDATE_FACILITY_ISSUE, post: post){
-            (json, completion) in
+            (json) in
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                callback(false, completion)
+                callback(false)
                 return
             }
             
             print(table)
             
-            callback("Chua hoan thien", completion)
+            callback(true)
         }
     }
     // ============================

@@ -17,6 +17,7 @@ class FacilityTableViewController: UITableViewController {
         for i in 1...10 {
             arrayFacility.append("Phòng \(i)")
         }
+
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }

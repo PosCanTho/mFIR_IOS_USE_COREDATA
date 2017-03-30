@@ -33,6 +33,12 @@
 		A474F4A71E8B68F600E0797F /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4A61E8B68F600E0797F /* IssueTableViewController.swift */; };
 		A474F4A91E8B690C00E0797F /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4A81E8B690C00E0797F /* IssueTableViewCell.swift */; };
 		A474F4AB1E8B692C00E0797F /* ReportIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4AA1E8B692C00E0797F /* ReportIssue.swift */; };
+		A4BD1BAB1E8CFC6D00C41F2A /* ComTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BD1BAA1E8CFC6D00C41F2A /* ComTableViewController.swift */; };
+		A4BD1BAE1E8CFCBF00C41F2A /* TableViewCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BD1BAD1E8CFCBF00C41F2A /* TableViewCell1.swift */; };
+		A4BD1BB01E8CFCC800C41F2A /* TableViewCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BD1BAF1E8CFCC800C41F2A /* TableViewCell2.swift */; };
+		A4BD1BB21E8CFCD000C41F2A /* TableViewCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BD1BB11E8CFCD000C41F2A /* TableViewCell3.swift */; };
+		A4BD1BB41E8CFCD900C41F2A /* TableViewCell4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BD1BB31E8CFCD900C41F2A /* TableViewCell4.swift */; };
+		A4BD1BB61E8CFCE200C41F2A /* TableViewCell5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4BD1BB51E8CFCE200C41F2A /* TableViewCell5.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
@@ -92,6 +98,12 @@
 		A474F4A61E8B68F600E0797F /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		A474F4A81E8B690C00E0797F /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		A474F4AA1E8B692C00E0797F /* ReportIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportIssue.swift; sourceTree = "<group>"; };
+		A4BD1BAA1E8CFC6D00C41F2A /* ComTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComTableViewController.swift; sourceTree = "<group>"; };
+		A4BD1BAD1E8CFCBF00C41F2A /* TableViewCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell1.swift; sourceTree = "<group>"; };
+		A4BD1BAF1E8CFCC800C41F2A /* TableViewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell2.swift; sourceTree = "<group>"; };
+		A4BD1BB11E8CFCD000C41F2A /* TableViewCell3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell3.swift; sourceTree = "<group>"; };
+		A4BD1BB31E8CFCD900C41F2A /* TableViewCell4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell4.swift; sourceTree = "<group>"; };
+		A4BD1BB51E8CFCE200C41F2A /* TableViewCell5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell5.swift; sourceTree = "<group>"; };
 		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +219,19 @@
 			path = Classes;
 			sourceTree = "<group>";
 		};
+		A4BD1BAC1E8CFC9300C41F2A /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A4BD1BAA1E8CFC6D00C41F2A /* ComTableViewController.swift */,
+				A4BD1BAD1E8CFCBF00C41F2A /* TableViewCell1.swift */,
+				A4BD1BAF1E8CFCC800C41F2A /* TableViewCell2.swift */,
+				A4BD1BB11E8CFCD000C41F2A /* TableViewCell3.swift */,
+				A4BD1BB31E8CFCD900C41F2A /* TableViewCell4.swift */,
+				A4BD1BB51E8CFCE200C41F2A /* TableViewCell5.swift */,
+			);
+			name = TableViewController;
+			sourceTree = "<group>";
+		};
 		F56634431E88C65E00C580C3 = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +255,7 @@
 		F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */ = {
 			isa = PBXGroup;
 			children = (
+				A4BD1BAC1E8CFC9300C41F2A /* TableViewController */,
 				04C7FA221E88E60900A2671C /* untils */,
 				04C7FA211E88E5F200A2671C /* constants */,
 				04C7FA201E88E5EB00A2671C /* model */,
@@ -405,6 +431,9 @@
 				A474F4A31E8B688D00E0797F /* SecondViewController.swift in Sources */,
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
 				A474F4A51E8B68C800E0797F /* FacilityTableViewController.swift in Sources */,
+				A4BD1BB01E8CFCC800C41F2A /* TableViewCell2.swift in Sources */,
+				A4BD1BB21E8CFCD000C41F2A /* TableViewCell3.swift in Sources */,
+				A4BD1BB41E8CFCD900C41F2A /* TableViewCell4.swift in Sources */,
 				A41A02C21E8BDCE200E792DB /* ComReportedTableViewCell.swift in Sources */,
 				040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
@@ -414,6 +443,7 @@
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
+				A4BD1BAE1E8CFCBF00C41F2A /* TableViewCell1.swift in Sources */,
 				A474F49E1E8B660000E0797F /* BEMPathManager.m in Sources */,
 				04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */,
 				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
@@ -422,6 +452,7 @@
 				A474F49D1E8B660000E0797F /* BEMCheckBoxGroup.m in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
 				F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */,
+				A4BD1BAB1E8CFC6D00C41F2A /* ComTableViewController.swift in Sources */,
 				A474F49C1E8B660000E0797F /* BEMCheckBox.m in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
 				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
@@ -430,6 +461,7 @@
 				A474F4AB1E8B692C00E0797F /* ReportIssue.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
 				A474F4A71E8B68F600E0797F /* IssueTableViewController.swift in Sources */,
+				A4BD1BB61E8CFCE200C41F2A /* TableViewCell5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

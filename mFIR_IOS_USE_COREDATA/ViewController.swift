@@ -25,15 +25,15 @@ class ViewController: UIViewController {
         }
          
     */
-        download.getFacility(facilityId: "0") { (data) in
-            guard let data = data as?  [Facility] else{
-                return
-            }
-            print(data.count)
-            for i in data{
-                print(i.facilityName)
-            }
-        }
+//        download.getFacility(facilityId: "0") { (data) in
+//            guard let data = data as?  [Facility] else{
+//                return
+//            }
+//            print(data.count)
+//            for i in data{
+//                print(i.facilityName)
+//            }
+//        }
   
         
     }

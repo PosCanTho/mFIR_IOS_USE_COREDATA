@@ -27,16 +27,15 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         //        tableViewIssue.dataSource = self
-        let download = FirServices(self)
-        download.getFacility(facilityId: "0") { (data) in
-            guard let data = data as?  [Facility] else{
-                return
-            }
-            print(data.count)
-            for i in data{
-                print(i.facilityName)
-            }
-        }
+//        let download = FirServices(self)
+//        download.getFacility(facilityId: "0") { (listfacility) in
+//            if listfacility != nil {
+//                print("á")
+//                for i in listfacility! {
+//                    print(i.facilityName)
+//                }
+//            }
+//        }
         self.getData()
     }
     
@@ -55,7 +54,7 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
         let dateFormat = formatter.string(from: date)
-        
+        print(dateFormat)
 //        let issue = Issue.init(facilityIssueId: <#T##String#>, facilityIssueCaseNumber: <#T##String#>, sameFacilityIssueId: <#T##String#>, sameFacilityIssueCaseNumber: <#T##String#>, facilityIssueReportDatetime: dateFormat, facilityIssueStatus: <#T##String#>, instructorIdNumber: <#T##String#>, studentIdNumber: <#T##String#>, facilityId: <#T##String#>, facilityName: <#T##String#>, facilityTypeName: <#T##String#>, facilityComponentTypeId1: <#T##String#>, facilityComponentTypeName1: <#T##String#>, facilityComponentIssueReport1: <#T##String#>, facilityComponentIssueStatus1: <#T##String#>, facilityComponentIssue_picture1: <#T##String#>, facilityIssueResolverIdNumber1: <#T##String#>, facilityIssueResolvedDatetime1: <#T##String#>, facilityIssueResolversNote1: <#T##String#>, facilityComponentTypeId2: <#T##String#>, facilityComponentTypeName2: <#T##String#>, facilityComponentIssueReport2: <#T##String#>, facilityComponentIssueStatus2: <#T##String#>, facilityComponentIssue_picture2: <#T##String#>, facilityIssueResolverIdNumber2: <#T##String#>, facilityIssueResolvedDatetime2: <#T##String#>, facilityIssueResolversNote2: <#T##String#>, facilityComponentTypeId3: <#T##String#>, facilityComponentTypeName3: <#T##String#>, facilityComponentIssueReport3: <#T##String#>, facilityComponentIssueStatus3: <#T##String#>, facilityComponentIssue_picture3: <#T##String#>, facilityIssueResolverIdNumber3: <#T##String#>, facilityIssueResolvedDatetime3: <#T##String#>, facilityIssueResolversNote3: <#T##String#>, facilityComponentTypeId4: <#T##String#>, facilityComponentTypeName4: <#T##String#>, facilityComponentIssueReport4: <#T##String#>, facilityComponentIssueStatus4: <#T##String#>, facilityComponentIssue_picture4: <#T##String#>, facilityIssueResolverIdNumber4: <#T##String#>, facilityIssueResolvedDatetime4: <#T##String#>, facilityIssueResolversNote4: <#T##String#>, facilityComponentTypeId5: <#T##String#>, facilityComponentTypeName5: <#T##String#>, facilityComponentIssueReport5: <#T##String#>, facilityComponentIssueStatus5: <#T##String#>, facilityComponentIssue_picture5: <#T##String#>, facilityIssueResolverIdNumber5: <#T##String#>, facilityIssueResolvedDatetime5: <#T##String#>, facilityIssueResolversNote5: <#T##String#>)
         
 //        print(issue)
