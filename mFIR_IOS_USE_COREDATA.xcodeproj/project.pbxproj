@@ -181,6 +181,13 @@
 			name = view;
 			sourceTree = "<group>";
 		};
+		BE4E97AD1E8CAB750075EAA4 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
 		F56634431E88C65E00C580C3 = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +201,7 @@
 		F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */ = {
 			isa = PBXGroup;
 			children = (
+				BE4E97AD1E8CAB750075EAA4 /* Helper */,
 				BE4E97A91E8CAA1C0075EAA4 /* view */,
 				040F352A1E8B98BB00BF2D39 /* coredata */,
 				040F35271E8B988800BF2D39 /* database */,
