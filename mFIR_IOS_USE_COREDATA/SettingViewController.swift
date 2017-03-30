@@ -32,7 +32,7 @@ class SettingViewController: UIViewController, UITableViewDataSource, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.topItem?.title = "Setting"
+        self.navigationController?.visibleViewController?.title = "Setting"
         
         settingArray = ["Synch data", "Notifications", "English", "Bell","Sign out"]
         iconArray = [UIImage(named: "setting")!, UIImage(named: "setting")!, UIImage(named: "setting")!, UIImage(named: "setting")!, UIImage(named: "setting")!]
