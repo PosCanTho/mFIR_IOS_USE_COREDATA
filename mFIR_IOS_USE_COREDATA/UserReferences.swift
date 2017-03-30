@@ -16,5 +16,9 @@ import Foundation
 struct UserReferences {
     static let USERNAME:String = "REFERENCE_USERNAME"
     static let PASSWORD:String = "REFERENCE_PASSWORD"
-    static let FULL_NAME:String = "REFERENCE_USER_FULL_NAME"
+    static let USER_FULL_NAME:String = "REFERENCE_USER_FULL_NAME"
+    static let USER_ID:String = "REFERENCE_USER_ID"
+    static let USER_STUDENT_ID_NUMBER:String = "REFERENCE_USER_STUDENT_ID_NUMBER"
+    static let USER_INSTRUCTOR_ID_NUMBER:String = "REFERENCE_USER_INSTRUCTOR_ID_NUMBER"
+    static let USER_ROLE_TYPE:String = "REFERENCE_USER_ROLE_TYPE"
 }
