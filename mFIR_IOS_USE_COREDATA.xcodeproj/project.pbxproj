@@ -25,6 +25,14 @@
 		04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2D1E88E67800A2671C /* PostParameter.swift */; };
 		04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA391E88E68A00A2671C /* FirServices.swift */; };
 		04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA3B1E88E69200A2671C /* Constants.swift */; };
+		BE4E97B31E8CAE890075EAA4 /* LocalizationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97AF1E8CAE890075EAA4 /* LocalizationHelper.swift */; };
+		BE4E97B41E8CAE890075EAA4 /* LocalizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97B01E8CAE890075EAA4 /* LocalizableButton.swift */; };
+		BE4E97B51E8CAE890075EAA4 /* LocalizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97B11E8CAE890075EAA4 /* LocalizableLabel.swift */; };
+		BE4E97B61E8CAE890075EAA4 /* LocalizableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97B21E8CAE890075EAA4 /* LocalizableTextField.swift */; };
+		BE4E97BA1E8CAE950075EAA4 /* Prefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97B71E8CAE950075EAA4 /* Prefs.swift */; };
+		BE4E97BB1E8CAE950075EAA4 /* UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97B81E8CAE950075EAA4 /* UI.swift */; };
+		BE4E97BC1E8CAE950075EAA4 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97B91E8CAE950075EAA4 /* Reachability.swift */; };
+		BE4E97BE1E8CAF090075EAA4 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4E97BD1E8CAF090075EAA4 /* SettingsController.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
@@ -71,6 +79,14 @@
 		BE4E97AA1E8CAA7E0075EAA4 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4E97AB1E8CAA7E0075EAA4 /* mFIR_IOS_USE_COREDATATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mFIR_IOS_USE_COREDATATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4E97AC1E8CAA7E0075EAA4 /* mFIR_IOS_USE_COREDATAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mFIR_IOS_USE_COREDATAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE4E97AF1E8CAE890075EAA4 /* LocalizationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizationHelper.swift; sourceTree = "<group>"; };
+		BE4E97B01E8CAE890075EAA4 /* LocalizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableButton.swift; sourceTree = "<group>"; };
+		BE4E97B11E8CAE890075EAA4 /* LocalizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableLabel.swift; sourceTree = "<group>"; };
+		BE4E97B21E8CAE890075EAA4 /* LocalizableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizableTextField.swift; sourceTree = "<group>"; };
+		BE4E97B71E8CAE950075EAA4 /* Prefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Prefs.swift; sourceTree = "<group>"; };
+		BE4E97B81E8CAE950075EAA4 /* UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UI.swift; sourceTree = "<group>"; };
+		BE4E97B91E8CAE950075EAA4 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BE4E97BD1E8CAF090075EAA4 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F56634541E88C65E00C580C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				F56634511E88C65E00C580C3 /* ViewController.swift */,
+				BE4E97BD1E8CAF090075EAA4 /* SettingsController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -184,8 +201,23 @@
 		BE4E97AD1E8CAB750075EAA4 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				BE4E97B71E8CAE950075EAA4 /* Prefs.swift */,
+				BE4E97B81E8CAE950075EAA4 /* UI.swift */,
+				BE4E97B91E8CAE950075EAA4 /* Reachability.swift */,
+				BE4E97AE1E8CAE750075EAA4 /* MultiLanguage */,
 			);
 			name = Helper;
+			sourceTree = "<group>";
+		};
+		BE4E97AE1E8CAE750075EAA4 /* MultiLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				BE4E97AF1E8CAE890075EAA4 /* LocalizationHelper.swift */,
+				BE4E97B01E8CAE890075EAA4 /* LocalizableButton.swift */,
+				BE4E97B11E8CAE890075EAA4 /* LocalizableLabel.swift */,
+				BE4E97B21E8CAE890075EAA4 /* LocalizableTextField.swift */,
+			);
+			name = MultiLanguage;
 			sourceTree = "<group>";
 		};
 		F56634431E88C65E00C580C3 = {
@@ -356,11 +388,15 @@
 			files = (
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
 				040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */,
+				BE4E97B31E8CAE890075EAA4 /* LocalizationHelper.swift in Sources */,
 				040F353A1E8BB38800BF2D39 /* DB.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
+				BE4E97BC1E8CAE950075EAA4 /* Reachability.swift in Sources */,
 				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
 				041F37711E896B280037940B /* FirDialog.swift in Sources */,
 				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,
+				BE4E97B61E8CAE890075EAA4 /* LocalizableTextField.swift in Sources */,
+				BE4E97BB1E8CAE950075EAA4 /* UI.swift in Sources */,
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
@@ -368,12 +404,16 @@
 				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
+				BE4E97BE1E8CAF090075EAA4 /* SettingsController.swift in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
 				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
+				BE4E97B41E8CAE890075EAA4 /* LocalizableButton.swift in Sources */,
 				0443324D1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
+				BE4E97BA1E8CAE950075EAA4 /* Prefs.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
+				BE4E97B51E8CAE890075EAA4 /* LocalizableLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
