@@ -30,8 +30,6 @@
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
 		F566345A1E88C65E00C580C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56634591E88C65E00C580C3 /* Assets.xcassets */; };
 		F566345D1E88C65E00C580C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */; };
-		F56634681E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634671E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift */; };
-		F56634731E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634721E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,19 +68,15 @@
 		04C7FA2D1E88E67800A2671C /* PostParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		04C7FA391E88E68A00A2671C /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
 		04C7FA3B1E88E69200A2671C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = mFIR_IOS_USE_COREDATA.app; path = "/IOS/code/mFIR_IOS_30_3_2017/build/Debug-iphoneos/mFIR_IOS_USE_COREDATA.app"; sourceTree = "<absolute>"; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F56634541E88C65E00C580C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F56634591E88C65E00C580C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F566345C1E88C65E00C580C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F566345E1E88C65E00C580C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F56634631E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mFIR_IOS_USE_COREDATATests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F56634671E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mFIR_IOS_USE_COREDATATests.swift; sourceTree = "<group>"; };
-		F56634691E88C65F00C580C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F566346E1E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mFIR_IOS_USE_COREDATAUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F56634721E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mFIR_IOS_USE_COREDATAUITests.swift; sourceTree = "<group>"; };
-		F56634741E88C65F00C580C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F56634631E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mFIR_IOS_USE_COREDATATests.xctest; path = "/IOS/code/mFIR_IOS_30_3_2017/build/Debug-iphoneos/mFIR_IOS_USE_COREDATATests.xctest"; sourceTree = "<absolute>"; };
+		F566346E1E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = mFIR_IOS_USE_COREDATAUITests.xctest; path = "/IOS/code/mFIR_IOS_30_3_2017/build/Debug-iphoneos/mFIR_IOS_USE_COREDATAUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,12 +120,12 @@
 			name = coredata;
 			sourceTree = "<group>";
 		};
-		04C7FA1C1E88E5CF00A2671C /* view */ = {
+		04C7FA1C1E88E5CF00A2671C /* controller */ = {
 			isa = PBXGroup;
 			children = (
 				F56634511E88C65E00C580C3 /* ViewController.swift */,
 			);
-			name = view;
+			name = controller;
 			sourceTree = "<group>";
 		};
 		04C7FA1F1E88E5E000A2671C /* connection */ = {
@@ -178,61 +172,38 @@
 			name = untils;
 			sourceTree = "<group>";
 		};
+		BE4E97A91E8CAA1C0075EAA4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */,
+				F56634531E88C65E00C580C3 /* Main.storyboard */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		F56634431E88C65E00C580C3 = {
 			isa = PBXGroup;
 			children = (
 				F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */,
-				F56634661E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests */,
-				F56634711E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests */,
-				F566344D1E88C65E00C580C3 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		F566344D1E88C65E00C580C3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */,
-				F56634631E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.xctest */,
-				F566346E1E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */ = {
 			isa = PBXGroup;
 			children = (
+				BE4E97A91E8CAA1C0075EAA4 /* view */,
 				040F352A1E8B98BB00BF2D39 /* coredata */,
 				040F35271E8B988800BF2D39 /* database */,
 				04C7FA221E88E60900A2671C /* untils */,
 				04C7FA211E88E5F200A2671C /* constants */,
 				04C7FA201E88E5EB00A2671C /* model */,
 				04C7FA1F1E88E5E000A2671C /* connection */,
-				04C7FA1C1E88E5CF00A2671C /* view */,
+				04C7FA1C1E88E5CF00A2671C /* controller */,
 				F566344F1E88C65E00C580C3 /* AppDelegate.swift */,
-				F56634531E88C65E00C580C3 /* Main.storyboard */,
 				F56634591E88C65E00C580C3 /* Assets.xcassets */,
-				F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */,
 				F566345E1E88C65E00C580C3 /* Info.plist */,
 			);
 			path = mFIR_IOS_USE_COREDATA;
-			sourceTree = "<group>";
-		};
-		F56634661E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests */ = {
-			isa = PBXGroup;
-			children = (
-				F56634671E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift */,
-				F56634691E88C65F00C580C3 /* Info.plist */,
-			);
-			path = mFIR_IOS_USE_COREDATATests;
-			sourceTree = "<group>";
-		};
-		F56634711E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests */ = {
-			isa = PBXGroup;
-			children = (
-				F56634721E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift */,
-				F56634741E88C65F00C580C3 /* Info.plist */,
-			);
-			path = mFIR_IOS_USE_COREDATAUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,7 +274,7 @@
 				TargetAttributes = {
 					F566344B1E88C65E00C580C3 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = W98345Q484;
+						DevelopmentTeam = WN3X8J2K99;
 						ProvisioningStyle = Automatic;
 					};
 					F56634621E88C65F00C580C3 = {
@@ -329,7 +300,7 @@
 				Base,
 			);
 			mainGroup = F56634431E88C65E00C580C3;
-			productRefGroup = F566344D1E88C65E00C580C3 /* Products */;
+			productRefGroup = F56634431E88C65E00C580C3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -399,7 +370,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56634681E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,7 +377,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F56634731E88C65F00C580C3 /* mFIR_IOS_USE_COREDATAUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +510,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W98345Q484;
+				DEVELOPMENT_TEAM = WN3X8J2K99;
 				INFOPLIST_FILE = mFIR_IOS_USE_COREDATA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "poscantho.mFIR-IOS-USE-COREDATA";
@@ -554,7 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = W98345Q484;
+				DEVELOPMENT_TEAM = WN3X8J2K99;
 				INFOPLIST_FILE = mFIR_IOS_USE_COREDATA/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "poscantho.mFIR-IOS-USE-COREDATA";
