@@ -23,6 +23,16 @@
 		04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2D1E88E67800A2671C /* PostParameter.swift */; };
 		04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA391E88E68A00A2671C /* FirServices.swift */; };
 		04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA3B1E88E69200A2671C /* Constants.swift */; };
+		A41A02C21E8BDCE200E792DB /* ComReportedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */; };
+		A474F49B1E8B660000E0797F /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A474F4941E8B660000E0797F /* BEMAnimationManager.m */; };
+		A474F49C1E8B660000E0797F /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A474F4961E8B660000E0797F /* BEMCheckBox.m */; };
+		A474F49D1E8B660000E0797F /* BEMCheckBoxGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A474F4981E8B660000E0797F /* BEMCheckBoxGroup.m */; };
+		A474F49E1E8B660000E0797F /* BEMPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A474F49A1E8B660000E0797F /* BEMPathManager.m */; };
+		A474F4A31E8B688D00E0797F /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4A21E8B688D00E0797F /* SecondViewController.swift */; };
+		A474F4A51E8B68C800E0797F /* FacilityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4A41E8B68C800E0797F /* FacilityTableViewController.swift */; };
+		A474F4A71E8B68F600E0797F /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4A61E8B68F600E0797F /* IssueTableViewController.swift */; };
+		A474F4A91E8B690C00E0797F /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4A81E8B690C00E0797F /* IssueTableViewCell.swift */; };
+		A474F4AB1E8B692C00E0797F /* ReportIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A474F4AA1E8B692C00E0797F /* ReportIssue.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
@@ -67,6 +77,21 @@
 		04C7FA2D1E88E67800A2671C /* PostParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		04C7FA391E88E68A00A2671C /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
 		04C7FA3B1E88E69200A2671C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComReportedTableViewCell.swift; sourceTree = "<group>"; };
+		A474F4931E8B660000E0797F /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationManager.h; sourceTree = "<group>"; };
+		A474F4941E8B660000E0797F /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationManager.m; sourceTree = "<group>"; };
+		A474F4951E8B660000E0797F /* BEMCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBox.h; sourceTree = "<group>"; };
+		A474F4961E8B660000E0797F /* BEMCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBox.m; sourceTree = "<group>"; };
+		A474F4971E8B660000E0797F /* BEMCheckBoxGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMCheckBoxGroup.h; sourceTree = "<group>"; };
+		A474F4981E8B660000E0797F /* BEMCheckBoxGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMCheckBoxGroup.m; sourceTree = "<group>"; };
+		A474F4991E8B660000E0797F /* BEMPathManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMPathManager.h; sourceTree = "<group>"; };
+		A474F49A1E8B660000E0797F /* BEMPathManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMPathManager.m; sourceTree = "<group>"; };
+		A474F4A11E8B66D500E0797F /* Checkbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Checkbox.h; path = ../Checkbox.h; sourceTree = "<group>"; };
+		A474F4A21E8B688D00E0797F /* SecondViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		A474F4A41E8B68C800E0797F /* FacilityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilityTableViewController.swift; sourceTree = "<group>"; };
+		A474F4A61E8B68F600E0797F /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
+		A474F4A81E8B690C00E0797F /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
+		A474F4AA1E8B692C00E0797F /* ReportIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportIssue.swift; sourceTree = "<group>"; };
 		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				F56634511E88C65E00C580C3 /* ViewController.swift */,
+				A474F4A21E8B688D00E0797F /* SecondViewController.swift */,
+				A474F4A41E8B68C800E0797F /* FacilityTableViewController.swift */,
+				A474F4A61E8B68F600E0797F /* IssueTableViewController.swift */,
+				A474F4A81E8B690C00E0797F /* IssueTableViewCell.swift */,
+				A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -138,6 +168,7 @@
 				04C7FA2A1E88E67800A2671C /* Student.swift */,
 				04C7FA2B1E88E67800A2671C /* User.swift */,
 				04C7FA2D1E88E67800A2671C /* PostParameter.swift */,
+				A474F4AA1E8B692C00E0797F /* ReportIssue.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -153,11 +184,27 @@
 		04C7FA221E88E60900A2671C /* untils */ = {
 			isa = PBXGroup;
 			children = (
+				A474F4921E8B660000E0797F /* Classes */,
 				04C7FA2C1E88E67800A2671C /* UserReferences.swift */,
 				041F37701E896B280037940B /* FirDialog.swift */,
 				040F35231E8B5F1900BF2D39 /* CheckInternet.swift */,
 			);
 			name = untils;
+			sourceTree = "<group>";
+		};
+		A474F4921E8B660000E0797F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A474F4931E8B660000E0797F /* BEMAnimationManager.h */,
+				A474F4941E8B660000E0797F /* BEMAnimationManager.m */,
+				A474F4951E8B660000E0797F /* BEMCheckBox.h */,
+				A474F4961E8B660000E0797F /* BEMCheckBox.m */,
+				A474F4971E8B660000E0797F /* BEMCheckBoxGroup.h */,
+				A474F4981E8B660000E0797F /* BEMCheckBoxGroup.m */,
+				A474F4991E8B660000E0797F /* BEMPathManager.h */,
+				A474F49A1E8B660000E0797F /* BEMPathManager.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		F56634431E88C65E00C580C3 = {
@@ -189,6 +236,7 @@
 				04C7FA1F1E88E5E000A2671C /* connection */,
 				04C7FA1C1E88E5CF00A2671C /* view */,
 				F566344F1E88C65E00C580C3 /* AppDelegate.swift */,
+				A474F4A11E8B66D500E0797F /* Checkbox.h */,
 				F56634531E88C65E00C580C3 /* Main.storyboard */,
 				F56634591E88C65E00C580C3 /* Assets.xcassets */,
 				F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */,
@@ -353,7 +401,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A474F4A91E8B690C00E0797F /* IssueTableViewCell.swift in Sources */,
+				A474F4A31E8B688D00E0797F /* SecondViewController.swift in Sources */,
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
+				A474F4A51E8B68C800E0797F /* FacilityTableViewController.swift in Sources */,
+				A41A02C21E8BDCE200E792DB /* ComReportedTableViewCell.swift in Sources */,
 				040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
 				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
@@ -362,16 +414,22 @@
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
+				A474F49E1E8B660000E0797F /* BEMPathManager.m in Sources */,
 				04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */,
 				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
+				A474F49B1E8B660000E0797F /* BEMAnimationManager.m in Sources */,
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
+				A474F49D1E8B660000E0797F /* BEMCheckBoxGroup.m in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
 				F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */,
+				A474F49C1E8B660000E0797F /* BEMCheckBox.m in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
 				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
+				A474F4AB1E8B692C00E0797F /* ReportIssue.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
+				A474F4A71E8B68F600E0797F /* IssueTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +584,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "poscantho.mFIR-IOS-USE-COREDATA";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Checkbox.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -539,6 +598,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "poscantho.mFIR-IOS-USE-COREDATA";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = Checkbox.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
