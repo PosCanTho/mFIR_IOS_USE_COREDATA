@@ -181,7 +181,7 @@ class ServicesInstance{
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200
             {
                 print(TAG + "statusCode should be 200, but is \(httpStatus.statusCode)")
-                print(TAG + "response = \(response)")
+                print(TAG + "response = \(String(describing: response))")
                 
             }
             

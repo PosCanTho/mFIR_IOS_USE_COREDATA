@@ -33,9 +33,6 @@ class DB {
             DB.FacilityTypeDB.deleteRecords()
         }
         
-        if(DB.IssueDB.checkFacilityRelationshipIsExist()){
-            DB.IssueDB.deleteRecords()
-        }
         
         if(DB.RelationshipDB.checkFacilityRelationshipIsExist()){
             DB.RelationshipDB.deleteRecords()
@@ -73,15 +70,6 @@ class DB {
             }
         }
         
-        services.getIssue(facilityIssueId: "0", fromDate: "", thruDate: "") { (data) in
-            guard data != nil else{
-                return
-            }
-            DispatchQueue.main.async {
-                DB.IssueDB.saveAllIssue(listIssueData: data!)
-                print("Downloaded: IssueDB -> \(DB.IssueDB.getDataIssue().count)")
-            }
-        }
         
         services.getRelationship(facilityTypeId: "0", facilityComponentTypeId: "0") { (data) in
             guard data != nil else{
