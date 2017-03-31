@@ -19,6 +19,8 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     
     @IBAction func btnSend(_ sender: Any) {
         for i in hashTableChecked {
+            print(hashTableChecked.count)
+            print(i.value.componentName)
             print(i.value.description)
         }
         self.sendToServer()
@@ -73,35 +75,44 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
 //        print(issue)
     }
     
-
+    
     func textFieldDidChange(cell: IssueTableViewCell){
         let indexPath = self.tableView.indexPath(for: cell)
         reportIssues?[indexPath!.row].description = cell.lbDescription.text!
         des = reportIssues?[indexPath!.row].description
         print(des)
         if (cell.checkbox.on) {
+            print("check")
             let count = hashTableChecked.count
-            if (count <= 4) {
+            if (count <= 5) {
+                print(hashTableChecked.count)
                 let report = ReportIssue.init(componentName: cell.lbComponent.text!, description: des, componentID: "1", checked: true)
                 hashTableChecked[indexPath!.row] = report
-                
-            } else {
-                print("Check clg check hoai vay me")
-                cell.checkbox.setOn(false, animated: false)
             }
         } else {
             hashTableChecked.removeValue(forKey: indexPath!.row)
-            
             print("uncheck---\(hashTableChecked.count)")
         }
     }
 
     func btnChecked(cell: IssueTableViewCell) {
-        //Get the indexpath of cell where checkbox was checked
         let indexPath = self.tableView.indexPath(for: cell)
-        // cell.lbDescription.text
+        if (cell.checkbox.on) {
+            print("check")
+            let count = hashTableChecked.count
+            print(count)
+            if (count <= 4) {
+                let report = ReportIssue.init(componentName: cell.lbComponent.text!, description: "", componentID: "1", checked: true)
+                hashTableChecked[indexPath!.row] = report
+            } else {
+                cell.checkbox.setOn(false, animated: true)
+            }
+        } else {
+            hashTableChecked.removeValue(forKey: indexPath!.row)
+            print("uncheck\(hashTableChecked.count)")
+        }
         reportIssues?[indexPath!.row].checked = cell.checkbox.on
-
+        
     }
 
 }

@@ -48,14 +48,27 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
         lbDescription.text = reportIssue.description
         checkbox.delegate = self
         btnFirstchar.setTitle(firstChar[0],for: .normal)
+        if(checkbox.on){
+            lbDescription.isHidden = false
+            btnCamera.isHidden = false
+            lbDescription.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        } else {
+            lbDescription.text = ""
+            lbDescription.isHidden = true
+            btnCamera.isHidden = true
+        }
     }
 
     
     func didTap(_ checkBox: BEMCheckBox) {
         if(checkBox.on){
+            lbDescription.isHidden = false
+            btnCamera.isHidden = false
             lbDescription.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         } else {
             lbDescription.text = ""
+            lbDescription.isHidden = true
+            btnCamera.isHidden = true
         }
     }
     func textFieldDidChange(_ textField: UITextField) {

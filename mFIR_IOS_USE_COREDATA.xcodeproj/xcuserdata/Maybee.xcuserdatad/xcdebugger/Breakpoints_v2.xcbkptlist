@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mFIR_IOS_USE_COREDATA/IssueTableViewController.swift"
-            timestampString = "512617076.380789"
+            timestampString = "512619925.803205"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134">
+            startingLineNumber = "145"
+            endingLineNumber = "145">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,13 +72,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mFIR_IOS_USE_COREDATA/IssueTableViewController.swift"
-            timestampString = "512617076.380789"
+            timestampString = "512618846.044692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "IssueTableViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mFIR_IOS_USE_COREDATA/IssueTableViewCell.swift"
+            timestampString = "512618082.07018"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "didTap(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
