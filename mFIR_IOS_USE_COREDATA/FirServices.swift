@@ -998,7 +998,7 @@ class FirServices{
         dataTask( url: Constants.URL.API_UPDATE_FACILITY_ISSUE, post: post){
             (json) in
             
-            guard let table = json["Table"] as? [[String: Any]] else{
+            guard let table = json["result"] as? [[String: Any]] else{
                 callback(false)
                 return
             }
