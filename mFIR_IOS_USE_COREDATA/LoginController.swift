@@ -17,7 +17,6 @@ class LoginController: UIViewController {
     
     var isRememberChecked:Bool = false
     var isLogin: Bool = false
-    var firService: FirServices!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,6 @@ class LoginController: UIViewController {
         isRememberChecked = false;
         lbErrorUsername.isHidden = true;
         lbErorrPassowrd.isHidden = true;
-        firService = FirServices(self)
         
         isLogin = UserDefaults.standard.bool(forKey: UserReferences.IS_REMEMBER)
         if isLogin {
@@ -59,12 +57,12 @@ class LoginController: UIViewController {
             //let usernameDe = "huynhducviet"
             //let passwordDe = "UUNpZzQxYXN5VWY4MHIrL0FNN3hIaEtOU0VvPQ=="
             
-            firService.login(username: username, password: Utils.passwordEncrypt(password: password), imei: "", callback: { (user) in
+            FirServices.login(username: username, password: Utils.passwordEncrypt(password: password), imei: "", callback: { (user) in
                 if user == nil {
-                    FirDialog.show(viewController: self, title: "Sign in fail", mes: "Username or password is incorrect.", buttonName: "OK")
+                    FirDialog.show(title: "Sign in fail", mes: "Username or password is incorrect.", buttonName: "OK")
                 }else {
                     //Sigin success
-                    FirDialog.show(viewController: self, title: "Sign in", mes: "Sucess", buttonName: "OK")
+                    FirDialog.show(title: "Sign in", mes: "Sucess", buttonName: "OK")
                 }
             })
             

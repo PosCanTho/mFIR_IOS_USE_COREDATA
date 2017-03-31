@@ -19,7 +19,7 @@ class DB {
         return con
     }()
     
-    static func downloadToDB(_ viewConctroller: UIViewController){
+    static func downloadToDB(){
         
         if(DB.FacilityComponentDB.checkFacilityComponentIsExist()){
             DB.FacilityComponentDB.deleteRecords()
@@ -33,14 +33,15 @@ class DB {
             DB.FacilityTypeDB.deleteRecords()
         }
         
+        if(DB.IssueDB.checkFacilityRelationshipIsExist()){
+            DB.IssueDB.deleteRecords()
+        }
         
         if(DB.RelationshipDB.checkFacilityRelationshipIsExist()){
             DB.RelationshipDB.deleteRecords()
         }
         
-        let services = FirServices(viewConctroller)
-        
-        services.getFacility(facilityId: "0") { (data) in
+        FirServices.getFacility(facilityId: "0") { (data) in
             guard data != nil else{
                 return
             }
@@ -50,7 +51,7 @@ class DB {
             }
         }
         
-        services.getComponentType(facilityComponentTypeId: "0") { (data) in
+        FirServices.getComponentType(facilityComponentTypeId: "0") { (data) in
             guard data != nil else{
                 return
             }
@@ -60,7 +61,7 @@ class DB {
             }
         }
         
-        services.getFacilityType(facilityTypeId: "0") { (data) in
+        FirServices.getFacilityType(facilityTypeId: "0") { (data) in
             guard data != nil else{
                 return
             }
@@ -70,8 +71,17 @@ class DB {
             }
         }
         
+        FirServices.getIssue(facilityIssueId: "0", fromDate: "", thruDate: "") { (data) in
+            guard data != nil else{
+                return
+            }
+            DispatchQueue.main.async {
+                DB.IssueDB.saveAllIssue(listIssueData: data!)
+                print("Downloaded: IssueDB -> \(DB.IssueDB.getDataIssue().count)")
+            }
+        }
         
-        services.getRelationship(facilityTypeId: "0", facilityComponentTypeId: "0") { (data) in
+        FirServices.getRelationship(facilityTypeId: "0", facilityComponentTypeId: "0") { (data) in
             guard data != nil else{
                 return
             }
@@ -374,9 +384,9 @@ class DB {
                 return false
             }
         }
-
+        
     }
-
+    
     /// Issue database
     class IssueDB{
         
@@ -651,7 +661,7 @@ class DB {
                 return false
             }
         }
-
+        
         
     }
     
@@ -768,7 +778,7 @@ class DB {
                 return false
             }
         }
-
+        
     }
     
     /// Facility type database

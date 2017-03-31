@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35231E8B5F1900BF2D39 /* CheckInternet.swift */; };
-		040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */; };
 		040F353A1E8BB38800BF2D39 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35391E8BB38800BF2D39 /* DB.swift */; };
 		041F37711E896B280037940B /* FirDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F37701E896B280037940B /* FirDialog.swift */; };
 		0443324D1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 0443324C1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel */; };
@@ -58,7 +57,6 @@
 
 /* Begin PBXFileReference section */
 		040F35231E8B5F1900BF2D39 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
-		040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesInstance.swift; sourceTree = "<group>"; };
 		040F35391E8BB38800BF2D39 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
 		041F37701E896B280037940B /* FirDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirDialog.swift; sourceTree = "<group>"; };
 		0443324C1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				04C7FA391E88E68A00A2671C /* FirServices.swift */,
-				040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */,
 			);
 			name = connection;
 			sourceTree = "<group>";
@@ -417,7 +414,6 @@
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
-				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
 				0443324D1E8BD36B00FA297D /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
