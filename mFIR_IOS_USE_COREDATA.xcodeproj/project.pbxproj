@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35231E8B5F1900BF2D39 /* CheckInternet.swift */; };
-		040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */; };
 		041F37711E896B280037940B /* FirDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041F37701E896B280037940B /* FirDialog.swift */; };
 		04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA231E88E67800A2671C /* ComponentType.swift */; };
 		04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA241E88E67800A2671C /* Facility.swift */; };
@@ -19,10 +18,14 @@
 		04C7FA341E88E67800A2671C /* Relationship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA291E88E67800A2671C /* Relationship.swift */; };
 		04C7FA351E88E67800A2671C /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2A1E88E67800A2671C /* Student.swift */; };
 		04C7FA361E88E67800A2671C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2B1E88E67800A2671C /* User.swift */; };
-		04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2C1E88E67800A2671C /* UserReferences.swift */; };
 		04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2D1E88E67800A2671C /* PostParameter.swift */; };
-		04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA391E88E68A00A2671C /* FirServices.swift */; };
-		04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA3B1E88E69200A2671C /* Constants.swift */; };
+		A4172DC21E8E09280060BCE4 /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC11E8E09280060BCE4 /* DB.swift */; };
+		A4172DC41E8E09700060BCE4 /* UserReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC31E8E09700060BCE4 /* UserReferences.swift */; };
+		A4172DC61E8E098C0060BCE4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC51E8E098C0060BCE4 /* Constants.swift */; };
+		A4172DC91E8E09960060BCE4 /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC71E8E09960060BCE4 /* FirServices.swift */; };
+		A4172DCA1E8E09960060BCE4 /* ServicesInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC81E8E09960060BCE4 /* ServicesInstance.swift */; };
+		A4172DCC1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A4172DCB1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel */; };
+		A4172DCE1E8E7B120060BCE4 /* YBAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DCD1E8E7B120060BCE4 /* YBAlertController.swift */; };
 		A41A02C21E8BDCE200E792DB /* ComReportedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */; };
 		A474F49B1E8B660000E0797F /* BEMAnimationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A474F4941E8B660000E0797F /* BEMAnimationManager.m */; };
 		A474F49C1E8B660000E0797F /* BEMCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = A474F4961E8B660000E0797F /* BEMCheckBox.m */; };
@@ -42,7 +45,6 @@
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F56634551E88C65E00C580C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F56634531E88C65E00C580C3 /* Main.storyboard */; };
-		F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F56634561E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld */; };
 		F566345A1E88C65E00C580C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56634591E88C65E00C580C3 /* Assets.xcassets */; };
 		F566345D1E88C65E00C580C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */; };
 		F56634681E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634671E88C65F00C580C3 /* mFIR_IOS_USE_COREDATATests.swift */; };
@@ -68,7 +70,6 @@
 
 /* Begin PBXFileReference section */
 		040F35231E8B5F1900BF2D39 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
-		040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesInstance.swift; sourceTree = "<group>"; };
 		041F37701E896B280037940B /* FirDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirDialog.swift; sourceTree = "<group>"; };
 		04C7FA231E88E67800A2671C /* ComponentType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentType.swift; sourceTree = "<group>"; };
 		04C7FA241E88E67800A2671C /* Facility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facility.swift; sourceTree = "<group>"; };
@@ -79,10 +80,14 @@
 		04C7FA291E88E67800A2671C /* Relationship.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Relationship.swift; sourceTree = "<group>"; };
 		04C7FA2A1E88E67800A2671C /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		04C7FA2B1E88E67800A2671C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		04C7FA2C1E88E67800A2671C /* UserReferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserReferences.swift; sourceTree = "<group>"; };
 		04C7FA2D1E88E67800A2671C /* PostParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
-		04C7FA391E88E68A00A2671C /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
-		04C7FA3B1E88E69200A2671C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A4172DC11E8E09280060BCE4 /* DB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DB.swift; sourceTree = "<group>"; };
+		A4172DC31E8E09700060BCE4 /* UserReferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserReferences.swift; path = Classes/UserReferences.swift; sourceTree = "<group>"; };
+		A4172DC51E8E098C0060BCE4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A4172DC71E8E09960060BCE4 /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
+		A4172DC81E8E09960060BCE4 /* ServicesInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesInstance.swift; sourceTree = "<group>"; };
+		A4172DCB1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
+		A4172DCD1E8E7B120060BCE4 /* YBAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBAlertController.swift; sourceTree = "<group>"; };
 		A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComReportedTableViewCell.swift; sourceTree = "<group>"; };
 		A474F4931E8B660000E0797F /* BEMAnimationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BEMAnimationManager.h; sourceTree = "<group>"; };
 		A474F4941E8B660000E0797F /* BEMAnimationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BEMAnimationManager.m; sourceTree = "<group>"; };
@@ -108,7 +113,6 @@
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F56634541E88C65E00C580C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F56634571E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
 		F56634591E88C65E00C580C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F566345C1E88C65E00C580C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F566345E1E88C65E00C580C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				A474F4A61E8B68F600E0797F /* IssueTableViewController.swift */,
 				A474F4A81E8B690C00E0797F /* IssueTableViewCell.swift */,
 				A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */,
+				A4172DCD1E8E7B120060BCE4 /* YBAlertController.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -161,8 +166,8 @@
 		04C7FA1F1E88E5E000A2671C /* connection */ = {
 			isa = PBXGroup;
 			children = (
-				04C7FA391E88E68A00A2671C /* FirServices.swift */,
-				040F35251E8B5F4B00BF2D39 /* ServicesInstance.swift */,
+				A4172DC71E8E09960060BCE4 /* FirServices.swift */,
+				A4172DC81E8E09960060BCE4 /* ServicesInstance.swift */,
 			);
 			name = connection;
 			sourceTree = "<group>";
@@ -188,7 +193,7 @@
 		04C7FA211E88E5F200A2671C /* constants */ = {
 			isa = PBXGroup;
 			children = (
-				04C7FA3B1E88E69200A2671C /* Constants.swift */,
+				A4172DC51E8E098C0060BCE4 /* Constants.swift */,
 			);
 			name = constants;
 			sourceTree = "<group>";
@@ -197,11 +202,20 @@
 			isa = PBXGroup;
 			children = (
 				A474F4921E8B660000E0797F /* Classes */,
-				04C7FA2C1E88E67800A2671C /* UserReferences.swift */,
 				041F37701E896B280037940B /* FirDialog.swift */,
 				040F35231E8B5F1900BF2D39 /* CheckInternet.swift */,
+				A4172DC31E8E09700060BCE4 /* UserReferences.swift */,
 			);
 			name = untils;
+			sourceTree = "<group>";
+		};
+		A4172DBE1E8E09060060BCE4 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				A4172DC11E8E09280060BCE4 /* DB.swift */,
+				A4172DCB1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel */,
+			);
+			name = database;
 			sourceTree = "<group>";
 		};
 		A474F4921E8B660000E0797F /* Classes */ = {
@@ -255,6 +269,7 @@
 		F566344E1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA */ = {
 			isa = PBXGroup;
 			children = (
+				A4172DBE1E8E09060060BCE4 /* database */,
 				A4BD1BAC1E8CFC9300C41F2A /* TableViewController */,
 				04C7FA221E88E60900A2671C /* untils */,
 				04C7FA211E88E5F200A2671C /* constants */,
@@ -267,7 +282,6 @@
 				F56634591E88C65E00C580C3 /* Assets.xcassets */,
 				F566345B1E88C65E00C580C3 /* LaunchScreen.storyboard */,
 				F566345E1E88C65E00C580C3 /* Info.plist */,
-				F56634561E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld */,
 			);
 			path = mFIR_IOS_USE_COREDATA;
 			sourceTree = "<group>";
@@ -428,8 +442,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A474F4A91E8B690C00E0797F /* IssueTableViewCell.swift in Sources */,
+				A4172DC61E8E098C0060BCE4 /* Constants.swift in Sources */,
 				A474F4A31E8B688D00E0797F /* SecondViewController.swift in Sources */,
 				F56634521E88C65E00C580C3 /* ViewController.swift in Sources */,
+				A4172DCE1E8E7B120060BCE4 /* YBAlertController.swift in Sources */,
+				A4172DC91E8E09960060BCE4 /* FirServices.swift in Sources */,
 				A474F4A51E8B68C800E0797F /* FacilityTableViewController.swift in Sources */,
 				A4BD1BB01E8CFCC800C41F2A /* TableViewCell2.swift in Sources */,
 				A4BD1BB21E8CFCD000C41F2A /* TableViewCell3.swift in Sources */,
@@ -438,29 +455,28 @@
 				040F35241E8B5F1900BF2D39 /* CheckInternet.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
 				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
+				A4172DCC1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */,
 				041F37711E896B280037940B /* FirDialog.swift in Sources */,
-				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,
-				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
 				A4BD1BAE1E8CFCBF00C41F2A /* TableViewCell1.swift in Sources */,
 				A474F49E1E8B660000E0797F /* BEMPathManager.m in Sources */,
-				04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */,
+				A4172DC41E8E09700060BCE4 /* UserReferences.swift in Sources */,
 				04C7FA331E88E67800A2671C /* IssueStatus.swift in Sources */,
 				A474F49B1E8B660000E0797F /* BEMAnimationManager.m in Sources */,
 				04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */,
 				A474F49D1E8B660000E0797F /* BEMCheckBoxGroup.m in Sources */,
 				04C7FA341E88E67800A2671C /* Relationship.swift in Sources */,
-				F56634581E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld in Sources */,
 				A4BD1BAB1E8CFC6D00C41F2A /* ComTableViewController.swift in Sources */,
 				A474F49C1E8B660000E0797F /* BEMCheckBox.m in Sources */,
 				04C7FA361E88E67800A2671C /* User.swift in Sources */,
-				040F35261E8B5F4B00BF2D39 /* ServicesInstance.swift in Sources */,
+				A4172DC21E8E09280060BCE4 /* DB.swift in Sources */,
 				04C7FA2E1E88E67800A2671C /* ComponentType.swift in Sources */,
 				04C7FA311E88E67800A2671C /* Instructor.swift in Sources */,
 				A474F4AB1E8B692C00E0797F /* ReportIssue.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
 				A474F4A71E8B68F600E0797F /* IssueTableViewController.swift in Sources */,
+				A4172DCA1E8E09960060BCE4 /* ServicesInstance.swift in Sources */,
 				A4BD1BB61E8CFCE200C41F2A /* TableViewCell5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -733,19 +749,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		F56634561E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F56634571E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodel */,
-			);
-			currentVersion = F56634571E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.xcdatamodel */;
-			path = mFIR_IOS_USE_COREDATA.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F56634441E88C65E00C580C3 /* Project object */;
 }

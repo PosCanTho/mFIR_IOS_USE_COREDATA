@@ -12,6 +12,7 @@ import UIKit
 protocol IssueTableViewCellDelegate {
     func btnChecked(cell: IssueTableViewCell)
     func textFieldDidChange(cell: IssueTableViewCell)
+    func btnTakePhoto(cell: IssueTableViewCell)
 }
 
 class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
@@ -24,6 +25,11 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
     
     var delegate: IssueTableViewCellDelegate?
     
+    @IBAction func btnTakePhoto(_ sender: UIButton) {
+        if let _ = delegate {
+            delegate?.btnTakePhoto(cell: self)
+        }
+    }
 
     @IBAction func btnChecked(_ sender: Any) {
         if let _ = delegate {
@@ -75,7 +81,6 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
         if let _ = delegate {
             delegate?.textFieldDidChange(cell: self)
         }
-        //        print(lbDescription.text!)
     }
     
 }

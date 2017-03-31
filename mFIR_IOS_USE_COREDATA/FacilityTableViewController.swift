@@ -20,7 +20,17 @@ class FacilityTableViewController: UITableViewController {
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
+//        getData()
     }
+    
+//    func getData(){
+//        let fir = FirServices(self)
+//        fir.login(username: "huynhducviet", password: "UUNpZzQxYXN5VWY4MHIrL0FNN3hIaEtOU0VvPQ==", imei: "") { (user) in
+//            if(user != nil){
+//                print("ok")
+//            }
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

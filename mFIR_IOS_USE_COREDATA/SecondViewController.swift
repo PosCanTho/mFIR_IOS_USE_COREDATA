@@ -20,10 +20,9 @@ class SecondViewController: UIViewController{
     
     var list: Array<Issue> = Array()
     override func viewDidLoad() {
-
         super.viewDidLoad()
         lbFacility.text = Facility
- 
+      
         self.getData()
 //        self.tableViewComponentsReported.rowHeight = UITableViewAutomaticDimension
         
@@ -69,8 +68,7 @@ class SecondViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-  
+
 
 }
 
@@ -93,4 +91,20 @@ extension SecondViewController : UITableViewDataSource,  UITableViewDelegate  {
 }
 
 
+
+extension UIApplication {
+    
+    static func topViewController(base: UIViewController? = UIApplication.shared.delegate?.window??.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return topViewController(base: selected)
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
+}
 

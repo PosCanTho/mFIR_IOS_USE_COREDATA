@@ -212,6 +212,8 @@ class ServicesInstance{
         
         let TAG = "func -> login: "
         
+        let userReference = UserDefaults.standard
+        
         let post = PostParameter()
         post.add(key: "username", value: username)
         post.add(key: "password", value: password)
@@ -222,10 +224,16 @@ class ServicesInstance{
             
             
             guard let table = json["Table"] as? [[String: Any]] else{
-                let userReference = UserDefaults.standard
+
                 userReference.removeObject(forKey: UserReferences.USERNAME)
                 userReference.removeObject(forKey: UserReferences.PASSWORD)
                 
+                userReference.removeObject(forKey: UserReferences.USER_ID)
+                userReference.removeObject(forKey: UserReferences.USER_FULL_NAME)
+                userReference.removeObject(forKey: UserReferences.USER_INSTRUCTOR_ID_NUMBER)
+                userReference.removeObject(forKey: UserReferences.USER_STUDENT_ID_NUMBER)
+                userReference.removeObject(forKey: UserReferences.USER_ROLE_TYPE)
+                userReference.synchronize()
                 callback(nil)
                 return
             }
@@ -252,6 +260,14 @@ class ServicesInstance{
                 currentMiddleName: currentMiddleName,
                 currentFirstName: currentFirstName,
                 roleType: roleType)
+            
+            userReference.setValue(userId, forKey: UserReferences.USER_ID)
+            userReference.setValue(currentLastName + " " + currentMiddleName + " " + currentFirstName, forKey: UserReferences.USER_FULL_NAME)
+            userReference.setValue(instructorIdNumber, forKey: UserReferences.USER_INSTRUCTOR_ID_NUMBER)
+            userReference.setValue(studentIdNumber, forKey: UserReferences.USER_STUDENT_ID_NUMBER)
+            userReference.setValue(roleType, forKey: UserReferences.USER_ROLE_TYPE)
+            
+            userReference.synchronize()
             
             callback(user)
         }
@@ -285,7 +301,7 @@ class ServicesInstance{
                     let name = element["FACILITY_NAME"] as? String,
                     let typeName = element["FACILITY_TYPE_NAME"] as? String,
                     let usageStatus = element["FACILITY_USAGE_STATUS"] as? String,
-                    let rootId = element["ROOT_ROOT_FACILITY_ID"] as? String
+                    let rootId = element["ROOT_FACILITY_ID"] as? String
                     else{
                         print(TAG + "Parsing JSON error!")
                         return
@@ -539,7 +555,7 @@ class ServicesInstance{
             callback(listRelationship)
         }
     }
-    
+
     
     
     /// Lấy danh sách Loại Phòng (facility_type_id=0: lấy tất cả)
