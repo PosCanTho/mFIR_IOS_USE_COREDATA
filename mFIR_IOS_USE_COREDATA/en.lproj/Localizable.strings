@@ -2,6 +2,12 @@
   Localizable.strings
   mFIR_IOS_USE_COREDATA
 
-  Created by lehoangdung on 3/30/17.
+  Created by lehoangdung on 3/31/17.
   Copyright © 2017 poscantho. All rights reserved.
 */
+//"Lang" = "Language";
+//"Sync" = "Synchronous";
+//"place" = "Placeholer";
+//"btn" = "Button";
+//"t" = "Title";
+//"m" = "Messmage";

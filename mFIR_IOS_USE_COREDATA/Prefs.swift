@@ -21,19 +21,13 @@ class Prefs {
     static let shared = Prefs()
     
     func currentLocale() -> String {
-        print("--------------Vào currentLocale----------------")
-//        print(UserDefaults.standard.value(forKey: Prefs.kCurrentLocale))
         if let locale = UserDefaults.standard.value(forKey: Prefs.kCurrentLocale) {
-            print(locale)
             return locale as! String
         }
-        print(Prefs.kDefaultLocale)
         return Prefs.kDefaultLocale
     }
     
     func setCurrentLocale(_ locale: String) {
-        print("---------------Vào setCurrentLocale--------------")
-        print(locale)
         UserDefaults.standard.set(locale, forKey: Prefs.kCurrentLocale)
         UserDefaults.standard.synchronize()
     }
