@@ -13,7 +13,7 @@ class UpdateStatus: UITableViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var txtComment: UITextField!
     @IBOutlet weak var pickerStatus: UIPickerView!
     @IBAction func btnUpdateStatus(_ sender: UIButton) {
-        txtComment.resignFirstResponder()
+        txtComment.resignFirstResponder() //an ban phim khi cham vào nút
     }
 
     
@@ -51,6 +51,24 @@ class UpdateStatus: UITableViewController, UIPickerViewDelegate, UIPickerViewDat
     //    }
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30.0
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //btnStatusRoom.setTitle(, for: .normal)
+
+        if status[row] == "Không xử lý được" {
+             btnStatusRoom.setTitle("Không xử lý được", for: .focused)
+             btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.8353756421)
+        }
+        if status[row] == "Đang xử lý" {
+            btnStatusRoom.setTitle("Đang xử lý", for: .focused)
+            btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 0.9445355535, green: 0.5337328911, blue: 0.03267831355, alpha: 1)
+        }
+        if status[row] == "Chưa xử lý" {
+            btnStatusRoom.setTitle("Chưa xử lý", for: .focused)
+            btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+        }
+        
+        
     }
      
     //an ban phim khi cham ngoai textfeild

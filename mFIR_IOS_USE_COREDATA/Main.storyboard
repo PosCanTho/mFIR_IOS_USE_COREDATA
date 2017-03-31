@@ -393,16 +393,16 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-AA-52D">
-                                                    <rect key="frame" x="12" y="24" width="26" height="23"/>
+                                                    <rect key="frame" x="12" y="22" width="26" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="ic_sortdown">
                                                         <color key="titleColor" red="0.051658309999999999" green="0.019982837140000001" blue="0.011679216290000001" alpha="0.86274614729999999" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-Bw-Sts">
-                                                    <rect key="frame" x="36" y="27" width="224" height="17"/>
+                                                    <rect key="frame" x="36" y="25" width="224" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                     <state key="normal" title="Đang xử lý">
                                                         <color key="titleColor" red="0.94453555349999996" green="0.5337328911" blue="0.032678313549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
