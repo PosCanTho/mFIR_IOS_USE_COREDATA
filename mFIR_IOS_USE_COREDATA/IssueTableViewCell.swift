@@ -24,6 +24,7 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
     
     var delegate: IssueTableViewCellDelegate?
     
+
     @IBAction func btnChecked(_ sender: Any) {
         if let _ = delegate {
             delegate?.btnChecked(cell: self)
@@ -48,7 +49,7 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
         checkbox.delegate = self
         btnFirstchar.setTitle(firstChar[0],for: .normal)
     }
-    
+
     
     func didTap(_ checkBox: BEMCheckBox) {
         if(checkBox.on){

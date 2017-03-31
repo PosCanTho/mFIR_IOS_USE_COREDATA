@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate {
+class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate, UITextFieldDelegate {
 
     
     var arrayIssue = [String]()
@@ -37,6 +37,19 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
 //            }
 //        }
         self.getData()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(IssueTableViewController.hideKeyboard))
+        tapGesture.cancelsTouchesInView = true
+        tableView.addGestureRecognizer(tapGesture)
+    }
+    
+    func hideKeyboard() {
+        tableView.endEditing(true)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true);
+        return false;
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,6 +73,7 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
 //        print(issue)
     }
     
+
     func textFieldDidChange(cell: IssueTableViewCell){
         let indexPath = self.tableView.indexPath(for: cell)
         reportIssues?[indexPath!.row].description = cell.lbDescription.text!
@@ -109,6 +123,7 @@ extension IssueTableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IssueCell") as! IssueTableViewCell
         cell.reportIssue = reportIssues?[indexPath.row]
         cell.delegate = self
+        cell.lbDescription.delegate = self
         return cell
     }
 }
