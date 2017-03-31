@@ -245,7 +245,7 @@ class FirServices{
                     let name = element["FACILITY_NAME"] as? String,
                     let typeName = element["FACILITY_TYPE_NAME"] as? String,
                     let usageStatus = element["FACILITY_USAGE_STATUS"] as? String,
-                    let rootId = element["ROOT_ROOT_FACILITY_ID"] as? String
+                    let rootId = element["ROOT_FACILITY_ID"] as? String
                     else{
                         print(TAG + "Parsing JSON error!")
                         return
