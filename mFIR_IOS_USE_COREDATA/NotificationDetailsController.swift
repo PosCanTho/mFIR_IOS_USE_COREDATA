@@ -65,6 +65,8 @@ class NotificationDetailsController: UITableViewController {
         cell.lblComponentTypeName.text = issue.facilityComponentTypeName4
 
         cell.lblComponentTypeName.text = issue.facilityComponentTypeName5
+        //cell.lblComponentTypeName.text = issue.facilityComponentTypeName1
+
 
         
        
