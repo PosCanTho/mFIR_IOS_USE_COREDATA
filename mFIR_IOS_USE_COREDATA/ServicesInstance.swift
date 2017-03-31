@@ -160,7 +160,7 @@ class ServicesInstance{
         
         self.arrayProgress[inprogressId] = false
         
-        showProgressing(viewController, progressId: inprogressId, completion: false)
+//        showProgressing(viewController, progressId: inprogressId, completion: false)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
