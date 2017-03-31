@@ -82,7 +82,7 @@ class NotificationsViewController: UITableViewController {
                         }
                         if !isExist {
                             self.issueNew.append(contentsOf: issue1)
-                            //print("jsfsf \(self.issueNew)")
+                            //print("jsfsssrff \(self.issueNew)")
                         }
                         
                         
