@@ -21,4 +21,5 @@ struct UserReferences {
     static let USER_STUDENT_ID_NUMBER:String = "REFERENCE_USER_STUDENT_ID_NUMBER"
     static let USER_INSTRUCTOR_ID_NUMBER:String = "REFERENCE_USER_INSTRUCTOR_ID_NUMBER"
     static let USER_ROLE_TYPE:String = "REFERENCE_USER_ROLE_TYPE"
+    static let IS_REMEMBER:String = "IS_REMEMBER"
 }

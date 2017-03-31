@@ -11,10 +11,11 @@ import Foundation
 class FirDialog{
     
     static func show(viewController: UIViewController, title: String, mes: String, buttonName: String){
-        let alert = UIAlertController(title: title, message: mes, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: buttonName, style: UIAlertActionStyle.default, handler: nil))
-        viewController.present(alert, animated: true, completion: nil)
-        
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: mes, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: buttonName, style: UIAlertActionStyle.default, handler: nil))
+            viewController.present(alert, animated: true, completion: nil)
+        }
     }
     
 }
