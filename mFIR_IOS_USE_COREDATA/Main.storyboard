@@ -244,10 +244,12 @@
         <scene sceneID="9vT-1d-ZwP">
             <objects>
                 <tableViewController title="Details" id="Lv4-3b-AXt" customClass="NotificationDetailsController" customModule="mFIR_IOS_USE_COREDATA" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="87" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nq8-NN-ds5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nq8-NN-ds5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.94453555349999996" green="0.5337328911" blue="0.032678313549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <inset key="separatorInset" minX="5000" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="Gbd-mc-Q4F" userLabel="Address View">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -270,17 +272,17 @@
                             <color key="backgroundColor" red="0.079216413199901581" green="0.24066275358200073" blue="0.32580804824829102" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationDetailsCell" rowHeight="87" id="qar-MU-1FL" customClass="NotificationDetailsViewCell" customModule="mFIR_IOS_USE_COREDATA">
-                                <rect key="frame" x="0.0" y="85" width="320" height="87"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationDetailsCell" rowHeight="63" id="qar-MU-1FL" customClass="NotificationDetailsViewCell" customModule="mFIR_IOS_USE_COREDATA">
+                                <rect key="frame" x="0.0" y="85" width="320" height="63"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qar-MU-1FL" id="MVc-bv-0SF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FacilityComponent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gsh-pk-xpK">
-                                            <rect key="frame" x="49" y="9" width="260" height="21"/>
+                                            <rect key="frame" x="49" y="9" width="141" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -315,27 +317,29 @@
                                             </userDefinedRuntimeAttributes>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwZ-i2-GK3">
-                                            <rect key="frame" x="287" y="52" width="26" height="25"/>
+                                            <rect key="frame" x="290" y="8" width="26" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="ic_sortdown">
                                                 <color key="titleColor" red="0.051658309999999999" green="0.019982837140000001" blue="0.011679216290000001" alpha="0.86274614729999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <segue destination="ytJ-qP-Y69" kind="show" identifier="updateStatus" id="Akt-ka-1AZ"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QcX-11-35D">
-                                            <rect key="frame" x="170" y="55" width="117" height="17"/>
+                                            <rect key="frame" x="177" y="11" width="117" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                             <state key="normal" title="Đang xử lý">
                                                 <color key="titleColor" red="0.94453555349999996" green="0.5337328911" blue="0.032678313549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKQ-MU-Krf">
-                                            <rect key="frame" x="49" y="53" width="20" height="20"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button" image="ic_picture"/>
+                                            <connections>
+                                                <segue destination="ytJ-qP-Y69" kind="show" identifier="updateStatus" id="fxN-qD-VJZ"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <inset key="separatorInset" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="lblComponentTypeName" destination="gsh-pk-xpK" id="OAW-7x-iMO"/>
                                 </connections>
@@ -349,15 +353,107 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tU8-kQ-cl3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2078" y="410"/>
+            <point key="canvasLocation" x="2077.5" y="410"/>
+        </scene>
+        <!--UpdateStatus-->
+        <scene sceneID="Vcg-Gu-CaF">
+            <objects>
+                <tableViewController title="UpdateStatus" modalPresentationStyle="currentContext" id="ytJ-qP-Y69" customClass="UpdateStatus" customModule="mFIR_IOS_USE_COREDATA" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="260" sectionHeaderHeight="28" sectionFooterHeight="28" id="p0j-6u-bbz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="5000" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <pickerView key="tableFooterView" contentMode="scaleToFill" id="OBo-mK-0xY">
+                            <rect key="frame" x="0.0" y="125" width="320" height="89"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                        </pickerView>
+                        <sections>
+                            <tableViewSection id="S49-ut-dXA">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="125" id="Aw6-xU-db7">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Aw6-xU-db7" id="pf6-da-3Vp">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" placeholder="Comment" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="nDG-f1-XBS">
+                                                    <rect key="frame" x="18" y="54" width="242" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.94453555349999996" green="0.5337328911" blue="0.032678313549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <attributedString key="attributedText"/>
+                                                    <textInputTraits key="textInputTraits" keyboardAppearance="light" enablesReturnKeyAutomatically="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="8"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-AA-52D">
+                                                    <rect key="frame" x="12" y="24" width="26" height="23"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="ic_sortdown">
+                                                        <color key="titleColor" red="0.051658309999999999" green="0.019982837140000001" blue="0.011679216290000001" alpha="0.86274614729999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B1w-Bw-Sts">
+                                                    <rect key="frame" x="36" y="27" width="224" height="17"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="normal" title="Đang xử lý">
+                                                        <color key="titleColor" red="0.94453555349999996" green="0.5337328911" blue="0.032678313549999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-1x-oq8">
+                                                    <rect key="frame" x="268" y="54" width="33" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="ic_send">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBound" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="btnUpdateStatus:" destination="ytJ-qP-Y69" eventType="touchUpInside" id="Ztv-wM-qVa"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="MgS-q3-IRy"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="btnSortDownStatus" destination="XWV-AA-52D" id="zqg-w7-WCH"/>
+                        <outlet property="btnStatusRoom" destination="B1w-Bw-Sts" id="OJT-Ml-fGx"/>
+                        <outlet property="pickerStatus" destination="OBo-mK-0xY" id="1CV-p4-Qcw"/>
+                        <outlet property="txtComment" destination="nDG-f1-XBS" id="Yk6-8D-Erb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OmT-f5-yc0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3003.75" y="410"/>
         </scene>
     </scenes>
     <resources>
         <image name="home" width="20" height="20"/>
         <image name="ic_forward" width="48" height="48"/>
-        <image name="ic_picture" width="64" height="64"/>
+        <image name="ic_send" width="50" height="50"/>
         <image name="ic_sortdown" width="48" height="48"/>
         <image name="notification" width="22" height="22"/>
         <image name="setting" width="20" height="20"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fxN-qD-VJZ"/>
+    </inferredMetricsTieBreakers>
 </document>
