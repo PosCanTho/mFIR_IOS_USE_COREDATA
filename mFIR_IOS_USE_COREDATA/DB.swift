@@ -767,6 +767,34 @@ class DB {
             }
         }
         
+        // 31/03/2017 -> ADD
+        static func getComponentByRoomType(roomType: String) -> [Relationship]{
+            let idType = FacilityTypeDB.getTypeIdByTypeName(facilityTypeName: roomType)
+            
+            var list : [Relationship] = []
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_RELATIONSHIP)
+            fetchRequest.predicate = NSPredicate(format: "\(Databases.FACILITY_TYPE_ID) == %@",idType)
+            do {
+                //go get the results
+                let searchResults = try context.fetch(fetchRequest)
+                //You need to convert to NSManagedObject to use 'for' loops
+                for trans in searchResults as! [NSManagedObject] {
+                    let relationship = Relationship(
+                        facilityTypeId: (trans.value(forKey: Databases.FACILITY_TYPE_ID)! as! String),
+                        facilityTypeName: (trans.value(forKey: Databases.FACILITY_TYPE_NAME)! as! String),
+                        facilityComponentTypeId: (trans.value(forKey: Databases.FACILITY_COMPONENT_TYPE_ID)! as! String),
+                        facilityComponentTypeName: (trans.value(forKey: Databases.FACILITY_COMPONENT_TYPE_NAME)! as! String),
+                        fromDate: (trans.value(forKey: Databases.FROM_DATE)! as! String),
+                        thruDate: (trans.value(forKey: Databases.THRU_DATE)! as! String),
+                        note: (trans.value(forKey: Databases.NOTE)! as! String))
+                    list.append(relationship)
+                }
+            } catch {
+                print("Error with request: \(error)")
+            }
+            return list
+        }
     }
     
     /// Facility type database
