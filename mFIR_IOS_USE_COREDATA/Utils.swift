@@ -27,7 +27,7 @@ class Utils {
     
     //String to encrypt sha1
     static func encyptSha1(string: String) -> String {
-   
+        
         let data = string.data(using: String.Encoding.utf8)!
         var digest = [UInt8](repeating: 0, count:Int(CC_SHA1_DIGEST_LENGTH))
         data.withUnsafeBytes {
@@ -46,4 +46,19 @@ class Utils {
     
     
     
+}
+
+extension String {
+    
+    //right is the first encountered string after left
+    func subString(_ left: String, _ right: String) -> String? {
+        guard
+            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
+            , left != right && leftRange.upperBound < rightRange.lowerBound
+            else { return nil }
+        
+        let sub = self.substring(from: leftRange.upperBound)
+        let closestToLeftRange = sub.range(of: right)!
+        return sub.substring(to: closestToLeftRange.lowerBound)
+    }
 }
