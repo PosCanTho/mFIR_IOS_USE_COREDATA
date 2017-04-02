@@ -131,6 +131,7 @@ class FirServices{
                     FirServices.showProgressing( progressId: inprogressId, completion: true)
                     FirDialog.showErrorDownload(urlError: (error as! URLError?)!)
                     callback(Dictionary<String, AnyObject>())
+                    print(error!)
                     return
             }
             
@@ -153,6 +154,7 @@ class FirServices{
             } catch {
                 FirServices.showProgressing(progressId: inprogressId, completion: true)
                 callback(Dictionary<String, AnyObject>())
+                print(Constants.ERROR.PARSING_JSON)
             }
         }
         task.resume()
@@ -524,6 +526,7 @@ class FirServices{
                 callback(nil)
                 return
             }
+            
             for element in table{
                 
                 guard let id = element["FACILITY_TYPE_ID"] as? String,
@@ -998,7 +1001,35 @@ class FirServices{
         dataTask( url: Constants.URL.API_UPDATE_FACILITY_ISSUE, post: post){
             (json) in
             
-            guard let table = json["result"] as? [[String: Any]] else{
+            guard let table = json["Table"] as? [[String: Any]] else{
+                callback(false)
+                return
+            }
+            
+            guard let result = table[0]["result"] as? String else{
+                print("UpdateIssue: " + "Parsing JSON error!")
+                return
+            }
+            
+            print("UpdateIssue: ",result)
+            
+            callback(true)
+        }
+    }
+    // ============================
+    
+    // ============================
+    static func registerFCMToken(imei:String, typeOS:String, tokenKey:String ,callback: @escaping (_ completion: Bool) -> Void){
+        
+        let post = PostParameter()
+        post.add(key: "IMEI", value: imei)
+        post.add(key: "OS_TYPE", value: typeOS)
+        post.add(key: "TOKEN_KEY", value: tokenKey)
+        
+        dataTask( url: Constants.URL.API_GET_REGISTER_FCMTOKEN, post: post){
+            (json) in
+            
+            guard let table = json["Table"] as? [[String: Any]] else{
                 callback(false)
                 return
             }
@@ -1009,4 +1040,144 @@ class FirServices{
         }
     }
     // ============================
+    
+    
+    // ============================
+    private static func taskFileImage(
+        url: String,
+        post: String,
+        callback: @escaping (_ result: String?) -> Void) {
+        
+        guard CheckInternet.isInternetAvailable() else {
+            FirDialog.show(title: "Lỗi kết nối", mes: "Không có kết nối internet. Vui lòng kiểm tra lại internet!", buttonName: "Đóng")
+            return
+        }
+        
+        let urlRequest = URL(string: url)!
+        var request = URLRequest(url: urlRequest, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 120) // timeout 120 seconds
+        request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        request.addValue(String(post.characters.count), forHTTPHeaderField: "Content-Length")
+        request.httpMethod = "POST"
+        request.httpBody = post.data(using: .utf8, allowLossyConversion: false)
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            guard let data = data, error == nil else {
+                    FirDialog.showErrorDownload(urlError: (error as! URLError?)!)
+                    callback(nil)
+                    print(error!)
+                    return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200
+            {
+                print(Constants.ERROR.MES,"statusCode should be 200, but is \(httpStatus.statusCode)")
+                print(Constants.ERROR.MES,"response = \(String(describing: response))")
+                
+            }
+            
+            guard let stringXML = String(data: data, encoding: String.Encoding.utf8) else{
+                print(Constants.ERROR.MES,"stringXML")
+                return
+            }
+
+            callback(stringXML)
+        }
+        task.resume()
+        
+    }
+    // ============================
+    
+    
+    // ============================
+    static func uploadFileImage(fileName: String, dataBase64: String, callback: @escaping (_ completion: Bool) -> Void){
+        
+        var post = ""
+        post += "<?xml version='1.0' encoding='utf-8'?>"
+        post += "<soap12:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap12='http://www.w3.org/2003/05/soap-envelope'>"
+        post += "<soap12:Body>"
+        post += "<UploadFileForFIR xmlns='http://tempuri.org/'>"
+        post += "<f>\(dataBase64)</f>"
+        post += "<fileName>\(fileName)</fileName>"
+        post += "<key>\(Constants.URL.UPLOAD_IMAGE_KEY)</key>"
+        post += "</UploadFileForFIR>"
+        post += "</soap12:Body>"
+        post += "</soap12:Envelope>"
+        
+        guard fileName != "" else {
+            print(Constants.ERROR.FILE_IMAGE_NAME)
+            return
+        }
+        
+        guard dataBase64 != "" else {
+            print(Constants.ERROR.FILE_IMAGE_DATA)
+            return
+
+        }
+        
+        taskFileImage(url: Constants.URL.API_UPLOAD_FILE_IMAGE, post: post) { (result) in
+            
+            guard result != nil else{
+                callback(false)
+                return
+            }
+            
+            let strAfterSub = result!.subString("<UploadFileForFIRResult>","</UploadFileForFIRResult>") ?? "Can not substring"
+            
+            if(strAfterSub != "OK"){
+                print(strAfterSub)
+                callback(false)
+                return
+            }
+            
+            print("Upload image to server: ", strAfterSub)
+            callback(true)
+        }
+    }
+    // ============================
+    
+    
+    // ============================
+    static func downloadFileImage(fileName: String, callback: @escaping (_ completion: Bool) -> Void){
+        
+        var post = ""
+            post += "<?xml version='1.0' encoding='utf-8'?>"
+            post += "<soap12:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap12='http://www.w3.org/2003/05/soap-envelope'>"
+            post += "<soap12:Body>"
+            post += "<GetFileForFIR xmlns='http://tempuri.org/'>"
+            post += "<fileName>\(fileName)</fileName>"
+            post += "<key>\(Constants.URL.UPLOAD_IMAGE_KEY)</key>"
+            post += "</GetFileForFIR>"
+            post += "</soap12:Body>"
+            post += "</soap12:Envelope>"
+        
+        guard fileName != "" else {
+            print(Constants.ERROR.FILE_IMAGE_NAME)
+            return
+        }
+        
+        taskFileImage(url: Constants.URL.API_DOWNLOAD_FILE_IMAGE, post: post) { (result) in
+            
+            guard result != nil else{
+                callback(false)
+                return
+            }
+            
+            print(result!)
+            
+            let strAfterSub = result!.subString("<GetFileForFIRResult>","</GetFileForFIRResult>") ?? "Can not substring"
+
+            if(strAfterSub == "Can not substring"){
+                print(strAfterSub)
+                callback(false)
+                return
+            }
+            
+            print("Download image to server: ", "OK")
+            callback(true)
+        }
+    }
+    // ============================
+    
+    
 }
