@@ -10,35 +10,77 @@ import Foundation
 
 class FirDialog{
     
-    static func show(viewController: UIViewController, title: String, mes: String, buttonName: String){
-        let alert = UIAlertController(title: title, message: mes, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: buttonName, style: UIAlertActionStyle.default, handler: nil))
-        viewController.present(alert, animated: true, completion: nil)
+    private static let window = UIApplication.shared.keyWindow?.rootViewController
+    
+    /// Hiển thị dialog
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - title: title
+    ///   - mes: message
+    ///   - buttonName: button name
+    static func show(title: String, mes: String, buttonName: String){
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: mes, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: buttonName, style: UIAlertActionStyle.default, handler: nil))
+            
+            if (self.window?.presentedViewController == nil){
+                self.window?.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    /// Hiển thị lỗi nếu dataTask bị lỗi
+    ///
+    /// - Parameters:
+    ///   - viewController: UIViewController
+    ///   - urlError: URLError
+    static func showErrorDownload(urlError: URLError){
+        DispatchQueue.main.async {
+            if(urlError.code == URLError.timedOut){
+                
+                let mes = "Hết thời gian kết nối.\nMã lỗi: \(urlError.errorCode)"
+                FirDialog.show(title: "Lỗi kết nối", mes: mes, buttonName: "Đóng")
+            }
+            if(urlError.code == URLError.notConnectedToInternet){
+                
+                let mes = "Không có kết nối internet. Vui lòng kiểm tra lại kết nối internet!\nMã lỗi: \(urlError.errorCode)"
+                FirDialog.show(title: "Lỗi kết nối", mes: mes, buttonName: "Đóng")
+            }
+        }
         
     }
     
+    
+    
 }
 
-class ProgressingViewController: UIViewController {
+
+class ProgressingDialog{
+    private static let activityView = ActivityView()
+    private static let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+    private static let blurEffectView = UIVisualEffectView(effect: blurEffect)
+    private static let window = UIApplication.shared.keyWindow!
     
-    private let activityView = ActivityView()
-    
-    
-    
-    init(message: String) {
-        super.init(nibName: nil, bundle: nil)
-        modalTransitionStyle = .crossDissolve
-        modalPresentationStyle = .overFullScreen
-        activityView.messageLabel.text = message
-        view = activityView
+    static func show(){
+        
+        activityView.center = window.center
+        
+        blurEffectView.frame = CGRect(x: window.frame.origin.x, y: window.frame.origin.y, width: window.frame.width, height: window.frame.height)
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        window.addSubview(blurEffectView)
+        window.addSubview(activityView)
+        
     }
     
-    func setMessage(mes: String){
+    static func hide(){
+        activityView.removeFromSuperview()
+        self.blurEffectView.removeFromSuperview()
+    }
+    
+    static func setMessage(mes:String){
         activityView.messageLabel.text = mes
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 

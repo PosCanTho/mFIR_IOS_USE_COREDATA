@@ -14,12 +14,13 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     
     var arrayIssue = [String]()
     //    var reportIssues = TIBReportIssue.getAll()
-    var reportIssues: [ReportIssue]?
+    var reportIssues: [ReportIssue] = []
     var hashTableChecked: [Int:ReportIssue] = [:]
     var des:String!
     let statusCom = "Chưa Xử Lý"
     var issue : Issue!
     var imagePicker : UIImagePickerController!
+    var photoRow = IndexPath()
     
     @IBAction func btnSend(_ sender: Any) {
         var check:Bool! = true
@@ -34,7 +35,11 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
         } else {
             if !check { // kiểm tra mô tả
                 // hiển thị alert
-                self.showAlert(title: "No Desciptions!", msg: "Please give us more details  about these issues!", ok: "OK")
+                if hashTableChecked.count == 1 {
+                    self.showAlert(title: "No Desciption!", msg: "Please give us more details about this issue!", ok: "OK")
+                } else {
+                    self.showAlert(title: "No Desciptions!", msg: "Please give us more details about these issues!", ok: "OK")
+                }
             }  else {
                 // kiểm tra internet
                 if CheckInternet.isInternetAvailable() {
@@ -60,6 +65,90 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
         tableView.endEditing(true)
     }
     
+    let zoomImageView = UIImageView()
+    let blackBackgroundView = UIView()
+    let navBarCoverView = UIView()
+    let tabBarCoverView = UIView()
+    
+    var issueImageView: UIImageView?
+    
+    func animateImageView(_ issueImageView: UIImageView) {
+        self.issueImageView = issueImageView
+        
+        if let startingFrame = issueImageView.superview?.convert(issueImageView.frame, to: nil) {
+            
+            issueImageView.alpha = 0
+            
+            blackBackgroundView.frame = self.view.frame
+            blackBackgroundView.backgroundColor = UIColor.black
+            blackBackgroundView.alpha = 0
+            view.addSubview(blackBackgroundView)
+            
+            navBarCoverView.frame = CGRect(x: 0, y: 0, width: 1000, height: 20 + 44)
+            navBarCoverView.backgroundColor = UIColor.black
+            navBarCoverView.alpha = 0
+            
+            
+            
+            if let keyWindow = UIApplication.shared.keyWindow {
+                keyWindow.addSubview(navBarCoverView)
+                
+                tabBarCoverView.frame = CGRect(x: 0, y: keyWindow.frame.height - 49, width: 1000, height: 49)
+                tabBarCoverView.backgroundColor = UIColor.black
+                tabBarCoverView.alpha = 0
+                keyWindow.addSubview(tabBarCoverView)
+            }
+            
+            zoomImageView.backgroundColor = UIColor.red
+            zoomImageView.frame = startingFrame
+            zoomImageView.isUserInteractionEnabled = true
+            zoomImageView.image = issueImageView.image
+            zoomImageView.contentMode = .scaleAspectFill
+            zoomImageView.clipsToBounds = true
+            view.addSubview(zoomImageView)
+            
+            zoomImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.zoomOut)))
+            
+            UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: .curveEaseOut, animations: { () -> Void in
+                
+                let height = (self.view.frame.width / startingFrame.width) * startingFrame.height
+                
+                let y = self.view.frame.height / 2 - height / 2
+                
+                self.zoomImageView.frame = CGRect(x: 0, y: y, width: self.view.frame.width, height: height)
+                
+                self.blackBackgroundView.alpha = 1
+                
+                self.navBarCoverView.alpha = 1
+                
+                self.tabBarCoverView.alpha = 1
+                
+            }, completion: nil)
+            
+        }
+    }
+    
+    func zoomOut() {
+        if let startingFrame = issueImageView!.superview?.convert(issueImageView!.frame, to: nil) {
+            
+            UIView.animate(withDuration: 0.75, animations: { () -> Void in
+                self.zoomImageView.frame = startingFrame
+                
+                self.blackBackgroundView.alpha = 0
+                self.navBarCoverView.alpha = 0
+                self.tabBarCoverView.alpha = 0
+                
+            }, completion: { (didComplete) -> Void in
+                self.zoomImageView.removeFromSuperview()
+                self.blackBackgroundView.removeFromSuperview()
+                self.navBarCoverView.removeFromSuperview()
+                self.tabBarCoverView.removeFromSuperview()
+                self.issueImageView?.alpha = 1
+            })
+            
+        }
+    }
+    
     // ẩn bàn phím, too
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true);
@@ -72,10 +161,16 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     }
     // lấy dữ liệu
     func getData() {
-        var list : [Relationship]?
-        list = DB.RelationshipDB.getByIdRelationship(facilityTypeId: "32")
-        print(list?.count as Any)
-        self.reportIssues = TIBReportIssue.getAll()
+        var list:[Relationship] = []
+        list = DB.RelationshipDB.getComponentByRoomType(roomType: "Phòng Học")
+        for i in list {
+            let report = ReportIssue.init(componentName: "", description: "", componentID: "", checked: false, image: nil)
+            report.componentName = i.facilityComponentTypeName
+            report.description = ""
+            report.componentID = i.facilityComponentTypeId
+            report.checked = false
+             reportIssues.append(report)
+        }
         self.tableView.reloadData()
     }
     func sendToCoreData(){
@@ -87,8 +182,7 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
         let date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        let dateFormat = formatter.string(from: date) // 83->86 : định dạng ngày
-
+        let dateFormat = formatter.string(from: date) // 96->99 : định dạng ngày
         var idStudent = ""
         var idInstructor = ""
         let role = UserDefaults.standard.string(forKey: UserReferences.USER_ROLE_TYPE)
@@ -147,29 +241,38 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
                  issue.facilityComponentIssue_picture5 = ""
             }
         }
-       // print(issue.instructorIdNumber,issue.studentIdNumber)
+
      self.callAsync(issue: issue)
     }
-    
+  
     func callAsync(issue: Issue){
-        let fir = FirServices(self)
-        fir.updateIssue(issue: issue) { (result) in
-            if(result == true){
-                print("ok")
+        FirServices.updateIssue(issue: issue) { (result) in
+            if (result == true) {
+                OperationQueue.main.addOperation{
+                    self.showAlert(title: "Congratulation", msg: "Your report has been sent successfully.", ok: "OK!")
+                }
+            } else {
+                OperationQueue.main.addOperation{
+                    self.showAlert(title: "Opps!", msg: "Something went wrong while trying to send your report. \nPlease try again.", ok: "OK")
+                }
             }
         }
     }
     
+    func showA(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+
     // lấy dữ liệu trên text field
     func textFieldDidChange(cell: IssueTableViewCell){
         let indexPath = self.tableView.indexPath(for: cell)
-        reportIssues?[indexPath!.row].description = cell.lbDescription.text!
-        des = reportIssues?[indexPath!.row].description
+        reportIssues[indexPath!.row].description = cell.lbDescription.text!
+        des = reportIssues[indexPath!.row].description
         if (cell.checkbox.on) {
-            print("check")
             let count = hashTableChecked.count
-            if (count <= 5) {
-                let report = ReportIssue.init(componentName: cell.lbComponent.text!, description: des, componentID: "1", checked: true,image:"")
+            if (count <= 4) {
+                let report = ReportIssue.init(componentName: cell.lbComponent.text!, description: des, componentID: String(indexPath!.row + 1), checked: true,image:nil)
+    
                 hashTableChecked[indexPath!.row] = report
             }
         } else {
@@ -179,11 +282,16 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     // sự kiện check - uncheck ở checkbox
     func btnChecked(cell: IssueTableViewCell) {
         let indexPath = self.tableView.indexPath(for: cell)
-        reportIssues?[indexPath!.row].checked = cell.checkbox.on
+        self.photoRow = indexPath!
+        if hashTableChecked.count <= 4 {
+            reportIssues[indexPath!.row].checked = cell.checkbox.on
+        } else {
+                reportIssues[indexPath!.row].checked = !cell.checkbox.on
+        }
         if (cell.checkbox.on) {
             let count = hashTableChecked.count
             if (count <= 4) {
-                let report = ReportIssue.init(componentName: cell.lbComponent.text!, description: "", componentID: "1", checked: true, image: "")
+                let report = ReportIssue.init(componentName: cell.lbComponent.text!, description: "", componentID: String(indexPath!.row + 1), checked: true, image: nil)
                 hashTableChecked[indexPath!.row] = report
             } else {
                 self.showAlert(title: "Too much components!", msg: "You just can choose FIVE components for reporting!", ok: "OK")
@@ -191,15 +299,26 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
                 cell.lbDescription.isHidden = true
                 cell.btnCamera.isHidden = true
             }
+            if cell.imgIssue != nil {
+                cell.imgIssue.isHidden = false
+                cell.btnFirstchar.isHidden = true
+                tableView.reloadData()
+            }
         } else {
             hashTableChecked.removeValue(forKey: indexPath!.row)
+            cell.imgIssue.removeFromSuperview()
+            cell.imgIssue.image = nil
+            tableView.reloadData()
         }
-
+    }
+    
+    func imageTapped(cell: IssueTableViewCell){
+        animateImageView(cell.imgIssue)
     }
     
     func btnTakePhoto(cell: IssueTableViewCell) {
         _ = self.tableView.indexPath(for: cell)
-        let alertController = YBAlertController(title: "Do you want get issue's photo from ?", message: "", style: .actionSheet)
+        let alertController = YBAlertController(title: "Would you like to take issue's photo from ?", message: "", style: .actionSheet)
         alertController.addButton(UIImage(named: "Cam"), title: "Camera") {
              self.camera()
         }
@@ -218,11 +337,11 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     
     func camera(){
         imagePicker = UIImagePickerController()
- //       imagePicker.delegate = self
+        imagePicker.delegate = self
         if(UIImagePickerController.isSourceTypeAvailable(.camera)){
             imagePicker.sourceType = .camera
         } else {
-        self.showAlert(title: "Opps!", msg: "Your Camera is not avaiable now!", ok: "OK")
+        self.showAlert(title: "Opps!", msg: "Your Camera is not avaiable now!", ok: "OK!")
         }
         imagePicker.allowsEditing = true
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: imagePicker.sourceType)!
@@ -230,7 +349,7 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
     }
     func photoLibrary(){
         imagePicker = UIImagePickerController()
-    //    imagePicker.delegate = self
+        imagePicker.delegate = self
         if(UIImagePickerController.isSourceTypeAvailable(.photoLibrary)){
             imagePicker.sourceType = .photoLibrary
         } else {
@@ -240,6 +359,9 @@ class IssueTableViewController: UITableViewController,IssueTableViewCellDelegate
         imagePicker.mediaTypes = UIImagePickerController.availableMediaTypes(for: imagePicker.sourceType)!
         self.present(imagePicker, animated: true, completion: nil)
     }
+    
+ 
+    
     // hiện alert thông báo
     func showAlert(title:String, msg:String, ok:String){
         let title = title
@@ -258,13 +380,35 @@ extension IssueTableViewController {
         return 1
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reportIssues!.count
+        return reportIssues.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "IssueCell") as! IssueTableViewCell
-        cell.reportIssue = reportIssues?[indexPath.row]
+        cell.reportIssue = reportIssues[indexPath.row]
         cell.delegate = self
         cell.lbDescription.delegate = self
         return cell
     }
 }
+
+extension IssueTableViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        if mediaType == (kUTTypeImage as String) {
+        let photo = info[UIImagePickerControllerOriginalImage] as? UIImage
+        reportIssues[photoRow.row].image = photo!
+        }
+        self.tableView.reloadData()
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+}
+
+
+
+
+

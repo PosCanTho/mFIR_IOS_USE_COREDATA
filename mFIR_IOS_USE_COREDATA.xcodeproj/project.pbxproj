@@ -23,7 +23,6 @@
 		A4172DC41E8E09700060BCE4 /* UserReferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC31E8E09700060BCE4 /* UserReferences.swift */; };
 		A4172DC61E8E098C0060BCE4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC51E8E098C0060BCE4 /* Constants.swift */; };
 		A4172DC91E8E09960060BCE4 /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC71E8E09960060BCE4 /* FirServices.swift */; };
-		A4172DCA1E8E09960060BCE4 /* ServicesInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DC81E8E09960060BCE4 /* ServicesInstance.swift */; };
 		A4172DCC1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = A4172DCB1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel */; };
 		A4172DCE1E8E7B120060BCE4 /* YBAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4172DCD1E8E7B120060BCE4 /* YBAlertController.swift */; };
 		A41A02C21E8BDCE200E792DB /* ComReportedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */; };
@@ -85,7 +84,6 @@
 		A4172DC31E8E09700060BCE4 /* UserReferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserReferences.swift; path = Classes/UserReferences.swift; sourceTree = "<group>"; };
 		A4172DC51E8E098C0060BCE4 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A4172DC71E8E09960060BCE4 /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
-		A4172DC81E8E09960060BCE4 /* ServicesInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesInstance.swift; sourceTree = "<group>"; };
 		A4172DCB1E8E0B0C0060BCE4 /* mFIR_IOS_USE_COREDATA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = mFIR_IOS_USE_COREDATA.xcdatamodel; sourceTree = "<group>"; };
 		A4172DCD1E8E7B120060BCE4 /* YBAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YBAlertController.swift; sourceTree = "<group>"; };
 		A41A02C11E8BDCE200E792DB /* ComReportedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComReportedTableViewCell.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				A4172DC71E8E09960060BCE4 /* FirServices.swift */,
-				A4172DC81E8E09960060BCE4 /* ServicesInstance.swift */,
 			);
 			name = connection;
 			sourceTree = "<group>";
@@ -476,7 +473,6 @@
 				A474F4AB1E8B692C00E0797F /* ReportIssue.swift in Sources */,
 				04C7FA321E88E67800A2671C /* Issue.swift in Sources */,
 				A474F4A71E8B68F600E0797F /* IssueTableViewController.swift in Sources */,
-				A4172DCA1E8E09960060BCE4 /* ServicesInstance.swift in Sources */,
 				A4BD1BB61E8CFCE200C41F2A /* TableViewCell5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

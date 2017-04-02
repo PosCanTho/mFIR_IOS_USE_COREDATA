@@ -13,6 +13,7 @@ protocol IssueTableViewCellDelegate {
     func btnChecked(cell: IssueTableViewCell)
     func textFieldDidChange(cell: IssueTableViewCell)
     func btnTakePhoto(cell: IssueTableViewCell)
+    func imageTapped(cell: IssueTableViewCell)
 }
 
 class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
@@ -22,8 +23,11 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
     @IBOutlet weak var btnCamera: UIButton!
     @IBOutlet weak var checkbox: BEMCheckBox!
     @IBOutlet weak var btnFirstchar: UIButton!
+    @IBOutlet weak var imgIssue: UIImageView!
     
     var delegate: IssueTableViewCellDelegate?
+    var issueTableViewController : IssueTableViewController?
+ 
     
     @IBAction func btnTakePhoto(_ sender: UIButton) {
         if let _ = delegate {
@@ -37,16 +41,28 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
         }
     }
     
+    func textFieldDidChange(_ textField: UITextField) {
+        if let _ = delegate {
+            delegate?.textFieldDidChange(cell: self)
+        }
+    }
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
+        if let _ = delegate {
+            delegate?.imageTapped(cell: self)
+        }
+    }
+    
     var reportIssue: ReportIssue! {
         didSet {
             self.updateUI()
         }
     }
-    
+
     override func prepareForReuse() {
         self.lbDescription.text = ""
     }
-    
+
     func updateUI(){
         let firstChar = reportIssue.componentName
         lbComponent.text = reportIssue.componentName
@@ -58,6 +74,9 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
             lbDescription.isHidden = false
             btnCamera.isHidden = false
             lbDescription.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            imgIssue.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:))))
+            imgIssue.isUserInteractionEnabled = true
+            imgIssue.image = reportIssue.image
         } else {
             lbDescription.text = ""
             lbDescription.isHidden = true
@@ -65,24 +84,20 @@ class IssueTableViewCell: UITableViewCell, BEMCheckBoxDelegate {
         }
     }
 
-    
     func didTap(_ checkBox: BEMCheckBox) {
         if(checkBox.on){
             lbDescription.isHidden = false
             btnCamera.isHidden = false
             lbDescription.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            imgIssue.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:))))
+            imgIssue.isUserInteractionEnabled = true
         } else {
             lbDescription.text = ""
             lbDescription.isHidden = true
             btnCamera.isHidden = true
         }
     }
-    func textFieldDidChange(_ textField: UITextField) {
-        if let _ = delegate {
-            delegate?.textFieldDidChange(cell: self)
-        }
-    }
-    
+
 }
 
 
