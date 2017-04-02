@@ -1016,9 +1016,16 @@ class FirServices{
             callback(true)
         }
     }
-    // ============================
+    
     
     // ============================
+    /// registerFCMToken
+    ///
+    /// - Parameters:
+    ///   - imei: imei
+    ///   - typeOS: typeOS
+    ///   - tokenKey: tokenKey
+    ///   - callback: Bool
     static func registerFCMToken(imei:String, typeOS:String, tokenKey:String ,callback: @escaping (_ completion: Bool) -> Void){
         
         let post = PostParameter()
@@ -1039,10 +1046,15 @@ class FirServices{
             callback(true)
         }
     }
-    // ============================
     
     
-    // ============================
+    
+    /// task down and upload image server
+    ///
+    /// - Parameters:
+    ///   - url: url
+    ///   - post: post
+    ///   - callback: String?
     private static func taskFileImage(
         url: String,
         post: String,
@@ -1086,11 +1098,33 @@ class FirServices{
         task.resume()
         
     }
-    // ============================
     
     
-    // ============================
-    static func uploadFileImage(fileName: String, dataBase64: String, callback: @escaping (_ completion: Bool) -> Void){
+    
+    /// Upload hình lên server
+    ///
+    /// - Parameters:
+    ///   - fileName: fileName
+    ///   - image: UIImage
+    ///   - callback: Bool
+    static func uploadFileImage(fileName: String, image: UIImage, callback: @escaping (_ completion: Bool) -> Void){
+        
+        guard fileName != "" else {
+            print(Constants.ERROR.FILE_IMAGE_NAME)
+            return
+        }
+        
+        let fileName = fileName + ".png"
+        
+        guard let imageData:Data = UIImagePNGRepresentation(image) else {
+            print(Constants.ERROR.FILE_IMAGE_DATA)
+            return
+            
+        }
+        
+        let dataBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+        
+        print(dataBase64)
         
         var post = ""
         post += "<?xml version='1.0' encoding='utf-8'?>"
@@ -1104,16 +1138,6 @@ class FirServices{
         post += "</soap12:Body>"
         post += "</soap12:Envelope>"
         
-        guard fileName != "" else {
-            print(Constants.ERROR.FILE_IMAGE_NAME)
-            return
-        }
-        
-        guard dataBase64 != "" else {
-            print(Constants.ERROR.FILE_IMAGE_DATA)
-            return
-
-        }
         
         taskFileImage(url: Constants.URL.API_UPLOAD_FILE_IMAGE, post: post) { (result) in
             
@@ -1130,15 +1154,18 @@ class FirServices{
                 return
             }
             
-            print("Upload image to server: ", strAfterSub)
             callback(true)
         }
     }
-    // ============================
     
     
-    // ============================
-    static func downloadFileImage(fileName: String, callback: @escaping (_ completion: Bool) -> Void){
+    
+    /// Tải hình từ server về
+    ///
+    /// - Parameters:
+    ///   - fileName: fileName
+    ///   - callback: UIImage?
+    static func downloadFileImage(fileName: String, callback: @escaping (_ completion: UIImage?) -> Void){
         
         var post = ""
             post += "<?xml version='1.0' encoding='utf-8'?>"
@@ -1159,22 +1186,26 @@ class FirServices{
         taskFileImage(url: Constants.URL.API_DOWNLOAD_FILE_IMAGE, post: post) { (result) in
             
             guard result != nil else{
-                callback(false)
+                callback(nil)
                 return
             }
-            
-            print(result!)
             
             let strAfterSub = result!.subString("<GetFileForFIRResult>","</GetFileForFIRResult>") ?? "Can not substring"
 
             if(strAfterSub == "Can not substring"){
                 print(strAfterSub)
-                callback(false)
+                callback(nil)
                 return
             }
             
-            print("Download image to server: ", "OK")
-            callback(true)
+            guard let dataDecoded : Data = Data(base64Encoded: strAfterSub, options: .ignoreUnknownCharacters) else {
+                print(Constants.ERROR.MES,"Decode base64 to data for image")
+                return
+            }
+            
+            let decodedimage = UIImage(data: dataDecoded)
+            
+            callback(decodedimage)
         }
     }
     // ============================
