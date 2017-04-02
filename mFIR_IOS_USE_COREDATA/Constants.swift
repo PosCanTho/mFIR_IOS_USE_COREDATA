@@ -11,49 +11,37 @@ struct Constants {
     struct URL {
         
         // URL Server
-        static let URL_SERVER:String = "http://dev.duytan.edu.vn:8075/ConnectService.asmx/"
+        private static let URL_SERVER:String = "http://dev.duytan.edu.vn:8075/ConnectService.asmx/"
         
         // Server Image
-        static let URL_SERVER_IMAGE:String = "http://dev.duytan.edu.vn:8045/FileUploader.asmx?op="
-        
-        static let NAMESPACE_SRV_IMG:String = "http://tempuri.org/"
-        
-        static let KEY_SVR_IMG:String = "Xds+vBvtvLyUUv8ydOOmjMYkPlQ="
-        
-        static let API_METHOD_FILE_FOR_FIR:String = "GetFileForFIR "
-        
-        static let API_FILE_FOR_FIR:String = URL_SERVER_IMAGE + API_METHOD_FILE_FOR_FIR
-        
-        static let SOAP_ACTION_FILE_FOR_FIR:String = NAMESPACE_SRV_IMG + API_METHOD_FILE_FOR_FIR
+        private static let URL_SERVER_IMAGE:String = "http://dev.duytan.edu.vn:8045/FileUploader.asmx"
+        static let UPLOAD_IMAGE_KEY:String = "Xds+vBvtvLyUUv8ydOOmjMYkPlQ="
+        static let API_DOWNLOAD_FILE_IMAGE:String = URL_SERVER_IMAGE
+        static let API_UPLOAD_FILE_IMAGE:String = URL_SERVER_IMAGE
         
         // API
         static let API_LOGIN:String = URL_SERVER + "Login"
-        
         static let API_GET_LIST_FACILITY:String = URL_SERVER + "csvc_getFacility"
-        
         static let API_GET_LIST_FACILITY_ISSUE:String = URL_SERVER + "csvc_getFacilityIssue"
-        
         static let API_GET_LIST_FACILITY_COMPONENT_TYPE:String = URL_SERVER + "csvc_getFacilityComponentType"
-        
         static let API_GET_RELATIONSHIP:String = URL_SERVER + "csvc_getFacilityTypeComponentTypeRelationship"
-        
         static let API_GET_LIST_FACILITY_TYPE:String = URL_SERVER + "csvc_getFacilityType"
-        
         static let API_GET_LIST_INSTRUCTOR:String = URL_SERVER + "csvc_getInstructor"
-        
         static let API_GET_LIST_STUDENT:String = URL_SERVER + "csvc_getStudent"
-        
         static let API_UPDATE_FACILITY_ISSUE:String = URL_SERVER + "csvc_insupdFacilityIssue"
-        
         static let API_GET_ISSUE_STATUS:String = URL_SERVER + "csvc_getFacilityIssueStatus"
-        
         static let API_GET_ISSUE_BY_FACILITY:String = URL_SERVER + "csvc_getFacilityIssueByFacility"
-        
         static let API_GET_REGISTER_FCMTOKEN:String = URL_SERVER + "registerFCMToken"
         
     }
     
-    
+    struct ERROR {
+        static let MES:String = "ERROR: -> "
+        
+        static let FILE_IMAGE_DATA:String = MES + "image is empty"
+        static let FILE_IMAGE_NAME:String = MES + "image name is empty"
+        static let PARSING_JSON:String = MES + "JSONSerialization"
+    }
 }
 
 struct Databases {
