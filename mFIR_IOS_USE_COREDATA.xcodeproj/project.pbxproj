@@ -33,6 +33,7 @@
 		0E417F781E8C8CDC002465A6 /* NavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E417F741E8C8CDC002465A6 /* NavigationViewController.swift */; };
 		0E417F7E1E8C915E002465A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E417F7D1E8C915E002465A6 /* Main.storyboard */; };
 		565F0CCB1E8E5F8100BB7CAB /* UpdateStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565F0CCA1E8E5F8100BB7CAB /* UpdateStatus.swift */; };
+		56F9C6C01E923C6800B23383 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F9C6BF1E923C6800B23383 /* DatePickerDialog.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
 		F566345A1E88C65E00C580C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F56634591E88C65E00C580C3 /* Assets.xcassets */; };
@@ -85,6 +86,7 @@
 		0E417F741E8C8CDC002465A6 /* NavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationViewController.swift; sourceTree = "<group>"; };
 		0E417F7D1E8C915E002465A6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		565F0CCA1E8E5F8100BB7CAB /* UpdateStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateStatus.swift; sourceTree = "<group>"; };
+		56F9C6BF1E923C6800B23383 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F566344F1E88C65E00C580C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F56634511E88C65E00C580C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -200,11 +202,20 @@
 		0E417F621E8C8A3D002465A6 /* notifications */ = {
 			isa = PBXGroup;
 			children = (
+				56F9C6BE1E923C2A00B23383 /* Sources */,
 				0E417F631E8C8A71002465A6 /* NotificationDetailsController.swift */,
 				0E417F641E8C8A71002465A6 /* NotificationsViewController.swift */,
 				565F0CCA1E8E5F8100BB7CAB /* UpdateStatus.swift */,
 			);
 			name = notifications;
+			sourceTree = "<group>";
+		};
+		56F9C6BE1E923C2A00B23383 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				56F9C6BF1E923C6800B23383 /* DatePickerDialog.swift */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 		F56634431E88C65E00C580C3 = {
@@ -406,6 +417,7 @@
 				040F353A1E8BB38800BF2D39 /* DB.swift in Sources */,
 				F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */,
 				04C7FA301E88E67800A2671C /* FacilityType.swift in Sources */,
+				56F9C6C01E923C6800B23383 /* DatePickerDialog.swift in Sources */,
 				565F0CCB1E8E5F8100BB7CAB /* UpdateStatus.swift in Sources */,
 				041F37711E896B280037940B /* FirDialog.swift in Sources */,
 				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,

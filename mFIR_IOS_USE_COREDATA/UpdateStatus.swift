@@ -53,20 +53,32 @@ class UpdateStatus: UITableViewController, UIPickerViewDelegate, UIPickerViewDat
         return 30.0
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //btnStatusRoom.setTitle(, for: .normal)
+        btnStatusRoom.setTitle( status[row], for: .normal)
 
         if status[row] == "Không xử lý được" {
              btnStatusRoom.setTitle("Không xử lý được", for: .focused)
              btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.8353756421)
+             btnStatusRoom.setTitle("Không xử lý được", for: .focused)
+
         }
         if status[row] == "Đang xử lý" {
             btnStatusRoom.setTitle("Đang xử lý", for: .focused)
             btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 0.9445355535, green: 0.5337328911, blue: 0.03267831355, alpha: 1)
+            btnStatusRoom.setTitle("Đang xử lý", for: .focused)
+
         }
         if status[row] == "Chưa xử lý" {
             btnStatusRoom.setTitle("Chưa xử lý", for: .focused)
             btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 0.4078193307, green: 0.4078193307, blue: 0.4078193307, alpha: 1)
+            btnStatusRoom.setTitle("Chưa xử lý", for: .focused)
+
         }
+//        if status[row] == "Đã xử lý" {
+//            btnStatusRoom.setTitle("Đã xử lý", for: .focused)
+//            btnStatusRoom.titleLabel?.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+//            btnStatusRoom.setTitle("Đã xử lý", for: .focused)
+//            
+//        }
         
         
     }

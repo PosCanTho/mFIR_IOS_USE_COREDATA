@@ -1,6 +1,9 @@
 
 
 import UIKit
+
+
+
 class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lblRoomName: UILabel!
@@ -13,14 +16,120 @@ class NotificationTableViewCell: UITableViewCell {
 
 class NotificationsViewController: UITableViewController {
     
+    //Fillter notitification by date
+    //@IBOutlet
+    @IBOutlet weak var lblFromdate: UIButton!
+    @IBOutlet weak var lblThruDate: UIButton!
+    @IBOutlet weak var lblStatus: UIButton!
+    
+    
+    
+    @IBAction func btnFromDate(_ sender: UIButton) {
+
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+
+        
+        DatePickerDialog().show("From date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
+            if let dt = date {
+                print("----------ngay: \(dt)")
+                
+                let formatFromdate = DateFormatter()
+                formatFromdate.dateFormat = "dd/MM/yyy"
+                let datef = formatFromdate.string(from: dt)
+                
+                print("----------ngay: \(datef)")
+                self.lblFromdate.setTitle("\(datef)", for: .normal)
+            }
+        }
+
+    }
+    @IBAction func btnSortFromDate(_ sender: UIButton) {
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        
+        
+        DatePickerDialog().show("From date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
+            if let dt = date {
+                print("----------ngay: \(dt)")
+                
+                let formatFromdate = DateFormatter()
+                formatFromdate.dateFormat = "dd/MM/yyy"
+                let datef = formatFromdate.string(from: dt)
+                
+                print("----------ngay: \(datef)")
+                self.lblFromdate.setTitle("\(datef)", for: .normal)
+            }
+        }
+
+    }
+    
+    @IBAction func btnThruDate(_ sender: UIButton) {
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        
+        
+        DatePickerDialog().show("Thru date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
+            if let dt = date {
+                print("----------ngay: \(dt)")
+                
+                let formatFromdate = DateFormatter()
+                formatFromdate.dateFormat = "dd/MM/yyy"
+                let datef = formatFromdate.string(from: dt)
+                
+                print("----------ngay: \(datef)")
+                self.lblThruDate.setTitle("\(datef)", for: .normal)
+            }
+        }
+
+    }
+    @IBAction func btnSortThruDate(_ sender: UIButton) {
+        let currentDate = Date()
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
+        
+        
+        DatePickerDialog().show("Thru date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
+            if let dt = date {
+                print("----------ngay: \(dt)")
+                
+                let formatFromdate = DateFormatter()
+                formatFromdate.dateFormat = "dd/MM/yyy"
+                let datef = formatFromdate.string(from: dt)
+                
+                print("----------ngay: \(datef)")
+                self.lblThruDate.setTitle("\(datef)", for: .normal)
+            }
+        }
+
+    }
+    
+    @IBAction func btnStatus(_ sender: UIButton) {
+        print("status")
+    }
+    @IBAction func btnSortStatus(_ sender: UIButton) {
+        print("status")
+    }
+    
+  
+    
+    
     var facilityIssue: [Issue] = []
     var issueNew: [Issue] = []
+    //var reversedIssueNew: [Issue] = []
     //var issueSortByFacId:[Issue] = [] //list issue sort theo facilityId
     let strNoStatus = "No status"
     let strChuaXuLy = "Chưa xử lý"
-    let strDangXuLy = "Đang xử lý"
-    let strDaXuLy = "Đã xử lý"
-    let strKhongXuLyDuoc = "Không xử lý được"
+    let strDangXuLy = "Đang Xử lý"
+    let strDaXuLy = "đã xử lý"
+    let strKhongXuLyDuoc = "Không Xử Lý được"
 
     //123
     override func viewDidLoad() {
@@ -46,17 +155,17 @@ class NotificationsViewController: UITableViewController {
     func getData(){
         let issue = FirServices (self)
         //Lấy ngày giờ hệ thống
-        let date = Date()
+        //let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        let datef = format.string(from: date)
+        //let datef = format.string(from: date)
         
-        let strFromDate = "1994-11-11 00:00:00"
+        //let strFromDate = "1994-11-11 00:00:00"
         let strFacilityIssueId = "0"
         
         //print("ngay he thong ne: \(datef)")
         
-        issue.getIssue(facilityIssueId: strFacilityIssueId, fromDate: strFromDate, thruDate: datef) { (dataIssue) in
+        issue.getIssue(facilityIssueId: strFacilityIssueId, fromDate: "", thruDate: "") { (dataIssue) in
             if dataIssue != nil {
                 DispatchQueue.main.async {
                    
@@ -83,11 +192,14 @@ class NotificationsViewController: UITableViewController {
                         if !isExist {
                             self.issueNew.append(contentsOf: issue1)
                             //print("jsfsssrff \(self.issueNew)")
+                            
                         }
                         
                         
                     }
-   
+                    //Dao nguoc mang issuenew
+                    self.issueNew.reverse()
+                    
                     self.tableView.reloadData()
                     print("Lấy được rồi nhé!-------- OK")
                 }
@@ -138,9 +250,9 @@ class NotificationsViewController: UITableViewController {
         if(strFacilityIssueStatus.isEmpty){
             
             cell.lblStatusRoom?.text = strNoStatus
-            cell.lblStatusRoom.textColor = UIColor.darkGray
+            cell.lblStatusRoom.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             cell.btnStatusRoom.setTitle("N", for: .normal)
-            cell.btnStatusRoom.backgroundColor = UIColor.darkGray
+            cell.btnStatusRoom.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             
         }
         else
@@ -148,21 +260,27 @@ class NotificationsViewController: UITableViewController {
             cell.lblStatusRoom?.text = issue.facilityIssueStatus
             if(strFacilityIssueStatus == strChuaXuLy){
                 cell.lblStatusRoom?.text = strFacilityIssueStatus
-                cell.lblStatusRoom.textColor = UIColor.darkGray
+                cell.lblStatusRoom.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
                 cell.btnStatusRoom.setTitle("C", for: .normal)
-                cell.btnStatusRoom.backgroundColor = UIColor.darkGray
+                cell.btnStatusRoom.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
             }
             if(strFacilityIssueStatus == strDangXuLy){
                 cell.lblStatusRoom?.text = strFacilityIssueStatus
-                cell.lblStatusRoom.textColor = UIColor.orange
+                cell.lblStatusRoom.textColor = #colorLiteral(red: 0.983184278, green: 0.6165204644, blue: 0.01970458217, alpha: 1)
                 cell.btnStatusRoom.setTitle("Đ", for: .normal)
-                cell.btnStatusRoom.backgroundColor = UIColor.orange
+                cell.btnStatusRoom.backgroundColor = #colorLiteral(red: 0.983184278, green: 0.6165204644, blue: 0.01970458217, alpha: 1)
             }
             if(strFacilityIssueStatus == strKhongXuLyDuoc){
                 cell.lblStatusRoom?.text = strFacilityIssueStatus
                 cell.lblStatusRoom.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
                 cell.btnStatusRoom.setTitle("K", for: .normal)
                 cell.btnStatusRoom.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 0.9313730736)
+            }
+            if(strFacilityIssueStatus == strDaXuLy){
+                cell.lblStatusRoom?.text = strFacilityIssueStatus
+                cell.lblStatusRoom.textColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                cell.btnStatusRoom.setTitle("Đ", for: .normal)
+                cell.btnStatusRoom.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
             }
         }
 
