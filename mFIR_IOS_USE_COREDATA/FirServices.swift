@@ -1114,7 +1114,7 @@ class FirServices{
             return
         }
         
-        let fileName = fileName + ".png"
+        let fileName = fileName + ".jpg"
         
         guard let imageData:Data = UIImagePNGRepresentation(image) else {
             print(Constants.ERROR.FILE_IMAGE_DATA)
