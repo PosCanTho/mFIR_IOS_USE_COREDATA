@@ -24,6 +24,7 @@
 		04C7FA381E88E67800A2671C /* PostParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA2D1E88E67800A2671C /* PostParameter.swift */; };
 		04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA391E88E68A00A2671C /* FirServices.swift */; };
 		04C7FA3C1E88E69200A2671C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7FA3B1E88E69200A2671C /* Constants.swift */; };
+		04FFDD991E924D5700C73B94 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FFDD981E924D5700C73B94 /* Extension.swift */; };
 		F521C1671E8E3107006C8812 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521C1661E8E3106006C8812 /* Utils.swift */; };
 		F56634501E88C65E00C580C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F566344F1E88C65E00C580C3 /* AppDelegate.swift */; };
 		F56634521E88C65E00C580C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56634511E88C65E00C580C3 /* ViewController.swift */; };
@@ -73,6 +74,7 @@
 		04C7FA2D1E88E67800A2671C /* PostParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParameter.swift; sourceTree = "<group>"; };
 		04C7FA391E88E68A00A2671C /* FirServices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirServices.swift; sourceTree = "<group>"; };
 		04C7FA3B1E88E69200A2671C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		04FFDD981E924D5700C73B94 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		F521C1651E8E2F18006C8812 /* mFIR-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "mFIR-Bridging-Header.h"; sourceTree = "<group>"; };
 		F521C1661E8E3106006C8812 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F566344C1E88C65E00C580C3 /* mFIR_IOS_USE_COREDATA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mFIR_IOS_USE_COREDATA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 				041F37701E896B280037940B /* FirDialog.swift */,
 				040F35231E8B5F1900BF2D39 /* CheckInternet.swift */,
 				F521C1661E8E3106006C8812 /* Utils.swift */,
+				04FFDD981E924D5700C73B94 /* Extension.swift */,
 			);
 			name = untils;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				F5DAA3691E8DECB50039F1FE /* DesignableRectangButton.swift in Sources */,
 				04C7FA371E88E67800A2671C /* UserReferences.swift in Sources */,
 				04C7FA3A1E88E68A00A2671C /* FirServices.swift in Sources */,
+				04FFDD991E924D5700C73B94 /* Extension.swift in Sources */,
 				04C7FA351E88E67800A2671C /* Student.swift in Sources */,
 				04C7FA2F1E88E67800A2671C /* Facility.swift in Sources */,
 				F5DAA3681E8DECB50039F1FE /* DesignableTextField.swift in Sources */,
