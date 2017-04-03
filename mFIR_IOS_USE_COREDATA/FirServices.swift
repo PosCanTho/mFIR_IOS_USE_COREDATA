@@ -15,7 +15,7 @@ class FirServices{
     private static var progressId:Int = 0
     private static var arrayProgress:[Int:Bool] = [:]
     private static var percentProgressDone:Float = 0.0
-    private static var isLogin:Bool = false
+    private static var isNotMessage:Bool = false
     
     //    private static let instance:ServicesInstance = ServicesInstance() // singleton pattern
     //
@@ -64,10 +64,10 @@ class FirServices{
                 
             }else{
                 ProgressingDialog.show()
-                if(!FirServices.isLogin){
+                if(!FirServices.isNotMessage){
                     ProgressingDialog.setMessage(mes: "Downloading...")
                 }else{
-                    FirServices.isLogin = false
+                    FirServices.isNotMessage = false
                 }
             }
         }
@@ -172,7 +172,7 @@ class FirServices{
         
         let TAG = "func -> login: "
         
-        FirServices.isLogin = true
+        FirServices.isNotMessage = true
         
         let post = PostParameter()
         post.add(key: "username", value: username)
@@ -1065,6 +1065,9 @@ class FirServices{
             return
         }
         
+        FirServices.progressId += 1
+        FirServices.isNotMessage = true
+        
         let urlRequest = URL(string: url)!
         var request = URLRequest(url: urlRequest, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 120) // timeout 120 seconds
         request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
@@ -1072,14 +1075,26 @@ class FirServices{
         request.httpMethod = "POST"
         request.httpBody = post.data(using: .utf8, allowLossyConversion: false)
         
+        let inprogressId = FirServices.progressId
+        
+        FirServices.arrayProgress[inprogressId] = false
+        
+        showProgressing(progressId: inprogressId, completion: false)
+        
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data, error == nil else {
+                    FirServices.arrayProgress.removeAll()
+                    FirServices.progressId = 0
+                    FirServices.percentProgressDone = 0.0
+                    FirServices.showProgressing( progressId: inprogressId, completion: true)
                     FirDialog.showErrorDownload(urlError: (error as! URLError?)!)
                     callback(nil)
                     print(error!)
                     return
             }
+            
+            FirServices.arrayProgress[inprogressId] = true
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200
             {
@@ -1090,9 +1105,11 @@ class FirServices{
             
             guard let stringXML = String(data: data, encoding: String.Encoding.utf8) else{
                 print(Constants.ERROR.MES,"stringXML")
+                FirServices.showProgressing(progressId: inprogressId, completion: true)
                 return
             }
 
+            FirServices.showProgressing(progressId: inprogressId, completion: true)
             callback(stringXML)
         }
         task.resume()
@@ -1165,6 +1182,13 @@ class FirServices{
     ///   - callback: UIImage?
     static func downloadFileImage(fileName: String, callback: @escaping (_ completion: UIImage?) -> Void){
         
+        guard fileName != "" else {
+            print(Constants.ERROR.FILE_IMAGE_NAME)
+            return
+        }
+        
+        let fileName = fileName + ".jpg"
+        
         var post = ""
             post += "<?xml version='1.0' encoding='utf-8'?>"
             post += "<soap12:Envelope xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:soap12='http://www.w3.org/2003/05/soap-envelope'>"
@@ -1176,12 +1200,6 @@ class FirServices{
             post += "</soap12:Body>"
             post += "</soap12:Envelope>"
         
-        guard fileName != "" else {
-            print(Constants.ERROR.FILE_IMAGE_NAME)
-            return
-        }
-        
-        let fileName = fileName + ".jpg"
         
         taskFileImage(url: Constants.URL.API_DOWNLOAD_FILE_IMAGE, post: post) { (result) in
             
