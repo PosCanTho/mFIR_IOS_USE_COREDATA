@@ -16,12 +16,6 @@ class FirServices{
     private static var arrayProgress:[Int:Bool] = [:]
     private static var percentProgressDone:Float = 0.0
     private static var isNotMessage:Bool = false
-    private static var isUploadImage:Bool = false
-    //    private static let instance:ServicesInstance = ServicesInstance() // singleton pattern
-    //
-    //    static func getInstance() -> ServicesInstance{
-    //        return instance
-    //    }
     
     
     /// Hiển thị phần trăm download
@@ -30,54 +24,45 @@ class FirServices{
     ///   - viewController: UIViewController
     ///   - progressId: progress id
     ///   - completion: completion
-    static func showProgressing(progressId: Int, completion: Bool){
+    static func showProgressing(isShow: Bool, completion: Bool){
         DispatchQueue.main.async {
             
-            if(completion){
-                var countProgressDone:Int = 0
-                var isAllProgressComplete:Bool = true
-                
-                for (_ , value) in  FirServices.arrayProgress{
-                    if(!value){
-                        isAllProgressComplete = false
-                    }else{
-                        countProgressDone += 1
+            if(!isShow){
+                if(completion){
+                    var countProgressDone:Int = 0
+                    var isAllProgressComplete:Bool = true
+                    
+                    for (_ , value) in  FirServices.arrayProgress{
+                        if(!value){
+                            isAllProgressComplete = false
+                        }else{
+                            countProgressDone += 1
+                        }
                     }
-                }
-                
-                FirServices.percentProgressDone = (Float(countProgressDone)/Float(FirServices.arrayProgress.count))*100
-                
-                if(!FirServices.percentProgressDone.isNaN){
-                    ProgressingDialog.setMessage(mes: "\(String(format: "%.0f",FirServices.percentProgressDone))%")
-                }
-                
-                if(isAllProgressComplete || FirServices.arrayProgress.count == 0){
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
-                        ProgressingDialog.hide()
-                    })
+                    FirServices.percentProgressDone = (Float(countProgressDone)/Float(FirServices.arrayProgress.count))*100
                     
-                    FirServices.progressId = 0
-                    FirServices.arrayProgress.removeAll()
-                    FirServices.percentProgressDone = 0.0
+                    if(!FirServices.percentProgressDone.isNaN){
+                        ProgressingDialog.setMessage(mes: "\(String(format: "%.0f",FirServices.percentProgressDone))%")
+                    }
+                    
+                    if(isAllProgressComplete || FirServices.arrayProgress.count == 0){
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+                            ProgressingDialog.hide()
+                        })
+                        
+                        FirServices.progressId = 0
+                        FirServices.arrayProgress.removeAll()
+                        FirServices.percentProgressDone = 0.0
+                    }
+                }else{
+                    ProgressingDialog.hide()
                 }
+                
                 
             }else{
                 ProgressingDialog.show()
-                
-                guard !FirServices.isNotMessage else{
-                    FirServices.isNotMessage = false
-                    return
-                }
-                
-                guard !FirServices.isUploadImage else{
-                    FirServices.isUploadImage = false
-                    ProgressingDialog.setMessage(mes: "Sending...")
-                    return
-                }
-                
-                ProgressingDialog.setMessage(mes: "Downloading...")
-
             }
         }
     }
@@ -127,9 +112,12 @@ class FirServices{
         let inprogressId = FirServices.progressId
         
         FirServices.arrayProgress[inprogressId] = false
-        
-        showProgressing(progressId: inprogressId, completion: false)
-        
+        showProgressing(isShow: true, completion: false)
+        if(FirServices.isNotMessage){
+            FirServices.isNotMessage = false
+        }else{
+            ProgressingDialog.setMessage(mes: "Downloading...")
+        }
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data, error == nil
@@ -137,7 +125,7 @@ class FirServices{
                     FirServices.arrayProgress.removeAll()
                     FirServices.progressId = 0
                     FirServices.percentProgressDone = 0.0
-                    FirServices.showProgressing( progressId: inprogressId, completion: true)
+                    FirServices.showProgressing(isShow: false, completion: false)
                     FirDialog.showErrorDownload(urlError: (error as! URLError?)!)
                     callback(Dictionary<String, AnyObject>())
                     print(error!)
@@ -156,12 +144,12 @@ class FirServices{
             do {
                 
                 if let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String:Any] {
-                    FirServices.showProgressing(progressId: inprogressId, completion: true)
+                    FirServices.showProgressing(isShow: false, completion: true)
                     callback(json)
                 }
                 
             } catch {
-                FirServices.showProgressing(progressId: inprogressId, completion: true)
+                FirServices.showProgressing(isShow: false, completion: false)
                 callback(Dictionary<String, AnyObject>())
                 print(Constants.ERROR.PARSING_JSON)
             }
@@ -1067,6 +1055,7 @@ class FirServices{
     private static func taskFileImage(
         url: String,
         post: String,
+        showProgress: Bool,
         callback: @escaping (_ result: String?) -> Void) {
         
         guard CheckInternet.isInternetAvailable() else {
@@ -1074,36 +1063,26 @@ class FirServices{
             return
         }
         
-        FirServices.progressId += 1
-        
         let urlRequest = URL(string: url)!
         var request = URLRequest(url: urlRequest, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 120) // timeout 120 seconds
         request.addValue("text/xml; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.addValue(String(post.characters.count), forHTTPHeaderField: "Content-Length")
         request.httpMethod = "POST"
         request.httpBody = post.data(using: .utf8, allowLossyConversion: false)
-        
-        let inprogressId = FirServices.progressId
-        
-        FirServices.arrayProgress[inprogressId] = false
-        if(FirServices.isUploadImage){
-            showProgressing(progressId: inprogressId, completion: false)
+        if(showProgress){
+            FirServices.showProgressing(isShow: true, completion: false)
+            ProgressingDialog.setMessage(mes: "Sending...")
         }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             guard let data = data, error == nil else {
-                    FirServices.arrayProgress.removeAll()
-                    FirServices.progressId = 0
-                    FirServices.percentProgressDone = 0.0
-                    FirServices.showProgressing( progressId: inprogressId, completion: true)
+                    FirServices.showProgressing(isShow: false, completion: false)
                     FirDialog.showErrorDownload(urlError: (error as! URLError?)!)
                     callback(nil)
                     print(error!)
                     return
             }
-            
-            FirServices.arrayProgress[inprogressId] = true
             
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200
             {
@@ -1114,11 +1093,14 @@ class FirServices{
             
             guard let stringXML = String(data: data, encoding: String.Encoding.utf8) else{
                 print(Constants.ERROR.MES,"stringXML")
-                FirServices.showProgressing(progressId: inprogressId, completion: true)
+                FirServices.showProgressing(isShow: false, completion: false)
                 return
             }
-
-            FirServices.showProgressing(progressId: inprogressId, completion: true)
+            
+            if(showProgress){
+                FirServices.showProgressing(isShow: false, completion: true)
+            }
+            
             callback(stringXML)
         }
         task.resume()
@@ -1171,9 +1153,7 @@ class FirServices{
         post += "</soap12:Body>"
         post += "</soap12:Envelope>"
         
-        FirServices.isUploadImage = true
-        
-        taskFileImage(url: Constants.URL.API_UPLOAD_FILE_IMAGE, post: post) { (result) in
+        taskFileImage(url: Constants.URL.API_UPLOAD_FILE_IMAGE, post: post, showProgress: true) { (result) in
             
             guard result != nil else{
                 callback(false)
@@ -1223,9 +1203,7 @@ class FirServices{
             post += "</soap12:Body>"
             post += "</soap12:Envelope>"
         
-        FirServices.isNotMessage = true
-        
-        taskFileImage(url: Constants.URL.API_DOWNLOAD_FILE_IMAGE, post: post) { (result) in
+        taskFileImage(url: Constants.URL.API_DOWNLOAD_FILE_IMAGE, post: post, showProgress: false) { (result) in
             
             guard result != nil else{
                 callback(nil)
