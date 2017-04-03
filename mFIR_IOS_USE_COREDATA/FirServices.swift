@@ -16,7 +16,7 @@ class FirServices{
     private static var arrayProgress:[Int:Bool] = [:]
     private static var percentProgressDone:Float = 0.0
     private static var isNotMessage:Bool = false
-    
+    private static var isUploadImage:Bool = false
     //    private static let instance:ServicesInstance = ServicesInstance() // singleton pattern
     //
     //    static func getInstance() -> ServicesInstance{
@@ -64,11 +64,20 @@ class FirServices{
                 
             }else{
                 ProgressingDialog.show()
-                if(!FirServices.isNotMessage){
-                    ProgressingDialog.setMessage(mes: "Downloading...")
-                }else{
+                
+                guard !FirServices.isNotMessage else{
                     FirServices.isNotMessage = false
+                    return
                 }
+                
+                guard !FirServices.isUploadImage else{
+                    FirServices.isUploadImage = false
+                    ProgressingDialog.setMessage(mes: "Sending...")
+                    return
+                }
+                
+                ProgressingDialog.setMessage(mes: "Downloading...")
+
             }
         }
     }
@@ -1066,7 +1075,6 @@ class FirServices{
         }
         
         FirServices.progressId += 1
-        FirServices.isNotMessage = true
         
         let urlRequest = URL(string: url)!
         var request = URLRequest(url: urlRequest, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 120) // timeout 120 seconds
@@ -1078,8 +1086,9 @@ class FirServices{
         let inprogressId = FirServices.progressId
         
         FirServices.arrayProgress[inprogressId] = false
-        
-        showProgressing(progressId: inprogressId, completion: false)
+        if(FirServices.isUploadImage){
+            showProgressing(progressId: inprogressId, completion: false)
+        }
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
@@ -1133,6 +1142,15 @@ class FirServices{
         
         let fileName = fileName + ".jpg"
         
+        var image = image
+        
+        if(image.size.width > 2048){
+            image = image.resized(toWidth: 1024)!
+        }
+        if(image.size.height > 2048){
+            image = image.resized(toHeight: 1024)!
+        }
+        
         guard let imageData:Data = UIImagePNGRepresentation(image) else {
             print(Constants.ERROR.FILE_IMAGE_DATA)
             return
@@ -1153,6 +1171,7 @@ class FirServices{
         post += "</soap12:Body>"
         post += "</soap12:Envelope>"
         
+        FirServices.isUploadImage = true
         
         taskFileImage(url: Constants.URL.API_UPLOAD_FILE_IMAGE, post: post) { (result) in
             
@@ -1161,7 +1180,11 @@ class FirServices{
                 return
             }
             
-            let strAfterSub = result!.subString("<UploadFileForFIRResult>","</UploadFileForFIRResult>") ?? "Can not substring"
+            guard let strAfterSub = result!.subString("<UploadFileForFIRResult>","</UploadFileForFIRResult>") else{
+                print(Constants.ERROR.MES,result!)
+                callback(false)
+                return
+            }
             
             if(strAfterSub != "OK"){
                 print(strAfterSub)
@@ -1200,6 +1223,7 @@ class FirServices{
             post += "</soap12:Body>"
             post += "</soap12:Envelope>"
         
+        FirServices.isNotMessage = true
         
         taskFileImage(url: Constants.URL.API_DOWNLOAD_FILE_IMAGE, post: post) { (result) in
             
@@ -1208,10 +1232,8 @@ class FirServices{
                 return
             }
             
-            let strAfterSub = result!.subString("<GetFileForFIRResult>","</GetFileForFIRResult>") ?? "Can not substring"
-
-            if(strAfterSub == "Can not substring"){
-                print(strAfterSub)
+            guard let strAfterSub = result!.subString("<GetFileForFIRResult>","</GetFileForFIRResult>") else{
+                print(Constants.ERROR.MES,result!)
                 callback(nil)
                 return
             }
