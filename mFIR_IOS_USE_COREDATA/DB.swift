@@ -266,6 +266,53 @@ class DB {
                 return false
             }
         }
+        static func searchBar(listFacility: [Facility]) -> [SearchBar] {
+            
+            var nameSearch : [Search] = []
+            var nameSearchBar : [SearchBar] = []
+            var facilityRoom : [FacilityRoom]=[]
+            var floor: [Floor]=[]
+            for n in 0 ..< listFacility.count {
+                let facilityR : Facility = listFacility[n]
+                if facilityR.facilityRootId != "" && facilityR.facilityTypeName != "Tầng" && facilityR.facilityTypeName != "Toà Nhà" {
+                    nameSearch.append(Search(name: facilityR.facilityTypeName + " " + facilityR.facilityName, id:facilityR.facilityId, rootId:facilityR.facilityRootId))
+                }
+                else{
+                    if facilityR.facilityRootId == "" {
+                        facilityRoom.append(FacilityRoom(id:facilityR.facilityId, name: facilityR.facilityName, rootId: facilityR.facilityRootId))
+                    }
+                    else {
+                        floor.append(Floor(id: facilityR.facilityId, name: facilityR.facilityName, rootId: facilityR.facilityRootId))
+                    }
+                    
+                }
+                
+            }
+            for i in 0  ..< nameSearch.count {
+                let search : Search = nameSearch[i]
+                let rootId = search.rootId
+                for j in 0  ..< floor.count {
+                    let fl : Floor = floor[j]
+                    let id = fl.id
+                    let rootIdFloor = fl.rootId
+                    if rootId == id {
+                        for k in 0  ..< facilityRoom.count  {
+                            let fR : FacilityRoom = facilityRoom[k]
+                            let idFroom = fR.id
+                            if rootIdFloor == idFroom {
+                                nameSearchBar.append(SearchBar(name: search.name + " - "+fR.name))
+                            }
+                            
+                        }
+                    }
+                }
+                
+            }
+            
+            
+            return nameSearchBar
+            
+        }
     }
     
     /// Facility Component database
