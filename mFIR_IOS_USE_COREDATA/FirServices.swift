@@ -185,6 +185,12 @@ class FirServices{
                 userReference.removeObject(forKey: UserReferences.USERNAME)
                 userReference.removeObject(forKey: UserReferences.PASSWORD)
                 
+                userReference.removeObject(forKey: UserReferences.USER_ROLE_TYPE)
+                userReference.removeObject(forKey: UserReferences.USER_STUDENT_ID_NUMBER)
+                userReference.removeObject(forKey: UserReferences.USER_INSTRUCTOR_ID_NUMBER)
+                userReference.removeObject(forKey: UserReferences.USER_ID)
+                userReference.removeObject(forKey: UserReferences.USER_FULL_NAME)
+                
                 callback(nil)
                 return
             }
@@ -201,6 +207,13 @@ class FirServices{
                     print(TAG + "Parsing JSON error!")
                     return
             }
+            
+            let reference = UserDefaults.standard
+            reference.setValue(roleType, forKey: UserReferences.USER_ROLE_TYPE)
+            reference.setValue(studentIdNumber, forKey: UserReferences.USER_STUDENT_ID_NUMBER)
+            reference.setValue(instructorIdNumber, forKey: UserReferences.USER_INSTRUCTOR_ID_NUMBER)
+            reference.setValue(userId, forKey: UserReferences.USER_ID)
+            reference.setValue(currentLastName + " " + currentMiddleName + " " + currentFirstName, forKey: UserReferences.USER_FULL_NAME)
             
             let user = User(
                 userId: userId,
