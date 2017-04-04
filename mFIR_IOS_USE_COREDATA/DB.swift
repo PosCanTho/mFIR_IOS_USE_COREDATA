@@ -19,68 +19,38 @@ class DB {
         return con
     }()
     
-    static func downloadToDB(){
-        
-        if(DB.FacilityComponentDB.checkFacilityComponentIsExist()){
-            DB.FacilityComponentDB.deleteRecords()
-        }
-        
-        if(DB.FacilityDB.checkFacilityIsExist()){
-            DB.FacilityDB.deleteRecords()
-        }
-        
-        if(DB.FacilityTypeDB.checkFacilityTypeIsExist()){
-            DB.FacilityTypeDB.deleteRecords()
-        }
-        
-        
-        if(DB.RelationshipDB.checkFacilityRelationshipIsExist()){
-            DB.RelationshipDB.deleteRecords()
-        }
-        
-        FirServices.getFacility(facilityId: "0") { (data) in
-            guard data != nil else{
-                return
-            }
-            DispatchQueue.main.async {
-                DB.FacilityDB.saveAllFacility(listFacilityData: data!)
-                print("Downloaded: FacilityDB -> \(DB.FacilityDB.getDataFacility().count)")
-            }
-        }
-        
-        FirServices.getComponentType(facilityComponentTypeId: "0") { (data) in
-            guard data != nil else{
-                return
-            }
-            DispatchQueue.main.async {
-                DB.FacilityComponentDB.saveAllComponent(listComponentData: data!)
-                print("Downloaded: FacilityComponentDB -> \(DB.FacilityComponentDB.getDataComponent().count)")
-            }
-        }
-        
-        FirServices.getFacilityType(facilityTypeId: "0") { (data) in
-            guard data != nil else{
-                return
-            }
-            DispatchQueue.main.async {
-                DB.FacilityTypeDB.saveAllFacilityType(listFacilityTypeData: data!)
-                print("Downloaded: FacilityTypeDB -> \(DB.FacilityTypeDB.getDataFacilityType().count)")
-            }
-        }
-        
-        
-        FirServices.getRelationship(facilityTypeId: "0", facilityComponentTypeId: "0") { (data) in
-            guard data != nil else{
-                return
-            }
-            DispatchQueue.main.async {
-                DB.RelationshipDB.saveAllRelationship(listRelationshipData: data!)
-                print("Downloaded: RelationshipDB -> \(DB.RelationshipDB.getDataRelationship().count)")
-            }
-        }
-        
+    FirServices.getComponentType(facilityComponentTypeId: "0") { (data) in
+    guard data != nil else{
+    return
+    }
+    DispatchQueue.main.async {
+    DB.FacilityComponentDB.saveAllComponent(listComponentData: data!)
+    print("Downloaded: FacilityComponentDB -> \(DB.FacilityComponentDB.getDataComponent().count)")
+    }
     }
     
+    FirServices.getFacilityType(facilityTypeId: "0") { (data) in
+    guard data != nil else{
+    return
+    }
+    DispatchQueue.main.async {
+    DB.FacilityTypeDB.saveAllFacilityType(listFacilityTypeData: data!)
+    print("Downloaded: FacilityTypeDB -> \(DB.FacilityTypeDB.getDataFacilityType().count)")
+    }
+    }
+    
+    
+    FirServices.getRelationship(facilityTypeId: "0", facilityComponentTypeId: "0") { (data) in
+    guard data != nil else{
+    return
+    }
+    DispatchQueue.main.async {
+    DB.RelationshipDB.saveAllRelationship(listRelationshipData: data!)
+    print("Downloaded: RelationshipDB -> \(DB.RelationshipDB.getDataRelationship().count)")
+    }
+    }
+    
+}
     /// Facility database
     class FacilityDB {
         
@@ -176,7 +146,7 @@ class DB {
         static func  getFacilityWithoutFloor ()->[Facility]{
             var list : [Facility] = []
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY)
-            fetchRequest.predicate = NSPredicate(format: " \(Databases.FACILITY_TYPE_NAME) IS NOT Tầng AND \(Databases.ROOT_FACILITY_ID) IS NOT ''")
+            fetchRequest.predicate = NSPredicate(format: "\(Databases.ROOT_FACILITY_ID) == \"\"")
             do {
                 //go get the results
                 let searchResults = try context.fetch(fetchRequest)
@@ -266,53 +236,7 @@ class DB {
                 return false
             }
         }
-        static func searchBar(listFacility: [Facility]) -> [SearchBar] {
-            
-            var nameSearch : [Search] = []
-            var nameSearchBar : [SearchBar] = []
-            var facilityRoom : [FacilityRoom]=[]
-            var floor: [Floor]=[]
-            for n in 0 ..< listFacility.count {
-                let facilityR : Facility = listFacility[n]
-                if facilityR.facilityRootId != "" && facilityR.facilityTypeName != "Tầng" && facilityR.facilityTypeName != "Toà Nhà" {
-                    nameSearch.append(Search(name: facilityR.facilityTypeName + " " + facilityR.facilityName, id:facilityR.facilityId, rootId:facilityR.facilityRootId))
-                }
-                else{
-                    if facilityR.facilityRootId == "" {
-                        facilityRoom.append(FacilityRoom(id:facilityR.facilityId, name: facilityR.facilityName, rootId: facilityR.facilityRootId))
-                    }
-                    else {
-                        floor.append(Floor(id: facilityR.facilityId, name: facilityR.facilityName, rootId: facilityR.facilityRootId))
-                    }
-                    
-                }
-                
-            }
-            for i in 0  ..< nameSearch.count {
-                let search : Search = nameSearch[i]
-                let rootId = search.rootId
-                for j in 0  ..< floor.count {
-                    let fl : Floor = floor[j]
-                    let id = fl.id
-                    let rootIdFloor = fl.rootId
-                    if rootId == id {
-                        for k in 0  ..< facilityRoom.count  {
-                            let fR : FacilityRoom = facilityRoom[k]
-                            let idFroom = fR.id
-                            if rootIdFloor == idFroom {
-                                nameSearchBar.append(SearchBar(name: search.name + " - "+fR.name))
-                            }
-                            
-                        }
-                    }
-                }
-                
-            }
-            
-            
-            return nameSearchBar
-            
-        }
+        
     }
     
     /// Facility Component database
@@ -419,9 +343,9 @@ class DB {
                 return false
             }
         }
-        
+
     }
-    
+
     /// Issue database
     class IssueDB{
         
@@ -696,7 +620,7 @@ class DB {
                 return false
             }
         }
-        
+
         
     }
     
@@ -813,35 +737,7 @@ class DB {
                 return false
             }
         }
-        
-        // 31/03/2017 -> ADD
-        static func getComponentByRoomType(roomType: String) -> [Relationship]{
-            let idType = FacilityTypeDB.getTypeIdByTypeName(facilityTypeName: roomType)
-            
-            var list : [Relationship] = []
-            
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: Databases.TABLE_FACILITY_RELATIONSHIP)
-            fetchRequest.predicate = NSPredicate(format: "\(Databases.FACILITY_TYPE_ID) == %@",idType)
-            do {
-                //go get the results
-                let searchResults = try context.fetch(fetchRequest)
-                //You need to convert to NSManagedObject to use 'for' loops
-                for trans in searchResults as! [NSManagedObject] {
-                    let relationship = Relationship(
-                        facilityTypeId: (trans.value(forKey: Databases.FACILITY_TYPE_ID)! as! String),
-                        facilityTypeName: (trans.value(forKey: Databases.FACILITY_TYPE_NAME)! as! String),
-                        facilityComponentTypeId: (trans.value(forKey: Databases.FACILITY_COMPONENT_TYPE_ID)! as! String),
-                        facilityComponentTypeName: (trans.value(forKey: Databases.FACILITY_COMPONENT_TYPE_NAME)! as! String),
-                        fromDate: (trans.value(forKey: Databases.FROM_DATE)! as! String),
-                        thruDate: (trans.value(forKey: Databases.THRU_DATE)! as! String),
-                        note: (trans.value(forKey: Databases.NOTE)! as! String))
-                    list.append(relationship)
-                }
-            } catch {
-                print("Error with request: \(error)")
-            }
-            return list
-        }
+
     }
     
     /// Facility type database
