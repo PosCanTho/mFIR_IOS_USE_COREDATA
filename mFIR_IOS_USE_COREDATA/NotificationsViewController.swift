@@ -2,8 +2,6 @@
 
 import UIKit
 
-
-
 class NotificationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var lblRoomName: UILabel!
@@ -41,13 +39,9 @@ class NotificationsViewController: UITableViewController {
         
         DatePickerDialog().show("From date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
             if let dt = date {
-                print("----------ngay: \(dt)")
-                
                 let formatFromdate = DateFormatter()
                 formatFromdate.dateFormat = "dd/MM/yyy"
                 let datef = formatFromdate.string(from: dt)
-                
-                print("----------ngay: \(datef)")
                 self.lblFromdate.setTitle("\(datef)", for: .normal)
             }
         }
@@ -66,16 +60,11 @@ class NotificationsViewController: UITableViewController {
         dateComponents.month = -3
         let threeMonthAgo = Calendar.current.date(byAdding: dateComponents, to: currentDate)
         
-        
         DatePickerDialog().show("Thru date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
             if let dt = date {
-                print("----------ngay: \(dt)")
-                
                 let formatFromdate = DateFormatter()
                 formatFromdate.dateFormat = "dd/MM/yyy"
                 let datef = formatFromdate.string(from: dt)
-                
-                print("----------ngay: \(datef)")
                 self.lblThruDate.setTitle("\(datef)", for: .normal)
             }
         }
@@ -101,9 +90,6 @@ class NotificationsViewController: UITableViewController {
         alert.addAction(fourAction)
         
         present(alert, animated: true, completion: nil)
-        
-        print("status")
-
     }
     
   
@@ -178,27 +164,21 @@ class NotificationsViewController: UITableViewController {
             if dataIssue != nil {
                 DispatchQueue.main.async {
                    
-                    self.facilityIssue = dataIssue! //dữ liệu nguyễn mấu từ services
+                    self.facilityIssue = dataIssue! //dữ liệu nguyễn mẫu từ services
                     
                     ///Nhóm FacilityIssue theo facilityId (phòng)
                     for index in 0 ..< self.facilityIssue.count{
-                      
                         let issue1: [Issue] = [self.facilityIssue[index]] //lấy đối tượng trong array
-                        
-                        //print(issue1)
                         let strFacilityId = self.facilityIssue[index].facilityId // lấy ra facilityId trong array
                         var isExist: Bool = false
-                        
                         for index1 in 0 ..< self.issueNew.count {
                             let strFacilityId1 = self.issueNew[index1].facilityId
                             if strFacilityId?.caseInsensitiveCompare(strFacilityId1!) == .orderedSame {
                                 isExist = true
                             }
-
                         }
                         if !isExist {
                             self.issueNew.append(contentsOf: issue1)
-                            //print("jsfsssrff \(self.issueNew)")
                         }
                     }
                     //Dao nguoc mang issueNew
@@ -229,7 +209,6 @@ class NotificationsViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationCell", for: indexPath) as! NotificationTableViewCell
         
         let issue = issueNew[indexPath.row]
-       // let dateIssue = issue.facilityIssueReportDatetime
         let dateString = issue.facilityIssueReportDatetime!
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -246,11 +225,8 @@ class NotificationsViewController: UITableViewController {
         cell.lblRoomName?.text = issue.facilityTypeName!+" "+issue.facilityName!
         
         //kiem tra facilityIssueStatus
-        
         let strFacilityIssueStatus = (issue.facilityIssueStatus!).lowercased()
-       
-
-        //
+        // Rỗng
         if(strFacilityIssueStatus == ""){
             
             cell.lblStatusRoom?.text = "Chưa Xử Lý"
@@ -298,9 +274,4 @@ class NotificationsViewController: UITableViewController {
         return cell
         
     }
-
-    
-
-    
-
 }
