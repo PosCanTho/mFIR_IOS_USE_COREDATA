@@ -68,6 +68,8 @@ class NotificationsViewController: UITableViewController {
                 self.lblThruDate.setTitle("\(datef)", for: .normal)
             }
         }
+        //sort theo ngay
+        
 
     }
     
@@ -123,25 +125,16 @@ class NotificationsViewController: UITableViewController {
             }
             print(data!.userName)
         }
-        getData()
+        getFacilityIssueStatus()
+        getFacilityIssue()
         
     }
     
-    func getData(){
-        let issue = FirServices (self)
+    func getFacilityIssueStatus(){
         let facilityIssueStatus = FirServices(self)
-        
-        //let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        //let datef = format.string(from: date)
-        
-        //let strFromDate = "1994-11-11 00:00:00"
-        let strFacilityIssueId = "0"
-        
-        
+
         //Lấy facility issue status
-         facilityIssueStatus.getIssueStatus { (issueStatusData) in
+        facilityIssueStatus.getIssueStatus { (issueStatusData) in
             if issueStatusData != nil {
                 self.facilityIssueStatus = issueStatusData!
                 
@@ -154,10 +147,25 @@ class NotificationsViewController: UITableViewController {
                 self.strDangXuLy1 = self.facilityIssueStatus[1].typeNameName
                 self.strKhongXuLyDuoc1 = self.facilityIssueStatus[2].typeNameName
                 self.strDaXuLy1 = self.facilityIssueStatus[3].typeNameName
-
+                
                 
             }
         }
+    }
+    
+    
+    func getFacilityIssue(){
+        let issue = FirServices (self)
+        
+        //let date = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        //let datef = format.string(from: date)
+        
+        //let strFromDate = "1994-11-11 00:00:00"
+        let strFacilityIssueId = "0"
+        
+        
         
         //Lấy facility issue
         issue.getIssue(facilityIssueId: strFacilityIssueId, fromDate: "", thruDate: "") { (dataIssue) in
