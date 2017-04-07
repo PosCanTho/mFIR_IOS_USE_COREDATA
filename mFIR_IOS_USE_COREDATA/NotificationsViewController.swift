@@ -55,6 +55,9 @@ class NotificationsViewController: UITableViewController {
         sortThruDate()
     }
     func sortThruDate(){
+        var strThruDate = ""
+        var strFromDate = ""
+        let formatDate = DateFormatter()
         let currentDate = Date()
         var dateComponents = DateComponents()
         dateComponents.month = -3
@@ -62,15 +65,33 @@ class NotificationsViewController: UITableViewController {
         
         DatePickerDialog().show("Thru date", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", minimumDate: threeMonthAgo, maximumDate: currentDate, datePickerMode: .date) { (date) in
             if let dt = date {
-                let formatFromdate = DateFormatter()
-                formatFromdate.dateFormat = "dd/MM/yyy"
-                let datef = formatFromdate.string(from: dt)
+                formatDate.dateFormat = "dd/MM/yyyy"
+                let datef = formatDate.string(from: dt)
                 self.lblThruDate.setTitle("\(datef)", for: .normal)
+                
+                formatDate.dateFormat = "yyyy-MM-dd 23:59:59" //Lấy cuối ngày
+                strThruDate = formatDate.string(from: dt)
+                print("Thrudate------ ",strThruDate)
+
+                
+                //sort theo ngay
+                
+                //let dateFormatter = DateFormatter()
+                formatDate.dateFormat = "dd/MM/yyyy"
+                let fromdate = self.lblFromdate.currentTitle!
+                let date = formatDate.date(from: fromdate)
+                
+                formatDate.dateFormat = "yyyy-MM-dd 00:00:00" //Lấy đầu ngày
+                strFromDate = formatDate.string(from: date!)
+                print("Fromdate------ ",strFromDate)
+                
+                
+                self.getFacilityIssue(strFacilityIssueId: "0", strFromDate: strFromDate, strThruDate: strThruDate)
+                self.tableView.reloadData()
+
+
             }
         }
-        //sort theo ngay
-        
-
     }
     
     @IBAction func btnStatus(_ sender: UIButton) {
@@ -99,6 +120,8 @@ class NotificationsViewController: UITableViewController {
     var facilityIssueStatus: [IssueStatus] = []
     var facilityIssue: [Issue] = []
     var issueNew: [Issue] = []
+    var issueSortDate: [Issue] = [] // DS issue hiện thị theo thơi gian mới nhất
+    let dateFormatter = DateFormatter()
    
     
     var strChuaXuLy  = ""
@@ -126,7 +149,8 @@ class NotificationsViewController: UITableViewController {
             print(data!.userName)
         }
         getFacilityIssueStatus()
-        getFacilityIssue()
+        getFacilityIssue(strFacilityIssueId: "0", strFromDate: "",strThruDate: "")
+        //self.tableView.reloadData()
         
     }
     
@@ -154,46 +178,57 @@ class NotificationsViewController: UITableViewController {
     }
     
     
-    func getFacilityIssue(){
+    func getFacilityIssue(strFacilityIssueId: String, strFromDate: String, strThruDate: String){
+        
         let issue = FirServices (self)
         
-        //let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        //let datef = format.string(from: date)
-        
-        //let strFromDate = "1994-11-11 00:00:00"
-        let strFacilityIssueId = "0"
-        
-        
-        
         //Lấy facility issue
-        issue.getIssue(facilityIssueId: strFacilityIssueId, fromDate: "", thruDate: "") { (dataIssue) in
+        issue.getIssue(facilityIssueId: strFacilityIssueId, fromDate: strFromDate, thruDate: strThruDate) { (dataIssue) in
             if dataIssue != nil {
                 DispatchQueue.main.async {
                    
                     self.facilityIssue = dataIssue! //dữ liệu nguyễn mẫu từ services
+                    print("Size issue ban dau: ===== ", self.facilityIssue.count)
                     
                     ///Nhóm FacilityIssue theo facilityId (phòng)
                     for index in 0 ..< self.facilityIssue.count{
-                        let issue1: [Issue] = [self.facilityIssue[index]] //lấy đối tượng trong array
+                        let issueBD: [Issue] = [self.facilityIssue[index]] //lấy đối tượng trong array
                         let strFacilityId = self.facilityIssue[index].facilityId // lấy ra facilityId trong array
                         var isExist: Bool = false
                         for index1 in 0 ..< self.issueNew.count {
                             let strFacilityId1 = self.issueNew[index1].facilityId
-                            if strFacilityId?.caseInsensitiveCompare(strFacilityId1!) == .orderedSame {
+                            if strFacilityId == strFacilityId1 {
                                 isExist = true
                             }
                         }
                         if !isExist {
-                            self.issueNew.append(contentsOf: issue1)
+                            self.issueNew.append(contentsOf: issueBD)
                         }
                     }
-                    //Dao nguoc mang issueNew
-                    self.issueNew.reverse()
+                    //Sap xep mang issue giam dan theo thoi gian
+                    for i in 0 ..< self.issueNew.count-1 {
+                        var issue1: [Issue] = [self.issueNew[i]]
+                        self.dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                        let strTimeReport1 = self.dateFormatter.date(from: self.issueNew[i].facilityIssueReportDatetime!)
+
+                        
+                        for j in i+1 ..< self.issueNew.count {
+                            let issue2: [Issue] = [self.issueNew[j]]
+                            let strTimeReport2 = self.dateFormatter.date(from: self.issueNew[j].facilityIssueReportDatetime!)
+                            
+                            if strTimeReport1! < strTimeReport2! {
+                                self.issueSortDate.append(contentsOf: issue2)
+                                issue1 = [self.issueNew[j]]
+                            }
+                            
+                        }
+                    }
                     
+                    
+                    //Dao nguoc mang issueNew
+                    //self.issueNew.reverse()
+                    print("Size issueNew:======= ", self.issueNew.count)
                     self.tableView.reloadData()
-                    print("Lấy được rồi nhé!-------- OK")
                 }
             }
         }
@@ -218,18 +253,14 @@ class NotificationsViewController: UITableViewController {
         
         let issue = issueNew[indexPath.row]
         let dateString = issue.facilityIssueReportDatetime!
-        let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateFromString = dateFormatter.date(from: dateString)
-        
-        let dateFormatter2 = DateFormatter()
-        dateFormatter2.dateFormat = "dd/MM/yyyy"
-        let stringFromDate = dateFormatter2.string(from: dateFromString!)
+       
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        let stringDateReport = dateFormatter.string(from: dateFromString!)
  
-        let dateFormatter3 = DateFormatter()
-        dateFormatter3.dateFormat = "HH:mm"
-        let stringFromTime = dateFormatter3.string(from: dateFromString!)
-        print(stringFromDate)
+        dateFormatter.dateFormat = "HH:mm"
+        let stringTimeReport = dateFormatter.string(from: dateFromString!)
         cell.lblRoomName?.text = issue.facilityTypeName!+" "+issue.facilityName!
         
         //kiem tra facilityIssueStatus
@@ -276,8 +307,8 @@ class NotificationsViewController: UITableViewController {
             }
         }
 
-        cell.lblTimeReport?.text = stringFromDate
-        cell.LblTimeIssue?.text = stringFromTime
+        cell.lblTimeReport?.text = stringDateReport
+        cell.LblTimeIssue?.text = stringTimeReport
         
         return cell
         
